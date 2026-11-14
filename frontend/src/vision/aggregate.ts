@@ -12,7 +12,8 @@ const clamp = (v: number, min = 0, max = 100) => Math.min(max, Math.max(min, v))
 export function computeFatigueScore(stats: FatigueStats): number {
   const perclosPts = clamp((stats.perclos / 0.3) * 60, 0, 60);
   const yawnPts = Math.min(stats.yawnsLast5Min, 3) * 10;
-  const blinkPts = stats.blinksPerMin < 8 || stats.blinksPerMin > 25 ? 10 : 0;
+  // Solo juzgamos el parpadeo cuando la ventana de 60 s ya está llena (si no, blinksPerMin arranca en 0 e infla la fatiga).
+  const blinkPts = stats.windowReady && (stats.blinksPerMin < 8 || stats.blinksPerMin > 25) ? 10 : 0;
   return Math.round(clamp(perclosPts + yawnPts + blinkPts));
 }
 

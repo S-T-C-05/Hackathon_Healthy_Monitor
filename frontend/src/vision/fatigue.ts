@@ -42,6 +42,7 @@ export type FatigueStats = ReturnType<FatigueTracker["update"]>;
 export class FatigueTracker {
   blinks = 0;
   yawns = 0;
+  private firstT: number | null = null;   // t del primer frame, para saber si la ventana ya se llenó
   private eyeClosed = false;
   private mouthOpenSince: number | null = null;
   private history: { t: number; closed: boolean }[] = [];
@@ -50,6 +51,7 @@ export class FatigueTracker {
 
   /** @param aspect ancho/alto del video (video.videoWidth / video.videoHeight) */
   update(lm: NormalizedLandmark[], t: number, aspect = 1) {
+    this.firstT ??= t;
     const ear = computeEAR(lm, aspect);
     const mar = computeMAR(lm, aspect);
     const closed = ear < EAR_CLOSED;
@@ -78,8 +80,20 @@ export class FatigueTracker {
     while (this.blinkTimes.length && t - this.blinkTimes[0] > WINDOW_MS) this.blinkTimes.shift();
     while (this.yawnTimes.length && t - this.yawnTimes[0] > YAWN_WINDOW_MS) this.yawnTimes.shift();
 
-    // PERCLOS: % de frames con ojos cerrados en el último minuto
-    const perclos = this.history.filter((h) => h.closed).length / this.history.length;
+    // PERCLOS: % de TIEMPO con ojos cerrados en el último minuto.
+    // Se pesa por el dt entre muestras, porque el frame rate no es constante.
+    let closedMs = 0;
+    let totalMs = 0;
+    for (let i = 1; i < this.history.length; i++) {
+      const dt = this.history[i].t - this.history[i - 1].t;
+      totalMs += dt;
+      if (this.history[i].closed) closedMs += dt;
+    }
+    const perclos = totalMs > 0 ? closedMs / totalMs : 0;
+
+    // ¿Ya llevamos al menos un minuto observando? Hasta entonces, blinksPerMin
+    // todavía no es una tasa real y no conviene juzgar el parpadeo.
+    const elapsedMs = t - (this.firstT ?? t);
 
     return {
       ear,
@@ -88,14 +102,17 @@ export class FatigueTracker {
       perclos,
       blinks: this.blinks,
       yawns: this.yawns,
-      blinksPerMin: this.blinkTimes.length,
+      blinksPerMin: this.blinkTimes.length,   // conteo en la ventana de 60 s = parpadeos/min una vez que windowReady es true
       yawnsLast5Min: this.yawnTimes.length,
+      elapsedMs,
+      windowReady: elapsedMs >= WINDOW_MS,
     };
   }
 
   reset() {
     this.blinks = 0;
     this.yawns = 0;
+    this.firstT = null;
     this.eyeClosed = false;
     this.mouthOpenSince = null;
     this.history = [];
