@@ -1,5 +1,6 @@
 import type { FatigueStats } from "./fatigue";
 import type { Emotion } from "./expression";
+import type { HeadPoseState } from "./headpose";
 
 const clamp = (v: number, min = 0, max = 100) => Math.min(max, Math.max(min, v));
 
@@ -31,6 +32,10 @@ export interface SessionSummary {
   totalYawns: number;
   faceVisiblePct: number;
   emotions: Partial<Record<Emotion, number>>; // % del tiempo en cada emoción
+  headDownPct: number;      // % del tiempo (con cara visible y calibrado) con la cabeza gacha
+  lookingAwayPct: number;   // % del tiempo mirando a un lado
+  headDownEvents: number;
+  lookingAwayEvents: number;
 }
 
 /** Junta las muestras de toda la sesión para dar un resumen al final */
@@ -44,8 +49,18 @@ export class SessionAggregator {
   private lastStats: FatigueStats | null = null;
   private emotionCounts: Partial<Record<Emotion, number>> = {};
   private emotionSamples = 0;
+  private headSamples = 0;
+  private headDownSamples = 0;
+  private lookingAwaySamples = 0;
+  private lastHead: HeadPoseState | null = null;
 
-  add(t: number, stats: FatigueStats | null, fatigueScore: number | null, emotion: Emotion | null) {
+  add(
+    t: number,
+    stats: FatigueStats | null,
+    fatigueScore: number | null,
+    emotion: Emotion | null,
+    head: HeadPoseState | null = null,
+  ) {
     this.startedAt ??= t;
     this.lastT = t;
     this.samples++;
@@ -59,6 +74,12 @@ export class SessionAggregator {
     if (emotion) {
       this.emotionCounts[emotion] = (this.emotionCounts[emotion] ?? 0) + 1;
       this.emotionSamples++;
+    }
+    if (head?.calibrated) {
+      this.headSamples++;
+      if (head.headDown) this.headDownSamples++;
+      if (head.lookingAway) this.lookingAwaySamples++;
+      this.lastHead = head;
     }
   }
 
@@ -75,6 +96,10 @@ export class SessionAggregator {
       totalYawns: this.lastStats?.yawns ?? 0,
       faceVisiblePct: this.samples ? Math.round((this.faceSamples / this.samples) * 100) : 0,
       emotions,
+      headDownPct: this.headSamples ? Math.round((this.headDownSamples / this.headSamples) * 100) : 0,
+      lookingAwayPct: this.headSamples ? Math.round((this.lookingAwaySamples / this.headSamples) * 100) : 0,
+      headDownEvents: this.lastHead?.headDownEvents ?? 0,
+      lookingAwayEvents: this.lastHead?.lookingAwayEvents ?? 0,
     };
   }
 
@@ -88,5 +113,9 @@ export class SessionAggregator {
     this.lastStats = null;
     this.emotionCounts = {};
     this.emotionSamples = 0;
+    this.headSamples = 0;
+    this.headDownSamples = 0;
+    this.lookingAwaySamples = 0;
+    this.lastHead = null;
   }
 }

@@ -3,6 +3,7 @@ import { detectFrame, loadFaceLandmarker } from "./faceLandmarker";
 import { FatigueTracker, type FatigueStats } from "./fatigue";
 import { detectExpression, loadExpression, type ExpressionResult } from "./expression";
 import { SessionAggregator, computeFatigueScore, fatigueLevel, type SessionSummary } from "./aggregate";
+import { HeadPoseTracker, headPoseFromMatrix, type HeadPoseState } from "./headpose";
 
 export type VisionStatus = "idle" | "loading" | "running" | "error";
 
@@ -12,6 +13,7 @@ export interface VisionSnapshot {
   fatigueScore: number | null;
   fatigueLevel: "bajo" | "medio" | "alto" | null;
   expression: ExpressionResult | null;
+  head: HeadPoseState | null;
 }
 
 const EMOTION_EVERY_N_FRAMES = 8;
@@ -21,6 +23,7 @@ export function useVision() {
   // --- refs: lo que usa el loop (no causan re-render y no se quedan "viejos") ---
   const trackerRef = useRef(new FatigueTracker());
   const aggregatorRef = useRef(new SessionAggregator());
+  const headRef = useRef(new HeadPoseTracker());
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const rafRef = useRef<number | null>(null);
   const frameRef = useRef(0);
@@ -34,6 +37,7 @@ export function useVision() {
   const [snapshot, setSnapshot] = useState<VisionSnapshot | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [emotionEnabled, setEmotionEnabled] = useState(false);
+  
 
   const loop = useCallback(() => {
     const video = videoRef.current;
@@ -44,11 +48,15 @@ export function useVision() {
       // 1. Detectar (solo si el video ya tiene imagen)
       const result = video.readyState >= 2 && video.videoWidth > 0 ? detectFrame(video, now) : null;
 
-      // 2. Si hay cara, actualizar el tracker
+      // 2. Si hay cara, actualizar fatiga y postura de la cabeza
       let stats: FatigueStats | null = null;
+      let head: HeadPoseState | null = null;
       if (result) {
         const aspect = video.videoWidth / video.videoHeight;
         stats = trackerRef.current.update(result.faceLandmarks[0], now, aspect);
+
+        const matrix = result.facialTransformationMatrixes?.[0]?.data;
+        if (matrix) head = headRef.current.update(headPoseFromMatrix(matrix), now);
       }
 
       // 3. Cada N frames y si está activa: expresión (async, sin await para no bloquear)
@@ -66,13 +74,14 @@ export function useVision() {
         lastSnapRef.current = now;
         const score = stats ? computeFatigueScore(stats) : null;
         const expression = emotionOnRef.current && result ? expressionRef.current : null;
-        aggregatorRef.current.add(now, stats, score, expression?.emotion ?? null);
+        aggregatorRef.current.add(now, stats, score, expression?.emotion ?? null, head);
         setSnapshot({
           faceDetected: !!result,
           stats,
           fatigueScore: score,
           fatigueLevel: score === null ? null : fatigueLevel(score),
           expression,
+          head,
         });
       }
     } catch (e) {
@@ -95,6 +104,7 @@ export function useVision() {
       videoRef.current = video;
       trackerRef.current.reset();
       aggregatorRef.current.reset();
+      headRef.current.reset();
       await loadFaceLandmarker();
       setStatus("running");
       rafRef.current = requestAnimationFrame(loop);
@@ -130,8 +140,13 @@ export function useVision() {
     }
   }, []);
 
+  /** Vuelve a tomar la postura base de la cabeza (mirar a la pantalla ~2.5 s) */
+  const recalibrateHead = useCallback(() => headRef.current.recalibrate(), []);
+
   // Si el componente se desmonta, detener el loop
   useEffect(() => () => { stop(); }, [stop]);
 
-  return { status, snapshot, error, emotionEnabled, start, stop, enableEmotion };
+  return { status, snapshot, error, emotionEnabled, start, stop, enableEmotion, recalibrateHead };
+
+  
 }
