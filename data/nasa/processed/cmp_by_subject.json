@@ -1,0 +1,5732 @@
+{
+  "subjects": {
+    "C001": {
+      "sex": "M",
+      "analytes": {
+        "GLUCOSE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 83.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 80.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 69.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 90.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 16.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 84.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.6
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 91.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 87.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 12.5
+            }
+          ],
+          "baseline": 77.3333,
+          "n_baseline": 3
+        },
+        "UREA NITROGEN (BUN)": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 25.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.9
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 20.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 18.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -15.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -29.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 22.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 28.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 31.3
+            }
+          ],
+          "baseline": 21.3333,
+          "n_baseline": 3
+        },
+        "CREATININE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.24,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.37,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.12,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.11,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.2
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.25,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.29,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.3
+            }
+          ],
+          "baseline": 1.2367,
+          "n_baseline": 3
+        },
+        "BUN/CREATININE RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 20.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 15.4
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 17.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -1.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -14.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 16.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -8.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 13.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -22.9
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 17.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 0.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 22.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.7
+            }
+          ],
+          "baseline": 17.5,
+          "n_baseline": 3
+        },
+        "SODIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 141.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 139.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 142.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.9
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.9
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 140.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 137.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.6
+            }
+          ],
+          "baseline": 140.6667,
+          "n_baseline": 3
+        },
+        "POTASSIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.8
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 3.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -7.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.9
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 4.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.6
+            }
+          ],
+          "baseline": 4.2333,
+          "n_baseline": 3
+        },
+        "CHLORIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 104.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.6
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 101.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 100.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 101.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.3
+            }
+          ],
+          "baseline": 102.3333,
+          "n_baseline": 3
+        },
+        "CARBON DIOXIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 26.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 26.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 28.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 12.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 27.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.0
+            }
+          ],
+          "baseline": 25.0,
+          "n_baseline": 3
+        },
+        "CALCIUM": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 9.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 10.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 9.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 9.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 9.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 10.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 9.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.8
+            }
+          ],
+          "baseline": 9.7667,
+          "n_baseline": 3
+        },
+        "PROTEIN; TOTAL": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 7.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 7.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 7.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.6
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 7.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 7.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.3
+            }
+          ],
+          "baseline": 7.4667,
+          "n_baseline": 3
+        },
+        "ALBUMIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 5.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 5.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.7
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 4.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 5.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -7.4
+            }
+          ],
+          "baseline": 4.9667,
+          "n_baseline": 3
+        },
+        "GLOBULIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 2.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 2.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 2.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 2.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 2.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.0
+            }
+          ],
+          "baseline": 2.5,
+          "n_baseline": 3
+        },
+        "ALBUMIN/GLOBULIN RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 2.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 2.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.6
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 2.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.6
+            }
+          ],
+          "baseline": 2.0333,
+          "n_baseline": 3
+        },
+        "BILIRUBIN; TOTAL": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 0.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -19.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 0.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.8
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 15.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 38.5
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": null,
+              "flag": null,
+              "qc": null,
+              "recalculated": false,
+              "na_reason": "no_data",
+              "pct_vs_baseline": null
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 38.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 0.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -7.7
+            }
+          ],
+          "baseline": 0.8667,
+          "n_baseline": 3
+        },
+        "ALKALINE PHOSPHATASE": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 51.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 46.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.8
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 45.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 52.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 9.9
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 46.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.8
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 49.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 50.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.6
+            }
+          ],
+          "baseline": 47.3333,
+          "n_baseline": 3
+        },
+        "AST": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 18.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 12.5
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 13.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -18.8
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 12.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -25.0
+            }
+          ],
+          "baseline": 16.0,
+          "n_baseline": 3
+        },
+        "ALT": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 9.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 13.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 9.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -38.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 11.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -25.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            }
+          ],
+          "baseline": 14.6667,
+          "n_baseline": 3
+        }
+      }
+    },
+    "C002": {
+      "sex": "F",
+      "analytes": {
+        "GLUCOSE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 69.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 72.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 78.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 83.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 13.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 44.0,
+              "flag": "low",
+              "qc": "glucose_below_50_check_preanalytical_artifact",
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -39.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 77.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 84.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 15.1
+            }
+          ],
+          "baseline": 73.0,
+          "n_baseline": 3
+        },
+        "UREA NITROGEN (BUN)": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 14.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.6
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 20.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 27.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 21.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 18.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 14.9
+            }
+          ],
+          "baseline": 15.6667,
+          "n_baseline": 3
+        },
+        "CREATININE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 0.83,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 0.88,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 0.96,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 0.95,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.02,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 14.6
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 0.82,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -7.9
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.02,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 14.6
+            }
+          ],
+          "baseline": 0.89,
+          "n_baseline": 3
+        },
+        "BUN/CREATININE RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 16.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -4.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 18.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 17.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 0.6
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 21.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 19.9
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 18.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 5.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 17.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            }
+          ],
+          "baseline": 17.6,
+          "n_baseline": 3
+        },
+        "SODIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 142.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 141.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 143.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 137.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.5
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 140.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.4
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 141.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.8
+            }
+          ],
+          "baseline": 142.0,
+          "n_baseline": 3
+        },
+        "POTASSIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 3.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 3.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.6
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 3.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.1
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 3.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 12.8
+            }
+          ],
+          "baseline": 3.9,
+          "n_baseline": 3
+        },
+        "CHLORIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 106.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 104.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 105.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 104.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            }
+          ],
+          "baseline": 104.0,
+          "n_baseline": 3
+        },
+        "CARBON DIOXIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 26.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.8
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 22.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 25.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 20.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -17.8
+            }
+          ],
+          "baseline": 24.3333,
+          "n_baseline": 3
+        },
+        "CALCIUM": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 10.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.8
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 9.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 9.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 9.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.5
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 9.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 9.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 9.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.4
+            }
+          ],
+          "baseline": 9.7333,
+          "n_baseline": 3
+        },
+        "PROTEIN; TOTAL": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 7.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 7.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 7.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 6.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.7
+            }
+          ],
+          "baseline": 7.5,
+          "n_baseline": 3
+        },
+        "ALBUMIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 4.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 4.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 4.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.2
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.5
+            }
+          ],
+          "baseline": 4.6,
+          "n_baseline": 3
+        },
+        "GLOBULIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 3.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 3.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.9
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 3.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 2.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 2.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.4
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 3.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.4
+            }
+          ],
+          "baseline": 2.9,
+          "n_baseline": 3
+        },
+        "ALBUMIN/GLOBULIN RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.6
+            }
+          ],
+          "baseline": 1.5667,
+          "n_baseline": 3
+        },
+        "BILIRUBIN; TOTAL": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 0.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 0.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -25.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 0.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 0.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -25.0
+            }
+          ],
+          "baseline": 0.4,
+          "n_baseline": 3
+        },
+        "ALKALINE PHOSPHATASE": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 73.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 78.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.8
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 68.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 71.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 65.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 65.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 66.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.6
+            }
+          ],
+          "baseline": 73.0,
+          "n_baseline": 3
+        },
+        "AST": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -36.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 31.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 40.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 33.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -23.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -43.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -30.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -20.0
+            }
+          ],
+          "baseline": 30.0,
+          "n_baseline": 3
+        },
+        "ALT": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -18.6
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 22.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -18.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 14.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -28.8
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.6
+            }
+          ],
+          "baseline": 19.6667,
+          "n_baseline": 3
+        }
+      }
+    },
+    "C004": {
+      "sex": "M",
+      "analytes": {
+        "GLUCOSE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 100.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 83.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 56.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -29.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 97.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 21.8
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 43.0,
+              "flag": "low",
+              "qc": "glucose_below_50_check_preanalytical_artifact",
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -46.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 80.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.4
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 84.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.4
+            }
+          ],
+          "baseline": 79.6667,
+          "n_baseline": 3
+        },
+        "UREA NITROGEN (BUN)": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 22.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 26.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 30.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 16.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -20.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 27.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 35.0
+            }
+          ],
+          "baseline": 20.0,
+          "n_baseline": 3
+        },
+        "CREATININE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.14,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.1
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.08,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.13,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.15,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.08,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.11,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.31,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.3
+            }
+          ],
+          "baseline": 1.1167,
+          "n_baseline": 3
+        },
+        "BUN/CREATININE RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 19.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 7.8
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 17.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -1.7
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 16.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -6.1
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 23.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 28.5
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 19.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 8.4
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 14.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -19.6
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.3
+            }
+          ],
+          "baseline": 17.9,
+          "n_baseline": 3
+        },
+        "SODIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 140.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 141.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 140.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 139.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 140.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 141.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.0
+            }
+          ],
+          "baseline": 139.6667,
+          "n_baseline": 3
+        },
+        "POTASSIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.1
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 3.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.8
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 5.9,
+              "flag": "high",
+              "qc": "potassium_above_5_5_check_hemolysis",
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 46.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 3.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.8
+            }
+          ],
+          "baseline": 4.0333,
+          "n_baseline": 3
+        },
+        "CHLORIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.6
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 105.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.6
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 105.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            }
+          ],
+          "baseline": 102.6667,
+          "n_baseline": 3
+        },
+        "CARBON DIOXIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.8
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.4
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.8
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.4
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 24.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.4
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 19.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -19.7
+            }
+          ],
+          "baseline": 23.6667,
+          "n_baseline": 3
+        },
+        "CALCIUM": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 10.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 10.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 10.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 9.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 9.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 10.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 9.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.0
+            }
+          ],
+          "baseline": 10.1,
+          "n_baseline": 3
+        },
+        "PROTEIN; TOTAL": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.9
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.9
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.9
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 7.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.8
+            }
+          ],
+          "baseline": 7.3333,
+          "n_baseline": 3
+        },
+        "ALBUMIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.9
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 4.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.1
+            }
+          ],
+          "baseline": 4.5333,
+          "n_baseline": 3
+        },
+        "GLOBULIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 2.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.6
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 2.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 2.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.6
+            }
+          ],
+          "baseline": 2.8,
+          "n_baseline": 3
+        },
+        "ALBUMIN/GLOBULIN RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            }
+          ],
+          "baseline": 1.6,
+          "n_baseline": 3
+        },
+        "BILIRUBIN; TOTAL": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 0.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 0.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.5
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -21.0
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 0.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -36.8
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 0.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 57.9
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -21.0
+            }
+          ],
+          "baseline": 0.6333,
+          "n_baseline": 3
+        },
+        "ALKALINE PHOSPHATASE": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 58.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 56.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 55.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 62.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.1
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 60.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 54.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 57.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.2
+            }
+          ],
+          "baseline": 56.3333,
+          "n_baseline": 3
+        },
+        "AST": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 36.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 44.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.9
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 39.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 48.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 21.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 33.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -16.8
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 25.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -37.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 38.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.2
+            }
+          ],
+          "baseline": 39.6667,
+          "n_baseline": 3
+        },
+        "ALT": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 37.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.8
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 35.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.7
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 37.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 40.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 10.1
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 32.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.9
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -36.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 43.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 18.3
+            }
+          ],
+          "baseline": 36.3333,
+          "n_baseline": 3
+        }
+      }
+    },
+    "C003": {
+      "sex": "F",
+      "analytes": {
+        "GLUCOSE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 77.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.9
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 62.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 75.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.1
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 103.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 44.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 36.0,
+              "flag": "low",
+              "qc": "glucose_below_50_check_preanalytical_artifact",
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -49.5
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 80.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 12.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 73.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            }
+          ],
+          "baseline": 71.3333,
+          "n_baseline": 3
+        },
+        "UREA NITROGEN (BUN)": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -17.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 26.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.6
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -8.1
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 11.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 28.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 35.5
+            }
+          ],
+          "baseline": 20.6667,
+          "n_baseline": 3
+        },
+        "CREATININE": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.5
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.03,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.08,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 4.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 0.89,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -14.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 0.94,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -9.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 0.89,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -14.2
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.1,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.1
+            }
+          ],
+          "baseline": 1.0367,
+          "n_baseline": 3
+        },
+        "BUN/CREATININE RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -14.1
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 18.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": -7.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 24.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 21.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 23.6,
+              "flag": "high",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 19.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 20.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 2.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 25.8,
+              "flag": "high",
+              "qc": null,
+              "recalculated": true,
+              "na_reason": null,
+              "pct_vs_baseline": 30.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 25.0,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 26.3
+            }
+          ],
+          "baseline": 19.8,
+          "n_baseline": 3
+        },
+        "SODIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 139.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 139.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 137.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 136.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.9
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 138.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.5
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 137.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.2
+            }
+          ],
+          "baseline": 138.6667,
+          "n_baseline": 3
+        },
+        "POTASSIUM": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 3.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 3.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 3.3,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 3.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -14.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 25.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 3.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 5.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 3.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.6
+            }
+          ],
+          "baseline": 3.5,
+          "n_baseline": 3
+        },
+        "CHLORIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 99.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.7
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 101.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 103.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.3
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 97.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.6
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 102.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 1.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 101.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.3
+            }
+          ],
+          "baseline": 100.6667,
+          "n_baseline": 3
+        },
+        "CARBON DIOXIDE": {
+          "unit": "mmol/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 20.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 21.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.8
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 20.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.8
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 23.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 7.8
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 22.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.1
+            }
+          ],
+          "baseline": 21.3333,
+          "n_baseline": 3
+        },
+        "CALCIUM": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 9.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -4.1
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 10.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 9.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.1
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 9.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.1
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 9.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 10.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 3.1
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 9.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -1.0
+            }
+          ],
+          "baseline": 9.7,
+          "n_baseline": 3
+        },
+        "PROTEIN; TOTAL": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 7.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 8.8,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 16.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 6.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -10.1
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 7.1,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.2
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 7.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.2
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 7.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -0.9
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 7.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -3.5
+            }
+          ],
+          "baseline": 7.5667,
+          "n_baseline": 3
+        },
+        "ALBUMIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.2
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 4.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 8.9
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 4.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 4.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 4.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 4.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -2.2
+            }
+          ],
+          "baseline": 4.5,
+          "n_baseline": 3
+        },
+        "GLOBULIN": {
+          "unit": "g/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -12.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 3.9,
+              "flag": "high",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 27.2
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 2.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -15.2
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.4
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.4
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 2.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -12.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 2.9,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.4
+            }
+          ],
+          "baseline": 3.0667,
+          "n_baseline": 3
+        },
+        "ALBUMIN/GLOBULIN RATIO": {
+          "unit": "(calc)",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 1.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.7
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 1.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -6.7
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 1.6,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 6.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 1.8,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 20.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 1.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            }
+          ],
+          "baseline": 1.5,
+          "n_baseline": 3
+        },
+        "BILIRUBIN; TOTAL": {
+          "unit": "mg/dL",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 0.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 0.4,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 33.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 0.2,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -33.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 0.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 0.7,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 133.3
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 0.5,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 66.7
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 0.3,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            }
+          ],
+          "baseline": 0.3,
+          "n_baseline": 3
+        },
+        "ALKALINE PHOSPHATASE": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 33.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.7
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 41.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.1
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 31.0,
+              "flag": "low",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -11.4
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 41.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 17.1
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 51.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 45.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 50.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 42.9
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 43.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 22.9
+            }
+          ],
+          "baseline": 35.0,
+          "n_baseline": 3
+        },
+        "AST": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 13.3
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 13.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -13.3
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 18.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 20.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 26.7
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 15.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 0.0
+            }
+          ],
+          "baseline": 15.0,
+          "n_baseline": 3
+        },
+        "ALT": {
+          "unit": "U/L",
+          "points": [
+            {
+              "timepoint": "L-92",
+              "phase": "pre",
+              "days": -92,
+              "value": 12.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.3
+            },
+            {
+              "timepoint": "L-44",
+              "phase": "pre",
+              "days": -44,
+              "value": 13.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.6
+            },
+            {
+              "timepoint": "L-3",
+              "phase": "pre",
+              "days": -3,
+              "value": 13.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 2.6
+            },
+            {
+              "timepoint": "R+1",
+              "phase": "post",
+              "days": 1,
+              "value": 19.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 50.0
+            },
+            {
+              "timepoint": "R+45",
+              "phase": "post",
+              "days": 45,
+              "value": 17.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": 34.2
+            },
+            {
+              "timepoint": "R+82",
+              "phase": "post",
+              "days": 82,
+              "value": 12.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -5.3
+            },
+            {
+              "timepoint": "R+194",
+              "phase": "post",
+              "days": 194,
+              "value": 10.0,
+              "flag": "normal",
+              "qc": null,
+              "recalculated": false,
+              "na_reason": null,
+              "pct_vs_baseline": -21.1
+            }
+          ],
+          "baseline": 12.6667,
+          "n_baseline": 3
+        }
+      }
+    }
+  },
+  "notes": [
+    "Reference ranges recomputed per sex; C003 pre-flight rows (male ranges) not used.",
+    "Points with `qc` set are suspected artifacts: kept, never used for baselines.",
+    "`recalculated` = BUN/creatinine ratio computed from BUN and creatinine (inference).",
+    "eGFR columns dropped. n = 4 crew members: personal baselines only, no population ranges.",
+    "Timepoints are pre-flight (L-) and post-flight (R+). This is not in-flight data."
+  ]
+}

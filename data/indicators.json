@@ -1,0 +1,798 @@
+[
+  {
+    "id": "sleep_duration",
+    "label": "Sleep duration",
+    "system": "mental_sleep",
+    "kind": "self_report",
+    "unit": "h",
+    "input": "manual",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Astronaut studies from Shuttle and Mir missions report shorter sleep in flight. Short sleep goes together with fatigue and slower performance, so your own trend matters more than one night.",
+    "how_to_measure": "Log the hours you slept each morning, or import them from a wrist device if the crew has one.",
+    "actions": {
+      "yellow": [
+        "Protect a fixed sleep window tonight.",
+        "Note it and check again tomorrow."
+      ],
+      "red": [
+        "Keep your sleep window fixed and quiet.",
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-SLEEP-001",
+      "ASTRA-SLEEP-004"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch3",
+      "barger2014",
+      "jones2022"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "The 2009 evidence is small-sample and historical. Thresholds must come from a cited source or stay as deviation from personal baseline."
+  },
+  {
+    "id": "sleep_quality",
+    "label": "Sleep quality",
+    "system": "mental_sleep",
+    "kind": "self_report",
+    "unit": "score 1-5",
+    "input": "manual",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Small astronaut studies report changes in sleep quality and continuity in flight, but not in the same direction for every measure or mission.",
+    "how_to_measure": "Rate how rested you feel each morning on a 1-5 scale (app-defined scale).",
+    "actions": {
+      "yellow": [
+        "Note light, noise and temperature in your sleep area."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-SLEEP-002"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch3"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "sleep_timing",
+    "label": "Sleep timing",
+    "system": "mental_sleep",
+    "kind": "self_report",
+    "unit": "hh:mm",
+    "input": "manual",
+    "concern_direction": "change",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Circadian timing and lighting are linked to sleep and alertness in flight studies. Keeping timing steady helps read your sleep data correctly.",
+    "how_to_measure": "Log the time you went to sleep and woke up.",
+    "actions": {
+      "yellow": [
+        "Keep sleep and wake times as steady as the schedule allows."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-SLEEP-003"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch3"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "crew_cohesion",
+    "label": "Crew cohesion and mood",
+    "system": "mental_sleep",
+    "kind": "self_report",
+    "unit": "score 1-5",
+    "input": "manual",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Isolation and confinement can affect how crew members get along. Direct astronaut evidence is limited, so the app follows each person's own trend instead of assuming a dip at a fixed date.",
+    "how_to_measure": "Answer a short daily check-in about mood, team relations and support (app-defined scale).",
+    "actions": {
+      "yellow": [
+        "Talk with a crew member you trust.",
+        "Note what changed in the schedule or workload."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-TEAM-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch2",
+      "basner2014",
+      "wang2014",
+      "kanas2021"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "reaction_time",
+    "label": "Reaction time",
+    "system": "mental_sleep",
+    "kind": "test",
+    "unit": "ms",
+    "input": "test",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Short repeated reaction tests compared with your own baseline are how NASA tracks alertness and performance. Slower reactions can show up before you feel tired.",
+    "how_to_measure": "Do the 1-3 minute reaction self-test at the same time of day.",
+    "actions": {
+      "yellow": [
+        "Check your sleep trend: the two often move together."
+      ],
+      "red": [
+        "Avoid safety-critical tasks alone.",
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [],
+    "source_ids": [
+      "roma2018-bhp-measures",
+      "nasrini2020",
+      "tu2022"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "No evidence card yet in hazards.json. Add one from Roma 2018 / Nasrini 2020 once opened."
+  },
+  {
+    "id": "exercise_minutes",
+    "label": "Exercise time",
+    "system": "bone_muscle",
+    "kind": "self_report",
+    "unit": "min/day",
+    "input": "manual",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Exercise is the countermeasure used consistently against muscle atrophy and strength loss in microgravity. The 2009 report describes about 2.5 hours per day on six days a week on the ISS (setup and hygiene included).",
+    "how_to_measure": "Log minutes of resistance and aerobic exercise each day.",
+    "actions": {
+      "yellow": [
+        "Protect your exercise slot in the day plan."
+      ],
+      "red": [
+        "Tell the crew medical officer about missed sessions.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-BM-002",
+      "ASTRA-ENV-005"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch15"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "muscle_strength",
+    "label": "Muscle strength",
+    "system": "bone_muscle",
+    "kind": "test",
+    "unit": "% of own baseline",
+    "input": "test",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Microgravity is associated with muscle atrophy and lower strength and endurance. The chapter gives no quantitative muscle-loss estimate, so only the change from your own baseline is meaningful.",
+    "how_to_measure": "Protocol to be defined by the team: repeat the same simple strength check on a fixed schedule.",
+    "actions": {
+      "yellow": [
+        "Note it and check again tomorrow.",
+        "Compare with your own baseline in the trend chart."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-BM-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch15"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Needs a defined, safe measurement protocol before it can be a real input."
+  },
+  {
+    "id": "calcium",
+    "label": "Calcium (blood)",
+    "system": "bone_muscle",
+    "kind": "lab",
+    "unit": "mg/dL",
+    "input": "manual",
+    "concern_direction": "both",
+    "thresholds": {
+      "type": "reference_range",
+      "status": "dataset_range",
+      "unit": "mg/dL",
+      "by_sex": {
+        "M": {
+          "min": 8.6,
+          "max": 10.3
+        },
+        "F": {
+          "min": 8.6,
+          "max": 10.4
+        }
+      },
+      "range_note": "Most frequent lab range per sex in LSDS-8 (C003 pre-flight rows excluded). A lab range is not a diagnosis."
+    },
+    "why_in_space": "Calcium is part of the metabolic panel NASA measured in crew before and after flight (LSDS-8).",
+    "how_to_measure": "Lab value from a blood panel; not measurable by the crew member alone.",
+    "actions": {
+      "yellow": [
+        "Note the value and the date."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [],
+    "source_ids": [
+      "lsds-8"
+    ],
+    "evidence_level": "dataset_only",
+    "nasa_analyte": "CALCIUM",
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "resting_heart_rate",
+    "label": "Resting heart rate",
+    "system": "cardiovascular",
+    "kind": "measured",
+    "unit": "bpm",
+    "input": "camera",
+    "concern_direction": "both",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Pulse is a quick whole-body signal. A resting rate that moves away from your own baseline, especially together with fever, deserves attention.",
+    "how_to_measure": "Camera pulse (rPPG) or manual count while resting. Compare with a pulse oximeter or a manual count before trusting the camera.",
+    "actions": {
+      "yellow": [
+        "Rest 5 minutes and measure again."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [],
+    "source_ids": [],
+    "evidence_level": "none_yet",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "No source yet for a threshold. Camera accuracy still to be tested with a real person."
+  },
+  {
+    "id": "blood_pressure",
+    "label": "Blood pressure (systolic)",
+    "system": "cardiovascular",
+    "kind": "measured",
+    "unit": "mmHg",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Hypertension is listed among possible late cardiovascular concerns of space radiation, but the 2009 evidence comes from non-astronaut populations. Treat this as a research gap, not a proven in-flight effect.",
+    "how_to_measure": "Cuff measurement, seated and rested, at the same time of day.",
+    "actions": {
+      "yellow": [
+        "Rest and measure again."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-CV-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch7"
+    ],
+    "evidence_level": "gap",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Evidence gap card: do not present as a demonstrated astronaut outcome."
+  },
+  {
+    "id": "body_temperature",
+    "label": "Body temperature",
+    "system": "immune_metabolic",
+    "kind": "measured",
+    "unit": "degC",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Fever is a simple sign of infection or inflammation. Medical help is far away, so a fever is worth reporting early.",
+    "how_to_measure": "Oral or forehead thermometer at the same time of day.",
+    "actions": {
+      "yellow": [
+        "Measure again in an hour.",
+        "Drink fluids and rest."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [],
+    "source_ids": [],
+    "evidence_level": "none_yet",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "No source yet for a threshold."
+  },
+  {
+    "id": "glucose",
+    "label": "Blood glucose",
+    "system": "immune_metabolic",
+    "kind": "lab",
+    "unit": "mg/dL",
+    "input": "manual",
+    "concern_direction": "both",
+    "thresholds": {
+      "type": "reference_range",
+      "status": "dataset_range",
+      "unit": "mg/dL",
+      "by_sex": {
+        "M": {
+          "min": 65.0,
+          "max": 99.0
+        },
+        "F": {
+          "min": 65.0,
+          "max": 99.0
+        }
+      },
+      "range_note": "Most frequent lab range per sex in LSDS-8 (C003 pre-flight rows excluded). A lab range is not a diagnosis."
+    },
+    "why_in_space": "Glucose regulation is part of the metabolic picture, but the 2009 chapter gives no astronaut glucose result. In LSDS-8, the very low values at R+45 are probably sample artifacts (late processing), not a finding.",
+    "how_to_measure": "Lab value from a blood panel; not measurable by the crew member alone.",
+    "actions": {
+      "yellow": [
+        "Note the value and the date."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-IMM-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch7",
+      "lsds-8"
+    ],
+    "evidence_level": "gap",
+    "nasa_analyte": "GLUCOSE",
+    "review_status": "draft",
+    "notes": "Four QC-flagged points in the NASA data (3 glucose, 1 potassium) are excluded from baselines."
+  },
+  {
+    "id": "creatinine",
+    "label": "Creatinine (blood)",
+    "system": "immune_metabolic",
+    "kind": "lab",
+    "unit": "mg/dL",
+    "input": "manual",
+    "concern_direction": "both",
+    "thresholds": {
+      "type": "reference_range",
+      "status": "dataset_range",
+      "unit": "mg/dL",
+      "by_sex": {
+        "M": {
+          "min": 0.6,
+          "max": 1.35
+        },
+        "F": {
+          "min": 0.5,
+          "max": 1.05
+        }
+      },
+      "range_note": "Most frequent lab range per sex in LSDS-8 (C003 pre-flight rows excluded). A lab range is not a diagnosis."
+    },
+    "why_in_space": "Creatinine is a kidney-related marker in the metabolic panel NASA measured before and after flight (LSDS-8).",
+    "how_to_measure": "Lab value from a blood panel; not measurable by the crew member alone.",
+    "actions": {
+      "yellow": [
+        "Note the value and the date."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [],
+    "source_ids": [
+      "lsds-8"
+    ],
+    "evidence_level": "dataset_only",
+    "nasa_analyte": "CREATININE",
+    "review_status": "draft",
+    "notes": "No kidney system in the 6 categories of hazards.json; kept under immune_metabolic."
+  },
+  {
+    "id": "light_flashes",
+    "label": "Light flashes",
+    "system": "radiation",
+    "kind": "self_report",
+    "unit": "events/day",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Astronauts have reported brief light flashes (phosphenes) since Apollo, and they were studied on Skylab, Mir and the ISS. They are subjective and do not by themselves show brain injury.",
+    "how_to_measure": "Count how many flashes you noticed today and note the context.",
+    "actions": {
+      "yellow": [
+        "Log the time and where you were."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-RAD-003"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch6"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Not a diagnostic marker of CNS injury."
+  },
+  {
+    "id": "radiation_dose",
+    "label": "Radiation dose (modeled)",
+    "system": "radiation",
+    "kind": "environmental",
+    "unit": "mGy",
+    "input": "auto",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Solar particle events are a potential acute radiation hazard for crews. The 2009 assessment is model-based: it does not report confirmed acute radiation syndrome in astronauts.",
+    "how_to_measure": "From the environment feed or the simulation; not measured by the crew member.",
+    "actions": {
+      "yellow": [
+        "Follow the radiation shelter plan for the habitat."
+      ],
+      "red": [
+        "Go to the shelter area per mission procedure.",
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-RAD-002"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch5",
+      "pbio-3000669"
+    ],
+    "evidence_level": "modeled",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Unit and source of the app's dose still to confirm with the simulation. Replace simulated dose with real data when possible."
+  },
+  {
+    "id": "chromosomal_aberrations",
+    "label": "Chromosome exchanges",
+    "system": "radiation",
+    "kind": "evidence_only",
+    "unit": null,
+    "input": "none",
+    "concern_direction": null,
+    "thresholds": {
+      "type": "none",
+      "status": "not_applicable"
+    },
+    "why_in_space": "In 24 astronauts, blood samples taken before and after flight showed more chromosome exchanges. This is a biological marker, not a cancer diagnosis.",
+    "how_to_measure": "Not measured by the app. Laboratory analysis of blood samples.",
+    "actions": {
+      "yellow": [],
+      "red": []
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-RAD-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch4"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Explanation card only."
+  },
+  {
+    "id": "cns_function",
+    "label": "Brain function (radiation risk)",
+    "system": "radiation",
+    "kind": "evidence_only",
+    "unit": null,
+    "input": "none",
+    "concern_direction": null,
+    "thresholds": {
+      "type": "none",
+      "status": "not_applicable"
+    },
+    "why_in_space": "The 2009 chapter found no identified radiation-related brain effects in astronauts, and said reliable risk projections were not possible. Absence of evidence is not proof of no risk.",
+    "how_to_measure": "Not measured directly. Reaction time and sleep are the practical daily signals.",
+    "actions": {
+      "yellow": [],
+      "red": []
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-RAD-004"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch6"
+    ],
+    "evidence_level": "gap",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Explanation card only; research gap."
+  },
+  {
+    "id": "lunar_dust_symptoms",
+    "label": "Lunar dust symptoms",
+    "system": "environment",
+    "kind": "self_report",
+    "unit": "score 0-3",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Apollo crews described lunar dust irritating the eyes, throat and nose. Effects of long exposure are uncertain.",
+    "how_to_measure": "Rate eye, throat and nose irritation after EVA (app-defined scale).",
+    "actions": {
+      "yellow": [
+        "Clean suit and boots before entering the habitat."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-ENV-001"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch13"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Historical observations, not a controlled study."
+  },
+  {
+    "id": "dust_contact_events",
+    "label": "Dust contact events",
+    "system": "environment",
+    "kind": "environmental",
+    "unit": "events/day",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Dust can enter the habitat on suits and boots after EVA, during suit cleaning and when filters are changed. These are exposure pathways, not measured doses.",
+    "how_to_measure": "Log EVAs, suit-cleaning and filter-change tasks.",
+    "actions": {
+      "yellow": [
+        "Follow the suit-cleaning and ingress procedure."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-ENV-004"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch13"
+    ],
+    "evidence_level": "modeled",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "workspace_accessibility",
+    "label": "Workspace accessibility",
+    "system": "environment",
+    "kind": "environmental",
+    "unit": "score 1-5",
+    "input": "manual",
+    "concern_direction": "low",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "Accumulated stowage can block translation paths, panels and equipment, which matters for efficiency and emergency access.",
+    "how_to_measure": "Rate access to routes and equipment in your module.",
+    "actions": {
+      "yellow": [
+        "Clear the blocked route or report it."
+      ],
+      "red": [
+        "Report a blocked emergency route immediately."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-ENV-002"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch10"
+    ],
+    "evidence_level": "astronaut_core",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": null
+  },
+  {
+    "id": "suit_discomfort",
+    "label": "Suit discomfort",
+    "system": "environment",
+    "kind": "self_report",
+    "unit": "score 0-10",
+    "input": "manual",
+    "concern_direction": "high",
+    "thresholds": {
+      "type": "personal_baseline",
+      "status": "needs_source",
+      "warn_deviation_pct": null,
+      "alert_deviation_pct": null
+    },
+    "why_in_space": "In ground tests, participants reported suit discomfort that increased when pressurized. This is indirect evidence: participants were not confirmed as flight astronauts.",
+    "how_to_measure": "Rate discomfort by body region after suit use.",
+    "actions": {
+      "yellow": [
+        "Report the area and the activity."
+      ],
+      "red": [
+        "Tell the crew medical officer today.",
+        "Ask the flight surgeon for guidance."
+      ]
+    },
+    "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
+    "card_ids": [
+      "ASTRA-ENV-003"
+    ],
+    "source_ids": [
+      "nasa-sp-2009-3405-ch10"
+    ],
+    "evidence_level": "indirect",
+    "nasa_analyte": null,
+    "review_status": "draft",
+    "notes": "Indirect human testing: keep out of the astronaut-only core evidence."
+  }
+]

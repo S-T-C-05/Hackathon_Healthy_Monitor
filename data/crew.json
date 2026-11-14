@@ -1,0 +1,136 @@
+[
+  {
+    "id": "crew_kenji",
+    "name": "Kenji Albrecht",
+    "role": "Flight engineer",
+    "sex": null,
+    "age": null,
+    "mission_day": 121,
+    "mission_length_days": 180,
+    "baseline": {
+      "sleep_duration": 7.0,
+      "reaction_time": 250,
+      "exercise_minutes": 150,
+      "resting_heart_rate": 62,
+      "body_temperature": 36.6
+    },
+    "baseline_status": "placeholder_simulated",
+    "demo_story": "Sleeps less and less since day 75 and feels fine. Reaction time is about 20% above his baseline. The app links both and tells him to inform the medical officer.",
+    "scenario": {
+      "effects": [
+        {
+          "indicator_id": "sleep_duration",
+          "pattern": "gradual_decline",
+          "starts_day": 75,
+          "target_change_pct": null
+        },
+        {
+          "indicator_id": "reaction_time",
+          "pattern": "gradual_rise",
+          "starts_day": 75,
+          "target_change_pct": 20
+        }
+      ]
+    },
+    "simulated": true
+  },
+  {
+    "id": "crew_navarro",
+    "name": "Navarro",
+    "role": null,
+    "sex": null,
+    "age": null,
+    "mission_day": 121,
+    "mission_length_days": 180,
+    "baseline": {
+      "sleep_duration": 7.0,
+      "reaction_time": 250,
+      "exercise_minutes": 150,
+      "resting_heart_rate": 62,
+      "body_temperature": 36.6
+    },
+    "baseline_status": "placeholder_simulated",
+    "demo_story": "Everything stays in green.",
+    "scenario": {
+      "effects": [
+        {
+          "indicator_id": "sleep_duration",
+          "pattern": "stable",
+          "starts_day": null,
+          "target_change_pct": null
+        }
+      ]
+    },
+    "simulated": true
+  },
+  {
+    "id": "crew_diallo",
+    "name": "Diallo",
+    "role": null,
+    "sex": null,
+    "age": null,
+    "mission_day": 121,
+    "mission_length_days": 180,
+    "baseline": {
+      "sleep_duration": 7.0,
+      "reaction_time": 250,
+      "exercise_minutes": 150,
+      "resting_heart_rate": 62,
+      "body_temperature": 36.6
+    },
+    "baseline_status": "placeholder_simulated",
+    "demo_story": "Less exercise and loss of muscle mass.",
+    "scenario": {
+      "effects": [
+        {
+          "indicator_id": "exercise_minutes",
+          "pattern": "gradual_decline",
+          "starts_day": null,
+          "target_change_pct": null
+        },
+        {
+          "indicator_id": "muscle_strength",
+          "pattern": "gradual_decline",
+          "starts_day": null,
+          "target_change_pct": null
+        }
+      ]
+    },
+    "simulated": true
+  },
+  {
+    "id": "crew_ferreira",
+    "name": "Ferreira",
+    "role": null,
+    "sex": null,
+    "age": null,
+    "mission_day": 121,
+    "mission_length_days": 180,
+    "baseline": {
+      "sleep_duration": 7.0,
+      "reaction_time": 250,
+      "exercise_minutes": 150,
+      "resting_heart_rate": 62,
+      "body_temperature": 36.6
+    },
+    "baseline_status": "placeholder_simulated",
+    "demo_story": "Fever with a high pulse.",
+    "scenario": {
+      "effects": [
+        {
+          "indicator_id": "body_temperature",
+          "pattern": "acute_rise",
+          "starts_day": null,
+          "target_change_pct": null
+        },
+        {
+          "indicator_id": "resting_heart_rate",
+          "pattern": "acute_rise",
+          "starts_day": null,
+          "target_change_pct": null
+        }
+      ]
+    },
+    "simulated": true
+  }
+]

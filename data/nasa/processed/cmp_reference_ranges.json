@@ -1,0 +1,189 @@
+{
+  "ALBUMIN": {
+    "unit": "g/dL",
+    "F": {
+      "min": 3.6,
+      "max": 5.1
+    },
+    "M": {
+      "min": 3.6,
+      "max": 5.1
+    }
+  },
+  "ALBUMIN/GLOBULIN RATIO": {
+    "unit": "(calc)",
+    "F": {
+      "min": 1.0,
+      "max": 2.5
+    },
+    "M": {
+      "min": 1.0,
+      "max": 2.5
+    }
+  },
+  "ALKALINE PHOSPHATASE": {
+    "unit": "U/L",
+    "F": {
+      "min": 37.0,
+      "max": 153.0
+    },
+    "M": {
+      "min": 36.0,
+      "max": 130.0
+    }
+  },
+  "ALT": {
+    "unit": "U/L",
+    "F": {
+      "min": 6.0,
+      "max": 29.0
+    },
+    "M": {
+      "min": 9.0,
+      "max": 46.0
+    }
+  },
+  "AST": {
+    "unit": "U/L",
+    "F": {
+      "min": 10.0,
+      "max": 35.0
+    },
+    "M": {
+      "min": 10.0,
+      "max": 40.0
+    }
+  },
+  "BILIRUBIN; TOTAL": {
+    "unit": "mg/dL",
+    "F": {
+      "min": 0.2,
+      "max": 1.2
+    },
+    "M": {
+      "min": 0.2,
+      "max": 1.2
+    }
+  },
+  "BUN/CREATININE RATIO": {
+    "unit": "(calc)",
+    "F": {
+      "min": 6.0,
+      "max": 22.0
+    },
+    "M": {
+      "min": 6.0,
+      "max": 22.0
+    }
+  },
+  "CALCIUM": {
+    "unit": "mg/dL",
+    "F": {
+      "min": 8.6,
+      "max": 10.4
+    },
+    "M": {
+      "min": 8.6,
+      "max": 10.3
+    }
+  },
+  "CARBON DIOXIDE": {
+    "unit": "mmol/L",
+    "F": {
+      "min": 20.0,
+      "max": 32.0
+    },
+    "M": {
+      "min": 20.0,
+      "max": 32.0
+    }
+  },
+  "CHLORIDE": {
+    "unit": "mmol/L",
+    "F": {
+      "min": 98.0,
+      "max": 110.0
+    },
+    "M": {
+      "min": 98.0,
+      "max": 110.0
+    }
+  },
+  "CREATININE": {
+    "unit": "mg/dL",
+    "F": {
+      "min": 0.5,
+      "max": 1.05
+    },
+    "M": {
+      "min": 0.6,
+      "max": 1.35
+    }
+  },
+  "GLOBULIN": {
+    "unit": "g/dL",
+    "F": {
+      "min": 1.9,
+      "max": 3.7
+    },
+    "M": {
+      "min": 1.9,
+      "max": 3.7
+    }
+  },
+  "GLUCOSE": {
+    "unit": "mg/dL",
+    "F": {
+      "min": 65.0,
+      "max": 99.0
+    },
+    "M": {
+      "min": 65.0,
+      "max": 99.0
+    }
+  },
+  "POTASSIUM": {
+    "unit": "mmol/L",
+    "F": {
+      "min": 3.5,
+      "max": 5.3
+    },
+    "M": {
+      "min": 3.5,
+      "max": 5.3
+    }
+  },
+  "PROTEIN; TOTAL": {
+    "unit": "g/dL",
+    "F": {
+      "min": 6.1,
+      "max": 8.1
+    },
+    "M": {
+      "min": 6.1,
+      "max": 8.1
+    }
+  },
+  "SODIUM": {
+    "unit": "mmol/L",
+    "F": {
+      "min": 135.0,
+      "max": 146.0
+    },
+    "M": {
+      "min": 135.0,
+      "max": 146.0
+    }
+  },
+  "UREA NITROGEN (BUN)": {
+    "unit": "mg/dL",
+    "F": {
+      "min": 7.0,
+      "max": 25.0
+    },
+    "M": {
+      "min": 7.0,
+      "max": 25.0
+    }
+  }
+}

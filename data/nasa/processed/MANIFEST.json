@@ -1,0 +1,43 @@
+{
+  "generated_on": "2026-11-14",
+  "database": "nasa_health_data.db",
+  "table_row_counts": {
+    "cmp": 531,
+    "urine_alamar": 4466,
+    "rnaseq_group_means": 57773,
+    "radiation_charge_contrib": 28
+  },
+  "datasets": [
+    {
+      "id": "lsds-8",
+      "used_in": [
+        "cmp_by_subject.json",
+        "cmp_reference_ranges.json"
+      ],
+      "license": "TO_CONFIRM"
+    },
+    {
+      "id": "pbio-3000669",
+      "used_in": [
+        "radiation_by_charge.json"
+      ],
+      "license": "TO_CONFIRM"
+    },
+    {
+      "id": "lsds-64",
+      "used_in": [],
+      "license": "TO_CONFIRM",
+      "note": "In the database, not exported yet (NPQ units, no clinical ranges)."
+    },
+    {
+      "id": "glds-530",
+      "used_in": [],
+      "license": "TO_CONFIRM",
+      "note": "In the database, not exported yet (group means only)."
+    }
+  ],
+  "cleaning_stats": {
+    "bun_cr_ratio_recalculated": 21,
+    "qc_flagged_points": 4
+  }
+}

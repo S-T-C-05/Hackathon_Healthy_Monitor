@@ -1,0 +1,201 @@
+{
+  "source": "pbio.3000669 S1 Data, Fig. 2",
+  "rows": [
+    {
+      "charge_z": 1,
+      "fluence_contrib_pct": 89.46955379861595,
+      "dose_contrib_pct": 38.12836053787969,
+      "dose_equiv_contrib_pct": 6.147217836635495,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 2,
+      "fluence_contrib_pct": 9.606856584064595,
+      "dose_contrib_pct": 19.494989024806898,
+      "dose_equiv_contrib_pct": 3.409017313384935,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 3,
+      "fluence_contrib_pct": 0.035200393902686415,
+      "dose_contrib_pct": 0.15641470754294245,
+      "dose_equiv_contrib_pct": 0.03246473413884506,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 4,
+      "fluence_contrib_pct": 0.022271546402639234,
+      "dose_contrib_pct": 0.15888600089829857,
+      "dose_equiv_contrib_pct": 0.03628847334878109,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 5,
+      "fluence_contrib_pct": 0.07285392644074772,
+      "dose_contrib_pct": 0.8816689703168966,
+      "dose_equiv_contrib_pct": 0.31962721235860436,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 6,
+      "fluence_contrib_pct": 0.2635001883866252,
+      "dose_contrib_pct": 4.775208410571244,
+      "dose_equiv_contrib_pct": 2.7426122196265585,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 7,
+      "fluence_contrib_pct": 0.07019311534731032,
+      "dose_contrib_pct": 1.6850865350946234,
+      "dose_equiv_contrib_pct": 1.2456049911237173,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 8,
+      "fluence_contrib_pct": 0.25241898477845937,
+      "dose_contrib_pct": 8.219242020253526,
+      "dose_equiv_contrib_pct": 9.061058504745343,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 9,
+      "fluence_contrib_pct": 0.004585039776387128,
+      "dose_contrib_pct": 0.17276305166378242,
+      "dose_equiv_contrib_pct": 0.20487655761739165,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 10,
+      "fluence_contrib_pct": 0.038281052313837834,
+      "dose_contrib_pct": 1.9095407853896664,
+      "dose_equiv_contrib_pct": 3.1337094869145576,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 11,
+      "fluence_contrib_pct": 0.00778701615470483,
+      "dose_contrib_pct": 0.45245937252237756,
+      "dose_equiv_contrib_pct": 0.8317247687553067,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 12,
+      "fluence_contrib_pct": 0.05004412736083888,
+      "dose_contrib_pct": 3.647313473776898,
+      "dose_equiv_contrib_pct": 8.194758802690858,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 13,
+      "fluence_contrib_pct": 0.008327030311776784,
+      "dose_contrib_pct": 0.6808532311515877,
+      "dose_equiv_contrib_pct": 1.6483036533387219,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 14,
+      "fluence_contrib_pct": 0.03769373204416422,
+      "dose_contrib_pct": 3.7030551380521386,
+      "dose_equiv_contrib_pct": 10.161850482143175,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 15,
+      "fluence_contrib_pct": 0.0013904165112921215,
+      "dose_contrib_pct": 0.13903763247119966,
+      "dose_equiv_contrib_pct": 0.38923812047233564,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 16,
+      "fluence_contrib_pct": 0.007182930528410048,
+      "dose_contrib_pct": 0.8737609590779692,
+      "dose_equiv_contrib_pct": 2.7413975082615365,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 17,
+      "fluence_contrib_pct": 0.001402714068108802,
+      "dose_contrib_pct": 0.1793414908802599,
+      "dose_equiv_contrib_pct": 0.5956533275550193,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 18,
+      "fluence_contrib_pct": 0.0027974074821495486,
+      "dose_contrib_pct": 0.4201812528094259,
+      "dose_equiv_contrib_pct": 1.4929135926921493,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 19,
+      "fluence_contrib_pct": 0.0020923519718651267,
+      "dose_contrib_pct": 0.35816080950806384,
+      "dose_equiv_contrib_pct": 1.3315056226118889,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 20,
+      "fluence_contrib_pct": 0.005494962374926297,
+      "dose_contrib_pct": 1.094510195664332,
+      "dose_equiv_contrib_pct": 4.122638666471525,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 21,
+      "fluence_contrib_pct": 0.0010476652621589206,
+      "dose_contrib_pct": 0.22611329768506358,
+      "dose_equiv_contrib_pct": 0.8713984612403473,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 22,
+      "fluence_contrib_pct": 0.003772765224319017,
+      "dose_contrib_pct": 0.9468611909130566,
+      "dose_equiv_contrib_pct": 3.509601245872217,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 23,
+      "fluence_contrib_pct": 0.0017742479321810334,
+      "dose_contrib_pct": 0.47372784536994045,
+      "dose_equiv_contrib_pct": 1.7073806015175028,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 24,
+      "fluence_contrib_pct": 0.0036923579188578542,
+      "dose_contrib_pct": 1.0771039005559804,
+      "dose_equiv_contrib_pct": 3.7128080166594484,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 25,
+      "fluence_contrib_pct": 0.002333946958577666,
+      "dose_contrib_pct": 0.7219768013578068,
+      "dose_equiv_contrib_pct": 2.4200805363996194,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 26,
+      "fluence_contrib_pct": 0.02610100263930757,
+      "dose_contrib_pct": 8.91459080864033,
+      "dose_equiv_contrib_pct": 28.388163664294574,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 27,
+      "fluence_contrib_pct": 0.00012751606389608508,
+      "dose_contrib_pct": 0.04601362086593418,
+      "dose_equiv_contrib_pct": 0.14283705948468267,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    },
+    {
+      "charge_z": 28,
+      "fluence_contrib_pct": 0.0012231791632538794,
+      "dose_contrib_pct": 0.46277893428006805,
+      "dose_equiv_contrib_pct": 1.4052685396448619,
+      "source": "pbio.3000669 S1 Data, Fig. 2"
+    }
+  ]
+}
