@@ -8,7 +8,7 @@ const RAD2DEG = 180 / Math.PI;
 
 // Si al bajar la cabeza el pitch relativo sale NEGATIVO, cambia esto a -1.
 const PITCH_SIGN = -1;
-const YAW_SIGH = -1;
+const YAW_SIGN = -1;
 
 export function headPoseFromMatrix(data: number[] | Float32Array): HeadPose {
   // column-major: fila i, col j -> data[j*4 + i]
@@ -19,7 +19,7 @@ export function headPoseFromMatrix(data: number[] | Float32Array): HeadPose {
   const yaw   = Math.atan2(-r20, Math.hypot(r21, r22));
   const roll  = Math.atan2(r10, r00);
 
-  return { pitch: PITCH_SIGN * pitch * RAD2DEG, yaw: YAW_SIGH * yaw * RAD2DEG, roll: roll * RAD2DEG };
+  return { pitch: PITCH_SIGN * pitch * RAD2DEG, yaw: YAW_SIGN * yaw * RAD2DEG, roll: roll * RAD2DEG };
 }
 
 // Umbrales (calibra con tu cámara). Son RELATIVOS a la postura base.
