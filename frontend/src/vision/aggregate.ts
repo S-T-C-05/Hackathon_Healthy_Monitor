@@ -1,6 +1,7 @@
 import type { FatigueStats } from "./fatigue";
 import type { Emotion } from "./expression";
 import type { HeadPoseState } from "./headpose";
+import type { RppgResult } from "./rppg";
 
 const clamp = (v: number, min = 0, max = 100) => Math.min(max, Math.max(min, v));
 
@@ -36,6 +37,11 @@ export interface SessionSummary {
   lookingAwayPct: number;   // % del tiempo mirando a un lado
   headDownEvents: number;
   lookingAwayEvents: number;
+  avgBpm: number | null;    // promedio de lecturas confiables de pulso
+  minBpm: number | null;
+  maxBpm: number | null;
+  avgHrv: number | null;    // SDNN promedio (experimental)
+  heartReliablePct: number; // % de lecturas de pulso que fueron confiables
 }
 
 /** Junta las muestras de toda la sesión para dar un resumen al final */
@@ -53,6 +59,13 @@ export class SessionAggregator {
   private headDownSamples = 0;
   private lookingAwaySamples = 0;
   private lastHead: HeadPoseState | null = null;
+  private heartSamples = 0;
+  private heartReliable = 0;
+  private bpmSum = 0;
+  private minBpm = Infinity;
+  private maxBpm = -Infinity;
+  private hrvSum = 0;
+  private hrvSamples = 0;
 
   add(
     t: number,
@@ -60,6 +73,7 @@ export class SessionAggregator {
     fatigueScore: number | null,
     emotion: Emotion | null,
     head: HeadPoseState | null = null,
+    heart: RppgResult | null = null,
   ) {
     this.startedAt ??= t;
     this.lastT = t;
@@ -81,6 +95,19 @@ export class SessionAggregator {
       if (head.lookingAway) this.lookingAwaySamples++;
       this.lastHead = head;
     }
+    if (heart) {
+      this.heartSamples++;
+      if (heart.reliable) {
+        this.heartReliable++;
+        this.bpmSum += heart.bpm;
+        this.minBpm = Math.min(this.minBpm, heart.bpm);
+        this.maxBpm = Math.max(this.maxBpm, heart.bpm);
+        if (heart.hrv !== null) {
+          this.hrvSum += heart.hrv;
+          this.hrvSamples++;
+        }
+      }
+    }
   }
 
   summary(): SessionSummary {
@@ -100,6 +127,11 @@ export class SessionAggregator {
       lookingAwayPct: this.headSamples ? Math.round((this.lookingAwaySamples / this.headSamples) * 100) : 0,
       headDownEvents: this.lastHead?.headDownEvents ?? 0,
       lookingAwayEvents: this.lastHead?.lookingAwayEvents ?? 0,
+      avgBpm: this.heartReliable ? Math.round(this.bpmSum / this.heartReliable) : null,
+      minBpm: this.heartReliable ? Math.round(this.minBpm) : null,
+      maxBpm: this.heartReliable ? Math.round(this.maxBpm) : null,
+      avgHrv: this.hrvSamples ? Math.round(this.hrvSum / this.hrvSamples) : null,
+      heartReliablePct: this.heartSamples ? Math.round((this.heartReliable / this.heartSamples) * 100) : 0,
     };
   }
 
@@ -117,5 +149,12 @@ export class SessionAggregator {
     this.headDownSamples = 0;
     this.lookingAwaySamples = 0;
     this.lastHead = null;
+    this.heartSamples = 0;
+    this.heartReliable = 0;
+    this.bpmSum = 0;
+    this.minBpm = Infinity;
+    this.maxBpm = -Infinity;
+    this.hrvSum = 0;
+    this.hrvSamples = 0;
   }
 }

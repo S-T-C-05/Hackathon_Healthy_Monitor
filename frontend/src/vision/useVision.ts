@@ -4,6 +4,13 @@ import { FatigueTracker, type FatigueStats } from "./fatigue";
 import { detectExpression, loadExpression, type ExpressionResult } from "./expression";
 import { SessionAggregator, computeFatigueScore, fatigueLevel, type SessionSummary } from "./aggregate";
 import { HeadPoseTracker, headPoseFromMatrix, type HeadPoseState } from "./headpose";
+import { RppgTracker, createRoiContext, foreheadROI, roiGreenMean, type RppgResult } from "./rppg";
+
+export interface HeartState {
+  result: RppgResult | null; // última estimación (puede no ser confiable)
+  bpm: number | null;        // mediana de las últimas lecturas confiables (más estable para mostrar)
+  progress: number;          // 0..1 hacia la primera estimación (~6 s)
+}
 
 export type VisionStatus = "idle" | "loading" | "running" | "error";
 
@@ -14,16 +21,32 @@ export interface VisionSnapshot {
   fatigueLevel: "bajo" | "medio" | "alto" | null;
   expression: ExpressionResult | null;
   head: HeadPoseState | null;
+  heart: HeartState | null;
 }
 
 const EMOTION_EVERY_N_FRAMES = 8;
 const SNAPSHOT_EVERY_MS = 250;
+const RPPG_EVERY_MS = 1000;    // la DFT cuesta un poco: estimar 1 vez por segundo basta
+const RPPG_GAP_RESET_MS = 1000; // si se pierde la cara > 1 s, la señal ya no sirve: reiniciar
+const BPM_HISTORY = 5;          // lecturas confiables para la mediana
+
+function median(xs: number[]): number {
+  const s = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
 
 export function useVision() {
   // --- refs: lo que usa el loop (no causan re-render y no se quedan "viejos") ---
   const trackerRef = useRef(new FatigueTracker());
   const aggregatorRef = useRef(new SessionAggregator());
   const headRef = useRef(new HeadPoseTracker());
+  const rppgRef = useRef(new RppgTracker());
+  const roiCtxRef = useRef<CanvasRenderingContext2D | null>(null);
+  const heartResultRef = useRef<RppgResult | null>(null);
+  const bpmHistoryRef = useRef<number[]>([]);
+  const lastRppgRef = useRef(0);
+  const lastFaceRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const rafRef = useRef<number | null>(null);
   const frameRef = useRef(0);
@@ -59,6 +82,30 @@ export function useVision() {
         if (matrix) head = headRef.current.update(headPoseFromMatrix(matrix), now);
       }
 
+      // 2b. Pulso (rPPG): canal verde de la frente
+      if (result) {
+        // Si la cara se perdió un rato, la señal tiene un hueco: empezar de nuevo
+        if (lastFaceRef.current !== null && now - lastFaceRef.current > RPPG_GAP_RESET_MS) {
+          rppgRef.current.reset();
+          heartResultRef.current = null;
+        }
+        lastFaceRef.current = now;
+
+        roiCtxRef.current ??= createRoiContext();
+        const roi = foreheadROI(result.faceLandmarks[0], video.videoWidth, video.videoHeight);
+        if (roi) rppgRef.current.push(roiGreenMean(roiCtxRef.current, video, roi), now);
+
+        if (now - lastRppgRef.current >= RPPG_EVERY_MS) {
+          lastRppgRef.current = now;
+          const hr = rppgRef.current.estimate();
+          heartResultRef.current = hr;
+          if (hr?.reliable) {
+            bpmHistoryRef.current.push(hr.bpm);
+            if (bpmHistoryRef.current.length > BPM_HISTORY) bpmHistoryRef.current.shift();
+          }
+        }
+      }
+
       // 3. Cada N frames y si está activa: expresión (async, sin await para no bloquear)
       frameRef.current++;
       if (emotionOnRef.current && !emotionBusyRef.current && frameRef.current % EMOTION_EVERY_N_FRAMES === 0) {
@@ -74,7 +121,14 @@ export function useVision() {
         lastSnapRef.current = now;
         const score = stats ? computeFatigueScore(stats) : null;
         const expression = emotionOnRef.current && result ? expressionRef.current : null;
-        aggregatorRef.current.add(now, stats, score, expression?.emotion ?? null, head);
+        const heart: HeartState | null = result
+          ? {
+              result: heartResultRef.current,
+              bpm: bpmHistoryRef.current.length ? median(bpmHistoryRef.current) : null,
+              progress: rppgRef.current.progress(),
+            }
+          : null;
+        aggregatorRef.current.add(now, stats, score, expression?.emotion ?? null, head, heartResultRef.current);
         setSnapshot({
           faceDetected: !!result,
           stats,
@@ -82,6 +136,7 @@ export function useVision() {
           fatigueLevel: score === null ? null : fatigueLevel(score),
           expression,
           head,
+          heart,
         });
       }
     } catch (e) {
@@ -105,6 +160,10 @@ export function useVision() {
       trackerRef.current.reset();
       aggregatorRef.current.reset();
       headRef.current.reset();
+      rppgRef.current.reset();
+      heartResultRef.current = null;
+      bpmHistoryRef.current = [];
+      lastFaceRef.current = null;
       await loadFaceLandmarker();
       setStatus("running");
       rafRef.current = requestAnimationFrame(loop);
