@@ -40,7 +40,6 @@ export interface SessionSummary {
   avgBpm: number | null;    // promedio de lecturas confiables de pulso
   minBpm: number | null;
   maxBpm: number | null;
-  avgHrv: number | null;    // SDNN promedio (experimental)
   heartReliablePct: number; // % de lecturas de pulso que fueron confiables
 }
 
@@ -64,8 +63,6 @@ export class SessionAggregator {
   private bpmSum = 0;
   private minBpm = Infinity;
   private maxBpm = -Infinity;
-  private hrvSum = 0;
-  private hrvSamples = 0;
 
   add(
     t: number,
@@ -102,10 +99,6 @@ export class SessionAggregator {
         this.bpmSum += heart.bpm;
         this.minBpm = Math.min(this.minBpm, heart.bpm);
         this.maxBpm = Math.max(this.maxBpm, heart.bpm);
-        if (heart.hrv !== null) {
-          this.hrvSum += heart.hrv;
-          this.hrvSamples++;
-        }
       }
     }
   }
@@ -130,7 +123,6 @@ export class SessionAggregator {
       avgBpm: this.heartReliable ? Math.round(this.bpmSum / this.heartReliable) : null,
       minBpm: this.heartReliable ? Math.round(this.minBpm) : null,
       maxBpm: this.heartReliable ? Math.round(this.maxBpm) : null,
-      avgHrv: this.hrvSamples ? Math.round(this.hrvSum / this.hrvSamples) : null,
       heartReliablePct: this.heartSamples ? Math.round((this.heartReliable / this.heartSamples) * 100) : 0,
     };
   }
@@ -154,7 +146,5 @@ export class SessionAggregator {
     this.bpmSum = 0;
     this.minBpm = Infinity;
     this.maxBpm = -Infinity;
-    this.hrvSum = 0;
-    this.hrvSamples = 0;
   }
 }

@@ -30,6 +30,10 @@ const RPPG_EVERY_MS = 1000;    // la DFT cuesta un poco: estimar 1 vez por segun
 const RPPG_GAP_RESET_MS = 1000; // si se pierde la cara > 1 s, la señal ya no sirve: reiniciar
 const BPM_HISTORY = 5;          // lecturas confiables para la mediana
 
+// requestVideoFrameCallback: se llama UNA vez por cada frame real de la cámara (con su hora de captura).
+// requestAnimationFrame va al ritmo de la pantalla (60+ Hz) y procesaría frames repetidos.
+const SUPPORTS_RVFC = typeof HTMLVideoElement !== "undefined" && "requestVideoFrameCallback" in HTMLVideoElement.prototype;
+
 function median(xs: number[]): number {
   const s = [...xs].sort((a, b) => a - b);
   const m = Math.floor(s.length / 2);
@@ -48,7 +52,7 @@ export function useVision() {
   const lastRppgRef = useRef(0);
   const lastFaceRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const rafRef = useRef<number | null>(null);
+  const frameHandleRef = useRef<{ cancel: () => void } | null>(null); // para cancelar el siguiente frame
   const frameRef = useRef(0);
   const emotionOnRef = useRef(false);
   const emotionBusyRef = useRef(false); // evita lanzar otra detección si la anterior no termina
@@ -62,11 +66,8 @@ export function useVision() {
   const [emotionEnabled, setEmotionEnabled] = useState(false);
   
 
-  const loop = useCallback(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const now = performance.now();
-
+  /** Procesa UN frame. `now` = hora de captura del frame (misma base que performance.now()) */
+  const processFrame = useCallback((video: HTMLVideoElement, now: number) => {
     try {
       // 1. Detectar (solo si el video ya tiene imagen)
       const result = video.readyState >= 2 && video.videoWidth > 0 ? detectFrame(video, now) : null;
@@ -143,15 +144,39 @@ export function useVision() {
       // Un frame fallido no debe matar todo el loop
       console.warn("[useVision] frame error", e);
     }
+  }, []);
 
-    // 5. Siguiente frame
-    rafRef.current = requestAnimationFrame(loop);
+  /** 5. Agenda el siguiente frame: uno por cada frame NUEVO de la cámara */
+  const scheduleNext = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return; // se llamó stop()
+
+    if (SUPPORTS_RVFC) {
+      const id = video.requestVideoFrameCallback((_displayNow, meta) => {
+        // captureTime = cuándo la cámara tomó la foto (lo más preciso para el pulso);
+        // algunos navegadores no lo dan -> usar cuándo se va a mostrar.
+        processFrame(video, meta.captureTime ?? meta.expectedDisplayTime);
+        scheduleNext();
+      });
+      frameHandleRef.current = { cancel: () => video.cancelVideoFrameCallback(id) };
+    } else {
+      // Respaldo para navegadores viejos
+      const id = requestAnimationFrame(() => {
+        processFrame(video, performance.now());
+        scheduleNext();
+      });
+      frameHandleRef.current = { cancel: () => cancelAnimationFrame(id) };
+    }
+  }, [processFrame]);
+
+  const cancelLoop = useCallback(() => {
+    frameHandleRef.current?.cancel();
+    frameHandleRef.current = null;
   }, []);
 
   const start = useCallback(async (video: HTMLVideoElement) => {
     // Evitar dos loops al mismo tiempo (doble click, StrictMode, etc.)
-    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    rafRef.current = null;
+    cancelLoop();
 
     try {
       setStatus("loading");
@@ -166,21 +191,20 @@ export function useVision() {
       lastFaceRef.current = null;
       await loadFaceLandmarker();
       setStatus("running");
-      rafRef.current = requestAnimationFrame(loop);
+      scheduleNext();
     } catch (e) {
       setStatus("error");
       setError(e instanceof Error ? e.message : String(e));
     }
-  }, [loop]);
+  }, [cancelLoop, scheduleNext]);
 
   /** Detiene el loop y regresa el resumen de la sesión */
   const stop = useCallback((): SessionSummary => {
-    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    rafRef.current = null;
+    cancelLoop();
     videoRef.current = null;
     setStatus("idle");
     return aggregatorRef.current.summary();
-  }, []);
+  }, [cancelLoop]);
 
   /** Activa/desactiva la detección de emociones (la 1ª vez descarga el modelo) */
   const enableEmotion = useCallback(async (on = true) => {

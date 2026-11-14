@@ -67,7 +67,11 @@ const F_MIN = 0.7;          // 42 bpm
 const F_MAX = 4.0;          // 240 bpm
 const F_STEP = 0.01;        // 0.6 bpm de resolución
 const PEAK_HALF_WIDTH = 0.1;
-const QUALITY_MIN = 0.5;
+// Con ruido puro la calidad sale ~0.22 (mediana) y hasta ~0.38 (p95):
+// 0.2 aceptaba el 66% del ruido como "confiable"; 0.35 solo ~5%.
+const QUALITY_MIN = 0.35;
+// Ventana del detrend: 1 s atenuaba los pulsos bajos (~45 bpm); 1.5 s los conserva.
+const DETREND_S = 1.5;
 
 function movingAverage(x: Float64Array, win: number): Float64Array {
   const n = x.length, half = Math.floor(win / 2);
@@ -154,14 +158,14 @@ export class RppgTracker {
       x[i] = a.g + k * (b.g - a.g);
     }
 
-    // 3. Normalizar (cambio relativo), detrend con media móvil de 1 s y Hanning
+    // 3. Normalizar (cambio relativo), detrend con media móvil de DETREND_S y Hanning
     let mean = 0;
     for (const v of x) mean += v;
     mean /= n;
     if (mean <= 0) return null;
     for (let i = 0; i < n; i++) x[i] = x[i] / mean - 1;
 
-    const trend = movingAverage(x, FS);
+    const trend = movingAverage(x, Math.round(FS * DETREND_S));
     const y = new Float64Array(n);
     const yw = new Float64Array(n);
     for (let i = 0; i < n; i++) {

@@ -135,11 +135,6 @@ export default function Wellbeing() {
                       {!hr.result.reliable && " (señal débil: quédate quieto y con buena luz)"}
                     </span>
                   </p>
-                  {hr.result.hrv !== null && hr.result.reliable && (
-                    <p style={{ margin: "4px 0 0", fontSize: 13, color: "#666" }}>
-                      HRV (SDNN, experimental): {Math.round(hr.result.hrv)} ms
-                    </p>
-                  )}
                   <Sparkline data={hr.result.wave} />
                 </>
               )}
@@ -182,7 +177,7 @@ export default function Wellbeing() {
               {summary.avgBpm !== null
                 ? `${summary.avgBpm} bpm promedio (${summary.minBpm}–${summary.maxBpm})`
                 : "sin lecturas confiables"}
-              {summary.avgHrv !== null && ` · HRV ${summary.avgHrv} ms`} · señal confiable {summary.heartReliablePct}% del
+ · señal confiable {summary.heartReliablePct}% del
               tiempo
             </li>
             <li>
