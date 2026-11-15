@@ -1,0 +1,144 @@
+import type { FatigueStats } from "./fatigue";
+import type { Emotion } from "./expression";
+import type { HeadPoseState } from "./headpose";
+import type { RppgResult } from "./rppg";
+
+const clamp = (v: number, min = 0, max = 100) => Math.min(max, Math.max(min, v));
+
+export function computeFatigueScore(stats: FatigueStats): number {
+  const perclosPts = clamp((stats.perclos / 0.3) * 60, 0, 60);
+  const yawnPts = Math.min(stats.yawnsLast5Min, 3) * 10;
+  // Solo juzgamos el parpadeo cuando la ventana de 60 s ya está llena (si no, blinksPerMin arranca en 0 e infla la fatiga).
+  const blinkPts = stats.windowReady && (stats.blinksPerMin < 8 || stats.blinksPerMin > 25) ? 10 : 0;
+  return Math.round(clamp(perclosPts + yawnPts + blinkPts));
+}
+
+export function fatigueLevel(score: number): "bajo" | "medio" | "alto" {
+  if (score >= 60) return "alto";
+  if (score >= 30) return "medio";
+  return "bajo";
+}
+
+export interface SessionSummary {
+  durationMs: number;
+  avgFatigue: number;
+  maxFatigue: number;
+  totalBlinks: number;
+  totalYawns: number;
+  faceVisiblePct: number;
+  emotions: Partial<Record<Emotion, number>>; // % del tiempo en cada emoción
+  headDownPct: number;      // % del tiempo (con cara visible y calibrado) con la cabeza gacha
+  lookingAwayPct: number;   // % del tiempo mirando a un lado
+  headDownEvents: number;
+  lookingAwayEvents: number;
+  avgBpm: number | null;    // promedio de lecturas confiables de pulso
+  minBpm: number | null;
+  maxBpm: number | null;
+  heartReliablePct: number; // % de lecturas de pulso que fueron confiables
+}
+
+/** Junta las muestras de toda la sesión para dar un resumen al final */
+export class SessionAggregator {
+  private startedAt: number | null = null;
+  private lastT = 0;
+  private samples = 0;
+  private faceSamples = 0;
+  private fatigueSum = 0;
+  private maxFatigue = 0;
+  private lastStats: FatigueStats | null = null;
+  private emotionCounts: Partial<Record<Emotion, number>> = {};
+  private emotionSamples = 0;
+  private headSamples = 0;
+  private headDownSamples = 0;
+  private lookingAwaySamples = 0;
+  private lastHead: HeadPoseState | null = null;
+  private heartSamples = 0;
+  private heartReliable = 0;
+  private bpmSum = 0;
+  private minBpm = Infinity;
+  private maxBpm = -Infinity;
+
+  add(
+    t: number,
+    stats: FatigueStats | null,
+    fatigueScore: number | null,
+    emotion: Emotion | null,
+    head: HeadPoseState | null = null,
+    heart: RppgResult | null = null,
+  ) {
+    this.startedAt ??= t;
+    this.lastT = t;
+    this.samples++;
+
+    if (stats && fatigueScore !== null) {
+      this.faceSamples++;
+      this.fatigueSum += fatigueScore;
+      this.maxFatigue = Math.max(this.maxFatigue, fatigueScore);
+      this.lastStats = stats;
+    }
+    if (emotion) {
+      this.emotionCounts[emotion] = (this.emotionCounts[emotion] ?? 0) + 1;
+      this.emotionSamples++;
+    }
+    if (head?.calibrated) {
+      this.headSamples++;
+      if (head.headDown) this.headDownSamples++;
+      if (head.lookingAway) this.lookingAwaySamples++;
+      this.lastHead = head;
+    }
+    if (heart) {
+      this.heartSamples++;
+      if (heart.reliable) {
+        this.heartReliable++;
+        this.bpmSum += heart.bpm;
+        this.minBpm = Math.min(this.minBpm, heart.bpm);
+        this.maxBpm = Math.max(this.maxBpm, heart.bpm);
+      }
+    }
+  }
+
+  summary(): SessionSummary {
+    const emotions: Partial<Record<Emotion, number>> = {};
+    for (const [e, n] of Object.entries(this.emotionCounts) as [Emotion, number][]) {
+      emotions[e] = Math.round((n / this.emotionSamples) * 100);
+    }
+    return {
+      durationMs: this.startedAt === null ? 0 : this.lastT - this.startedAt,
+      avgFatigue: this.faceSamples ? Math.round(this.fatigueSum / this.faceSamples) : 0,
+      maxFatigue: this.maxFatigue,
+      totalBlinks: this.lastStats?.blinks ?? 0,
+      totalYawns: this.lastStats?.yawns ?? 0,
+      faceVisiblePct: this.samples ? Math.round((this.faceSamples / this.samples) * 100) : 0,
+      emotions,
+      headDownPct: this.headSamples ? Math.round((this.headDownSamples / this.headSamples) * 100) : 0,
+      lookingAwayPct: this.headSamples ? Math.round((this.lookingAwaySamples / this.headSamples) * 100) : 0,
+      headDownEvents: this.lastHead?.headDownEvents ?? 0,
+      lookingAwayEvents: this.lastHead?.lookingAwayEvents ?? 0,
+      avgBpm: this.heartReliable ? Math.round(this.bpmSum / this.heartReliable) : null,
+      minBpm: this.heartReliable ? Math.round(this.minBpm) : null,
+      maxBpm: this.heartReliable ? Math.round(this.maxBpm) : null,
+      heartReliablePct: this.heartSamples ? Math.round((this.heartReliable / this.heartSamples) * 100) : 0,
+    };
+  }
+
+  reset() {
+    this.startedAt = null;
+    this.lastT = 0;
+    this.samples = 0;
+    this.faceSamples = 0;
+    this.fatigueSum = 0;
+    this.maxFatigue = 0;
+    this.lastStats = null;
+    this.emotionCounts = {};
+    this.emotionSamples = 0;
+    this.headSamples = 0;
+    this.headDownSamples = 0;
+    this.lookingAwaySamples = 0;
+    this.lastHead = null;
+    this.heartSamples = 0;
+    this.heartReliable = 0;
+    this.bpmSum = 0;
+    this.minBpm = Infinity;
+    this.maxBpm = -Infinity;
+  }
+}
