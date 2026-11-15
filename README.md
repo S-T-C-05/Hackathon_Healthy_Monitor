@@ -44,7 +44,7 @@ The backend creates a local database with a simulated 121-day mission for four c
 - Evidence cards from *Human Health and Performance Risks of Space Exploration Missions* (NASA SP-2009-3405) and NASA technical reports, plus peer-reviewed astronaut studies. Every card links to its source in `data/bibliography.json`.
 - Reference tables cleaned from the NASA Open Science Data Repository (OSDR). Data are courtesy of the NASA Open Science Data Repository (https://osdr.nasa.gov/bio/repo).
 
-## What is real and what is not
+## What is real and what is not 
 
 - The mission history is **simulated** for the demo. Real measurements are stored only for crew members who consented, and can be deleted from the app.
 - A color comes from a **cited threshold** only where the interface says so. Other ranges are labelled as team demo criteria, and indicators without a published threshold show only the trend.
