@@ -24,6 +24,8 @@ export interface SessionSummary {
   avgFatigue: number;
   maxFatigue: number;
   totalBlinks: number;
+  blinksPerMin: number | null; // promedio de la sesión (null si duró menos de 30 s)
+  avgPerclos: number;          // % promedio del tiempo con ojos cerrados (ventana de 1 min)
   totalYawns: number;
   faceVisiblePct: number;
   emotions: Partial<Record<Emotion, number>>; // % del tiempo en cada emoción
@@ -44,6 +46,7 @@ export class SessionAggregator {
   private samples = 0;
   private faceSamples = 0;
   private fatigueSum = 0;
+  private perclosSum = 0;
   private maxFatigue = 0;
   private lastStats: FatigueStats | null = null;
   private emotionCounts: Partial<Record<Emotion, number>> = {};
@@ -73,6 +76,7 @@ export class SessionAggregator {
     if (stats && fatigueScore !== null) {
       this.faceSamples++;
       this.fatigueSum += fatigueScore;
+      this.perclosSum += stats.perclos;
       this.maxFatigue = Math.max(this.maxFatigue, fatigueScore);
       this.lastStats = stats;
     }
@@ -102,11 +106,15 @@ export class SessionAggregator {
     for (const [e, n] of Object.entries(this.emotionCounts) as [Emotion, number][]) {
       emotions[e] = Math.round((n / this.emotionSamples) * 100);
     }
+    const durationMs = this.startedAt === null ? 0 : this.lastT - this.startedAt;
+    const blinks = this.lastStats?.blinks ?? 0;
     return {
-      durationMs: this.startedAt === null ? 0 : this.lastT - this.startedAt,
+      durationMs,
       avgFatigue: this.faceSamples ? Math.round(this.fatigueSum / this.faceSamples) : 0,
       maxFatigue: this.maxFatigue,
-      totalBlinks: this.lastStats?.blinks ?? 0,
+      totalBlinks: blinks,
+      blinksPerMin: durationMs >= 30_000 ? Math.round((blinks * 60_000) / durationMs) : null,
+      avgPerclos: this.faceSamples ? Math.round((this.perclosSum / this.faceSamples) * 1000) / 10 : 0,
       totalYawns: this.lastStats?.yawns ?? 0,
       faceVisiblePct: this.samples ? Math.round((this.faceSamples / this.samples) * 100) : 0,
       emotions,
@@ -127,6 +135,7 @@ export class SessionAggregator {
     this.samples = 0;
     this.faceSamples = 0;
     this.fatigueSum = 0;
+    this.perclosSum = 0;
     this.maxFatigue = 0;
     this.lastStats = null;
     this.emotionCounts = {};

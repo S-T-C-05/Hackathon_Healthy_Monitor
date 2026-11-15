@@ -4,6 +4,9 @@
  * selector translates them like the rest of the app.
  */
 export const STRINGS: Record<string, { en: string; fr: string }> = {
+  // printable report
+  "🖨️ Imprimir / Guardar PDF": { en: "🖨️ Print / Save as PDF", fr: "🖨️ Imprimer / Enregistrer en PDF" },
+
   // levels and provenance
   "En rango": { en: "In range", fr: "Dans la plage" },
   "Atención": { en: "Needs attention", fr: "Alerte" },
@@ -72,11 +75,10 @@ export const STRINGS: Record<string, { en: string; fr: string }> = {
   "Evidencia en astronautas": { en: "Evidence in astronauts", fr: "Preuves chez les astronautes" },
   "Limitaciones": { en: "Limitations", fr: "Limites" },
   "Fuentes": { en: "Sources", fr: "Sources" },
-  "Textos en inglés (idioma de las fuentes). Borrador pendiente de revisión por un profesional de la salud.": {
-    en: "Texts in English (the language of the sources). Draft, pending review by a health professional.",
-    fr: "Textes en anglais (langue des sources). Brouillon en attente de relecture par un professionnel de santé.",
-  },
-  "No se pudo cargar la evidencia.": { en: "Could not load the evidence.", fr: "Impossible de charger les preuves." },
+  "Resúmenes traducidos por el equipo a partir de fuentes en inglés; los títulos y las citas se dejan en su idioma original. Borrador pendiente de revisión por un profesional de la salud.": {
+    en: "Summaries based on English-language sources; titles and citations are kept in their original language. Draft, pending review by a health professional.",
+    fr: "Résumés traduits par l’équipe à partir de sources en anglais ; les titres et les citations restent dans leur langue d’origine. Brouillon en attente de relecture par un professionnel de santé.",
+  },  "No se pudo cargar la evidencia.": { en: "Could not load the evidence.", fr: "Impossible de charger les preuves." },
 
   // camera card
   "Cámara inteligente (opcional)": { en: "Smart camera (optional)", fr: "Caméra intelligente (facultative)" },

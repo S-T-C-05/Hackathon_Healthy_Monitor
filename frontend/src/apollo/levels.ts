@@ -29,6 +29,10 @@ const BASIS_TEXT: Record<Basis, string> = {
   none: "Sin umbral citado: solo tendencia",
 };
 
+export function basisText(basis: Basis): string {
+  return BASIS_TEXT[basis] ?? "";
+}
+
 export function basisTag(basis: Basis): HTMLElement {
   return h("span", { class: "ax-basis ax-basis-" + basis }, BASIS_TEXT[basis]);
 }

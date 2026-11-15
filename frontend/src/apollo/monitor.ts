@@ -5,6 +5,7 @@
 import { api, backend, crewById, type IndicatorFull, type OverviewRow, type Source } from "./api";
 import { seriesChart } from "./chart";
 import { AC, h, fmt, setText } from "./dom";
+import { tr } from "./i18n";
 import { basisTag, levelClass, levelTag, systemText, unitText } from "./levels";
 
 const STATE = 7;
@@ -224,7 +225,8 @@ function thresholdBlock(ind: IndicatorFull, src: Map<string, Source>): HTMLEleme
             null,
             levelTag(r.level),
             ` ${r.op} ${r.value} ${unitText(r.unit)}`,
-            r.note ? h("span", { class: "aux" }, ` — ${r.note}`) : null,
+            // the note in its own text node, so the translator can match it exactly
+            r.note ? h("span", { class: "aux" }, " — ", h("span", null, r.note)) : null,
             h("span", { class: "aux" }, ` [${src.get(r.source_id)?.label ?? r.source_id}]`),
           ),
         ),
@@ -246,7 +248,7 @@ function thresholdBlock(ind: IndicatorFull, src: Map<string, Source>): HTMLEleme
         "p",
         { class: "aux" },
         Object.entries(t.by_sex)
-          .map(([sex, r]) => `${sex}: ${r.min}–${r.max} ${unitText(ind.unit)}`)
+          .map(([sex, r]) => `${sex === "F" ? tr("Mujeres", "Women", "Femmes") : sex === "M" ? tr("Hombres", "Men", "Hommes") : sex}: ${r.min}–${r.max} ${unitText(ind.unit)}`)
           .join(" · "),
       ),
     );
@@ -339,7 +341,7 @@ export async function openIndicatorDetail(indicatorId: string, crewId: string | 
         ),
       );
     }
-    parts.push(h("p", { class: "aux" }, "Textos en inglés (idioma de las fuentes). Borrador pendiente de revisión por un profesional de la salud."));
+    parts.push(h("p", { class: "aux" }, "Resúmenes traducidos por el equipo a partir de fuentes en inglés; los títulos y las citas se dejan en su idioma original. Borrador pendiente de revisión por un profesional de la salud."));
     body.replaceChildren(...parts);
   } catch (e) {
     console.warn("[detail]", e);

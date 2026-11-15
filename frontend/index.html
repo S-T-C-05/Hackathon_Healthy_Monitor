@@ -1075,6 +1075,7 @@ const Profiles = (() => {
     const p=active();
     $('#profileShortcut').textContent = p ? '👩‍🚀 ' + p.name : '👤 Elegir perfil';
     $('#profileShortcut').title = p ? 'Cambiar de perfil (actual: '+p.name+')' : 'Elegir astronauta';
+    $('#profileShortcut').removeAttribute('data-l10n-title'); // the translator caches the first title: let it see the new one
   }
   function render() {
     const host=$('#profileList'); host.replaceChildren();
@@ -1122,7 +1123,7 @@ const Profiles = (() => {
   }
   function remove(id) {
     const p=profiles.find(p=>p.id===id);if(!p)return;
-    if(!confirm('¿Eliminar a '+p.name+' y sus historiales físico y emocional de este navegador? Esta acción no se puede deshacer.'))return;
+    if(!confirm(Lang.t('¿Eliminar a '+p.name+' y sus historiales físico y emocional de este navegador? Esta acción no se puede deshacer.')))return;
     try {
       localStorage.removeItem(keyFor(id,'physical'));
       localStorage.removeItem(keyFor(id,'mental'));
@@ -1373,11 +1374,11 @@ function renderPhysical(res){
   $('#advice').textContent=res.advice||'';
   const cx=App.physical.context||{};
   const lines=[];
-  if(cx.glucose!=null)lines.push('Glucosa: '+cx.glucose+' mg/dL'+(cx.glucoseTiming?' ('+cx.glucoseTiming+')':'' )+' · Sin interpretación automática');
-  if(cx.height!=null)lines.push('Estatura: '+cx.height+' cm');
-  if(cx.weight!=null)lines.push('Peso: '+cx.weight+' kg');
-  if(cx.food)lines.push('¿Comiste suficiente?: '+cx.food);
-  if(cx.meals)lines.push('Alimentación: '+cx.meals);
+  if(cx.glucose!=null)lines.push(sayL('Glucosa: ','Glucose: ','Glycémie : ')+cx.glucose+' mg/dL'+(cx.glucoseTiming?' ('+Lang.t(cx.glucoseTiming)+')':'' )+sayL(' · Sin interpretación automática',' · No automatic interpretation',' · Sans interprétation automatique'));
+  if(cx.height!=null)lines.push(sayL('Estatura: ','Height: ','Taille : ')+cx.height+' cm');
+  if(cx.weight!=null)lines.push(sayL('Peso: ','Weight: ','Poids : ')+cx.weight+' kg');
+  if(cx.food)lines.push(sayL('¿Comiste suficiente?: ','Did you eat enough?: ','Avez-vous assez mangé ? : ')+Lang.t(cx.food));
+  if(cx.meals)lines.push(sayL('Alimentación: ','Meals: ','Alimentation : ')+Lang.t(cx.meals));
   $('#physicalContextSummary').textContent=lines.length?lines.join('\n'):'No se capturaron datos complementarios.';
   // barras de signos vitales
   $('#vbars').innerHTML='';
@@ -1407,7 +1408,7 @@ function renderPhysical(res){
     const o=org[k],side=BUBBLE_POS[k].side,svgEl=$('#o-'+k),r=svgEl.getBoundingClientRect();
     const ax=r.left+r.width/2-br.left, ay=r.top+r.height/2-br.top;
     const b=document.createElement('div');b.className='bubble float sev-'+o.sev;
-    b.innerHTML=`<h4><i></i>${ORGAN_NAMES[k]} · ${SEV_TXT[o.sev]}</h4>`+o.items.map(x=>`<div class="m">${x.label}: <b>${x.value}${x.unit?' '+x.unit:''}</b></div>`).join('');
+    b.innerHTML=`<h4><i></i>${ORGAN_NAMES[k]} · ${SEV_TXT[o.sev]}</h4>`+o.items.map(x=>`<div class="m">${x.label}: <b>${x.value}${x.unit?' <span>'+x.unit+'</span>':''}</b></div>`).join('');
     bub.appendChild(b);
     // En móviles, el diseño CSS coloca las tarjetas debajo del cuerpo.
     // No calculamos posiciones absolutas ni dibujamos conectores.
@@ -1479,7 +1480,7 @@ const PhysicalHistory=(()=>{
     const cx=App.physical.context||{};
     const context={glucose:cx.glucose??null,glucoseTiming:cx.glucoseTiming||'',height:cx.height??null,weight:cx.weight??null,food:cx.food||'',meals:cx.meals||''};
     const row={id:Date.now()+'-'+Math.random().toString(36).slice(2,8),date:new Date().toISOString(),demo:!!result.demo,metrics,context};
-    try{const rows=read();rows.push(row);write(rows);msg.textContent='Revisión guardada en este navegador. Registros: '+Math.min(rows.length,LIMIT)+'.';showSaveConfirmation('physical');speakIfEnabled('Revisión física guardada en tu historial local.');}
+    try{const rows=read();rows.push(row);write(rows);msg.textContent='Revisión guardada en este navegador. Registros: '+Math.min(rows.length,LIMIT)+'.';showSaveConfirmation('physical');speakIfEnabled(sayL('Revisión física guardada en tu historial local.','Physical check-in saved in your local history.','Bilan physique enregistré dans votre historique local.'));}
     catch(e){msg.textContent='No se pudo guardar. Revisa los permisos de almacenamiento del navegador.';}
   }
   function render(){
@@ -1492,29 +1493,29 @@ const PhysicalHistory=(()=>{
       const date=new Date(row.date);
       const readable=Number.isNaN(date.valueOf())?'Fecha desconocida':date.toLocaleString(typeof Lang!=='undefined'?Lang.voiceLocale():'es-MX');
       const count=Array.isArray(row.metrics)?row.metrics.length:0;
-      summary.textContent=readable+' · '+count+' indicadores'+(row.demo?' · DATOS DE DEMOSTRACIÓN':'');
+      summary.textContent=readable+' · '+count+sayL(' indicadores',' indicators',' indicateurs')+(row.demo?sayL(' · DATOS DE DEMOSTRACIÓN',' · DEMO DATA',' · DONNÉES DE DÉMONSTRATION'):'');
       box.appendChild(summary);
       if(Array.isArray(row.metrics))row.metrics.forEach(m=>{
         const line=document.createElement('p');line.className='physical-history-metric';
-        const st={ok:'En rango orientativo',warn:'Precaución',bad:'Requiere revisión',unknown:'Sin clasificación'}[m.status]||'Sin clasificación';
-        line.textContent=String(m.label||'Indicador')+': '+String(m.value??'')+(m.unit?' '+m.unit:'')+' · '+st;
+        const st=Lang.t({ok:'En rango orientativo',warn:'Precaución',bad:'Requiere revisión',unknown:'Sin clasificación'}[m.status]||'Sin clasificación');
+        line.textContent=Lang.t(String(m.label||'Indicador'))+': '+Lang.t(String(m.value??''))+(m.unit?' '+Lang.t(m.unit):'')+' · '+st;
         box.appendChild(line);
       });
       if(row.context){const c=row.context;const fragments=[];
-        if(c.glucose!=null)fragments.push('Glucosa '+c.glucose+' mg/dL'+(c.glucoseTiming?' ('+c.glucoseTiming+')':''));
-        if(c.height!=null)fragments.push('Estatura '+c.height+' cm');
-        if(c.weight!=null)fragments.push('Peso '+c.weight+' kg');
-        if(c.food)fragments.push('Comida suficiente: '+c.food);
-        if(c.meals)fragments.push('Alimentación: '+c.meals);
-        if(fragments.length){const p=document.createElement('p');p.className='physical-history-metric';p.textContent=fragments.join(' · ')+' · Sin diagnóstico';box.appendChild(p);}
+        if(c.glucose!=null)fragments.push(sayL('Glucosa ','Glucose ','Glycémie ')+c.glucose+' mg/dL'+(c.glucoseTiming?' ('+Lang.t(c.glucoseTiming)+')':''));
+        if(c.height!=null)fragments.push(sayL('Estatura ','Height ','Taille ')+c.height+' cm');
+        if(c.weight!=null)fragments.push(sayL('Peso ','Weight ','Poids ')+c.weight+' kg');
+        if(c.food)fragments.push(sayL('Comida suficiente: ','Ate enough: ','Assez mangé : ')+Lang.t(c.food));
+        if(c.meals)fragments.push(sayL('Alimentación: ','Meals: ','Alimentation : ')+Lang.t(c.meals));
+        if(fragments.length){const p=document.createElement('p');p.className='physical-history-metric';p.textContent=fragments.join(' · ')+sayL(' · Sin diagnóstico',' · Not a diagnosis',' · Sans diagnostic');box.appendChild(p);}
       }
       host.appendChild(box);
     });
   }
-  function show(){render();$('#physicalHistoryModalStatus').textContent='';$('#physicalHistoryOverlay').hidden=false;$('#closePhysicalHistory').focus();speakIfEnabled('Historial físico. '+read().length+' revisiones guardadas en este navegador.');}
+  function show(){render();$('#physicalHistoryModalStatus').textContent='';$('#physicalHistoryOverlay').hidden=false;$('#closePhysicalHistory').focus();speakIfEnabled(sayL('Historial físico. '+read().length+' revisiones guardadas en este navegador.','Physical history. '+read().length+' check-ins saved in this browser.','Historique physique. '+read().length+' bilans enregistrés dans ce navigateur.'));}
   function close(){$('#physicalHistoryOverlay').hidden=true;}
   function clear(){
-    if(!confirm('¿Borrar todas las revisiones físicas guardadas en este navegador?'))return;
+    if(!confirm(Lang.t('¿Borrar todas las revisiones físicas guardadas en este navegador?')))return;
     try{localStorage.removeItem(KEY());render();$('#physicalHistoryModalStatus').textContent='Historial físico eliminado.';}
     catch(e){$('#physicalHistoryModalStatus').textContent='No se pudo borrar el historial.';}
   }
@@ -1563,7 +1564,7 @@ const EMOTIONS={
 const KEYWORDS={anxiety:/(ansios|nervios|preocup|miedo|inquiet|presi[oó]n)/i,sadness:/(triste|llor|extra[ñn]|nostalg|vac[ií]o|desanim)/i,
   stress:/(estr[eé]s|tens|agobi|enoj|molest|frustr|trabajo)/i,fatigue:/(cansa|sue[ñn]o|agota|fatiga|dormir|insomn)/i,
   lonely:/(solo|sola|soledad|aislad|familia|casa)/i,joy:/(feliz|content|alegr|emocion|bien|orgullos)/i,calm:/(tranquil|calma|paz|sereno|relaj)/i};
-const Psy={i:0,voice:false,cam:false,rec:null,busy:false,speaking:false,navToken:0};
+const Psy={i:0,voice:false,cam:false,rec:null,busy:false,speaking:false,navToken:0,voiceToken:0};
 // La conversación del cuestionario y TalkBack son funciones DISTINTAS.
 const TalkBack = (() => {
   let enabled = false;
@@ -1577,6 +1578,7 @@ const TalkBack = (() => {
   }
   function say(text, delay = 0) {
     if(!enabled || !hasSpeech || !text) return;
+    text = Lang.t(String(text)); // fixed Spanish sentences -> active language (already-translated text passes through)
     cancel();
     const token = generation;
     pending = setTimeout(() => {
@@ -1630,9 +1632,9 @@ const TalkBack = (() => {
     if(!el || el.closest('#talkbackBar, #audioUI, #introVoiceControls')) return;
     const t=(el.getAttribute('aria-label') || el.closest('label')?.textContent || el.innerText || el.placeholder || '').trim().replace(/\s+/g,' ');
     if(!t) return;
-    if(el.matches('input[type="range"]')) return say((el.getAttribute('aria-label')||'Escala')+'. Valor '+el.value);
-    if(el.matches('input,textarea')) return say(t + '. Campo para escribir.');
-    if(el.matches('button')) return say(t.slice(0,180) + '. Botón.');
+    if(el.matches('input[type="range"]')) return say((el.getAttribute('aria-label')||Lang.t('Escala'))+sayL('. Valor ','. Value ','. Valeur ')+el.value);
+    if(el.matches('input,textarea')) return say(t + sayL('. Campo para escribir.','. Text field.','. Champ de saisie.'));
+    if(el.matches('button')) return say(t.slice(0,180) + sayL('. Botón.','. Button.','. Bouton.'));
   }
   $('#introVoiceBtn').addEventListener('click',e=>{ e.stopPropagation();toggle(); });
   $('#tbToggle').addEventListener('click',e=>{ e.stopPropagation();toggle(); });
@@ -1640,7 +1642,7 @@ const TalkBack = (() => {
   document.addEventListener('focusin',e=>{if(enabled && e.target.closest('.state.active')) describe(e.target);});
   document.addEventListener('change',e=>{
     if(!enabled || !e.target.closest('.state.active')) return;
-    if(e.target.matches('input,textarea,select'))say('Valor actualizado: '+String(e.target.value).slice(0,100));
+    if(e.target.matches('input,textarea,select'))say(sayL('Valor actualizado: ','Value updated: ','Valeur mise à jour : ')+Lang.t(String(e.target.value)).slice(0,100));
   });
   document.addEventListener('click',e=>{
     if(!enabled)return;
@@ -1694,7 +1696,8 @@ function showQuestion(first){
   if(Psy.voice&&q.type!=='intro'){
     const m=document.createElement('button');m.className='mic';m.id='micBtn';m.setAttribute('aria-label','Hablar');
     m.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>';
-    m.onclick=()=>listen(q);st.appendChild(m);
+    // Tap while listening = stop; otherwise start listening.
+    m.onclick=()=>{if(Psy.rec)stopListen();else listen(q);};st.appendChild(m);
     if(!TalkBack.isEnabled())speak(Lang.t(q.text),()=>listen(q));
   }
   // Botón independiente de los tipos de pregunta; conserva la respuesta anterior.
@@ -1744,40 +1747,73 @@ function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>v.lang.toLow
   return vs.find(v=>/(paulina|monica|m[óo]nica|helena|sabina|female|mujer|google espa)/i.test(v.name))||vs[0]||null;}
 // Spoken line in the active language (for TTS strings that are not part of the visible-text catalog).
 function sayL(es,en,fr){const l=Lang.current();return l==='en'?en:l==='fr'?fr:es;}
-function speak(t,cb){ if(!Psy.voice||!window.speechSynthesis){cb&&cb();return;}
-  let done=false;const fire=()=>{if(done)return;done=true;cb&&cb();};
-  // Safety first: the callback (which starts the mic) must run even if synthesis throws or never ends.
-  setTimeout(fire,Math.min(9000,1200+String(t).length*80));
+function speak(t,cb){
+  // Each speak/stopListen bumps the token: callbacks from an older question (its timer, or the
+  // "interrupted" error fired when we cancel its voice) must NOT start the mic for a stale question.
+  const token=++Psy.voiceToken;const run=()=>{if(token===Psy.voiceToken)cb&&cb();};
+  if(!Psy.voice||!window.speechSynthesis){run();return;}
+  let done=false,safety=0;const fire=()=>{if(done)return;done=true;clearTimeout(safety);run();};
+  // Safety net: if the voice never starts (no voices installed, Chrome dropping it), start the mic anyway.
+  safety=setTimeout(fire,2500);
   try{
     if(typeof TalkBack!=='undefined')TalkBack.cancel();         // never let TalkBack and this voice overlap
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(t);u.lang=Lang.voiceLocale();u.rate=.9;u.pitch=1.08;u.volume=.9;
     const v=pickVoice();if(v){try{u.voice=v;}catch(e){}}
+    // Once it is speaking, wait for it to finish (generous cap in case onend never arrives).
+    u.onstart=()=>{if(done)return;clearTimeout(safety);safety=setTimeout(fire,Math.min(30000,3000+String(t).length*120));};
     u.onend=fire;u.onerror=fire;speechSynthesis.speak(u);
   }catch(e){fire();}}
 function spokenNumber(text){
-  const m=text.match(/\d+/); if(m)return parseInt(m[0],10);
-  const t=text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-  const W={cero:0,zero:0,uno:1,una:1,un:1,one:1,dos:2,two:2,deux:2,tres:3,three:3,trois:3,
-    cuatro:4,four:4,quatre:4,cinco:5,five:5,cinq:5,seis:6,six:6,siete:7,seven:7,sept:7,
-    ocho:8,eight:8,huit:8,nueve:9,nine:9,neuf:9,diez:10,ten:10,dix:10};
+  const m=String(text).match(/\d+/); if(m)return parseInt(m[0],10);
+  // Recognizers add punctuation ("Siete.") and mishear short number words ("to" for "two"): strip and map them.
+  const t=String(text).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z\s]/g,' ');
+  const W={cero:0,zero:0,uno:1,una:1,un:1,one:1,won:1,dos:2,two:2,to:2,too:2,deux:2,tres:3,three:3,trois:3,
+    cuatro:4,four:4,for:4,quatre:4,cinco:5,five:5,cinq:5,seis:6,six:6,siete:7,seven:7,sept:7,set:7,
+    ocho:8,eight:8,ate:8,huit:8,nueve:9,nine:9,neuf:9,diez:10,dies:10,ten:10,dix:10};
   for(const w of t.split(/\s+/))if(w in W)return W[w];
   return null;
 }
+function micErrorText(code){
+  const insecure=!window.isSecureContext;
+  if(code==='not-allowed'||code==='service-not-allowed')return insecure
+    ?sayL('El micrófono solo funciona en https o en localhost. Abre la app desde http://localhost.','The microphone only works on https or localhost. Open the app from http://localhost.','Le micro ne fonctionne qu’en https ou sur localhost. Ouvrez l’app depuis http://localhost.')
+    :sayL('Permite el micrófono en el navegador (icono junto a la dirección) y toca el micrófono otra vez.','Allow the microphone in the browser (icon next to the address bar) and tap the mic again.','Autorisez le micro dans le navigateur (icône près de l’adresse) puis touchez à nouveau le micro.');
+  if(code==='network')return sayL('El reconocimiento de voz necesita internet en este navegador. Usa Chrome o Edge con conexión, o responde tocando.','Speech recognition needs internet in this browser. Use Chrome or Edge online, or answer by tapping.','La reconnaissance vocale nécessite internet dans ce navigateur. Utilisez Chrome ou Edge en ligne, ou répondez en touchant.');
+  if(code==='no-speech')return sayL('No te escuché. Toca el micrófono e intenta de nuevo.','I didn’t hear you. Tap the mic and try again.','Je ne vous ai pas entendu. Touchez le micro et réessayez.');
+  if(code==='audio-capture')return sayL('No se encontró un micrófono conectado.','No microphone was found.','Aucun micro trouvé.');
+  if(code==='language-not-supported')return sayL('Este idioma no está disponible para reconocimiento de voz.','This language is not available for speech recognition.','Cette langue n’est pas disponible pour la reconnaissance vocale.');
+  return null; // 'aborted' = we stopped it on purpose
+}
 function listen(q){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast(sayL('Tu navegador no soporta reconocimiento de voz.','Your browser does not support speech recognition.','Votre navigateur ne prend pas en charge la reconnaissance vocale.'));return;}
+  if(current!==4||PSY_QUESTIONS[Psy.i]!==q)return;             // the question already changed
   if(typeof TalkBack!=='undefined')TalkBack.cancel();
   if(window.speechSynthesis)speechSynthesis.cancel();           // stop any spoken prompt before listening
-  stopListen();const r=new SR();r.lang=Lang.voiceLocale();r.interimResults=false;Psy.rec=r;const m=$('#micBtn');m&&m.classList.add('live');
-  r.onresult=e=>{const txt=e.results[0][0].transcript;
+  stopListen();const r=new SR();r.lang=Lang.voiceLocale();r.interimResults=false;r.continuous=false;r.maxAlternatives=5;Psy.rec=r;const m=$('#micBtn');m&&m.classList.add('live');
+  // Only the active recognizer of the visible question may change answers.
+  const mine=()=>Psy.rec===r&&current===4&&PSY_QUESTIONS[Psy.i]===q;
+  r.onresult=e=>{if(!mine())return;const txt=e.results[0][0].transcript;
     if(q.type==='text'){const ta=$('#qText');if(ta)ta.value=(ta.value+' '+txt).trim();}
     else if(q.type==='choice'){const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');const t=norm(txt);
       const btns=$$('.opt');const tw=t.split(/\s+/).filter(Boolean);
       let idx=q.options.findIndex(o=>['es','en','fr'].some(l=>{const ws=norm(Lang.t(o.t,l)).split(/\s+/).filter(Boolean);return ws.some(w=>w.length>3&&t.includes(w))||ws.some(w=>w.length>=2&&tw.includes(w));}));
-      if(idx>=0)choose(q,q.options[idx],btns[idx],$('.opts'));else toast('No te entendí bien. Toca una opción o intenta de nuevo.');}
-    else if(q.type==='scale'){const n=spokenNumber(txt);if(n!=null){const s=$('#qstage .range input');if(!s)return;s.value=Math.max(q.min,Math.min(q.max,n));s.dispatchEvent(new Event('input'));}}};
-  r.onend=()=>{m&&m.classList.remove('live');};r.onerror=()=>{m&&m.classList.remove('live');};
-  try{r.start();}catch(e){}}
-function stopListen(){try{Psy.rec&&Psy.rec.stop();}catch(e){}Psy.rec=null;}
+      if(idx>=0)choose(q,q.options[idx],btns[idx],$('.opts'));else toast(sayL('No te entendí bien ("'+txt+'"). Toca una opción o intenta de nuevo.','I didn’t catch that ("'+txt+'"). Tap an option or try again.','Je n’ai pas bien compris ("'+txt+'"). Touchez une option ou réessayez.'));}
+    else if(q.type==='scale'){
+      // Try every alternative the recognizer offers: "siete" may come first as "CNT" and second as "7".
+      let n=null;for(const alt of e.results[0]){n=spokenNumber(alt.transcript);if(n!=null)break;}
+      const s=$('#qstage .range input');
+      if(n!=null&&s){const v=Math.max(q.min,Math.min(q.max,n));s.value=String(v);Psy.answers_[q.id]=v;
+        s.dispatchEvent(new Event('input',{bubbles:true}));s.dispatchEvent(new Event('change',{bubbles:true}));
+        toast(sayL('Elegiste '+v+'. Toca → para continuar.','You chose '+v+'. Tap → to continue.','Vous avez choisi '+v+'. Touchez → pour continuer.'));}
+      else toast(sayL('No entendí el número ("'+txt+'"). Di un número del '+q.min+' al '+q.max+'.','I didn’t catch the number ("'+txt+'"). Say a number from '+q.min+' to '+q.max+'.','Je n’ai pas compris le nombre ("'+txt+'"). Dites un nombre de '+q.min+' à '+q.max+'.'));}};
+  // A stopped recognizer ends late: it must not turn off the glow of the one that replaced it.
+  const off=()=>{if(!Psy.rec||Psy.rec===r)m&&m.classList.remove('live');};
+  r.onerror=e=>{off();if(Psy.rec!==r)return;const msg=micErrorText(e.error);if(msg)toast(msg);console.warn('[voz] reconocimiento:',e.error);};
+  r.onend=()=>{off();if(Psy.rec===r)Psy.rec=null;};
+  try{r.start();}catch(e){m&&m.classList.remove('live');if(Psy.rec===r)Psy.rec=null;console.warn('[voz] no se pudo iniciar',e);toast(micErrorText('not-allowed'));}}
+// abort() (not stop()): stop() still delivers a late result that would answer the NEXT question.
+// Bumping voiceToken also cancels any pending "start the mic after speaking" callback.
+function stopListen(){Psy.voiceToken++;const r=Psy.rec;Psy.rec=null;if(r){try{r.abort();}catch(e){}}const m=$('#micBtn');m&&m.classList.remove('live');}
 
 /* --- diagnóstico psicológico (local o backend) --- */
 function localPsych(){
@@ -1914,7 +1950,7 @@ const Wellness = (() => {
     const x=exercises[selected]; clearTimer();active=true;secondsLeft=x.seconds;
     $timer().hidden=false;$timer().textContent='Tiempo orientativo: '+formatSeconds(secondsLeft);
     $('#wellnessStart').disabled=true;
-    speakIfEnabled('Comenzamos. '+x.steps.join('. '));
+    speakIfEnabled(sayL('Comenzamos. ','Let’s begin. ','Commençons. ')+x.steps.map(st=>Lang.t(st)).join('. '));
     timer=setInterval(()=>{
       if(current!==6){clearTimer();return;}
       secondsLeft--;
@@ -1969,11 +2005,11 @@ const Wellness = (() => {
       const el=document.createElement('div');el.className='history-entry';
       const date=new Date(item.date);
       const names={respiracion:'Respiración guiada',stress:'Calmar el estrés',lonely:'Conexión social',fatigue:'Pausa suave',sleep:'Relajación para dormir'};
-      el.textContent=`${Number.isNaN(date.valueOf())?'Fecha desconocida':date.toLocaleString(typeof Lang!=='undefined'?Lang.voiceLocale():'es-MX')} · Estado de ánimo: ${moods[item.mood]||'Sin dato'} · Actividad: ${names[item.exercise]||'No realizada'} · Después: ${item.feedback||'Sin respuesta'}`;
+      el.textContent=`${Number.isNaN(date.valueOf())?Lang.t('Fecha desconocida'):date.toLocaleString(Lang.voiceLocale())} · ${sayL('Estado de ánimo','Mood','Humeur')}: ${Lang.t(moods[item.mood]||'Sin dato')} · ${sayL('Actividad','Activity','Activité')}: ${Lang.t(names[item.exercise]||'No realizada')} · ${sayL('Después','Afterwards','Après')}: ${Lang.t({mejor:'😊 Mejor',igual:'😐 Igual',peor:'😔 Peor'}[item.feedback]||item.feedback||'Sin respuesta')}`;
       host.appendChild(el);
     });
     $('#historyOverlay').hidden=false;$('#closeHistory').focus();
-    speakIfEnabled('Historial emocional. '+entries.length+' registros guardados en este navegador.');
+    speakIfEnabled(sayL('Historial emocional. '+entries.length+' registros guardados en este navegador.','Emotional history. '+entries.length+' entries saved in this browser.','Historique émotionnel. '+entries.length+' entrées enregistrées dans ce navigateur.'));
   }
   function reset(){clearTimer();selected=null;$('#wellnessDetail').hidden=true;$('#wellnessFollowup').hidden=true;}
   function openCrew(){
@@ -1989,16 +2025,16 @@ const Wellness = (() => {
   $('#openHistory').addEventListener('click',showHistory);
   $('#closeHistory').addEventListener('click',()=>$('#historyOverlay').hidden=true);
   $('#clearHistory').addEventListener('click',()=>{
-    if(!confirm('¿Eliminar todos tus registros emocionales guardados en este navegador?'))return;
+    if(!confirm(Lang.t('¿Eliminar todos tus registros emocionales guardados en este navegador?')))return;
     try{localStorage.removeItem(STORAGE_KEY());showHistory();$('#historyStatus').textContent='Historial eliminado de este navegador.';}
     catch(e){$('#historyStatus').textContent='No se pudo borrar el historial.';}
   });
   $('#requestCrew').addEventListener('click',openCrew);
   $('#closeCrew').addEventListener('click',()=>$('#crewOverlay').hidden=true);
   $('#copyCrewRequest').addEventListener('click',async()=>{
-    const message='Solicito apoyo y una conversación con un integrante de la tripulación o responsable médico cuando sea posible. Por favor, contáctenme por el canal autorizado.';
+    const message=Lang.t('Solicito apoyo y una conversación con un integrante de la tripulación o responsable médico cuando sea posible. Por favor, contáctenme por el canal autorizado.');
     try{await navigator.clipboard.writeText(message);$('#crewStatus').textContent='Mensaje copiado. Debes enviarlo tú mediante el canal autorizado.';}
-    catch(e){$('#crewStatus').textContent='No se pudo copiar. Mensaje sugerido: '+message;}
+    catch(e){$('#crewStatus').textContent=sayL('No se pudo copiar. Mensaje sugerido: ','Could not copy. Suggested message: ','Copie impossible. Message suggéré : ')+message;}
   });
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'){$('#crewOverlay').hidden=true;$('#historyOverlay').hidden=true;}
@@ -2048,6 +2084,54 @@ const Lang=(()=>{
     "Usar este perfil": {"en":"Use this profile","fr":"Utiliser ce profil"},
     "Continuar con este perfil": {"en":"Continue with this profile","fr":"Continuer avec ce profil"}
   });
+  // Integration review: texts set from JS (profiles, history, wellness, TalkBack, dialogs) that had no translation.
+  Object.assign(catalog, {
+    "ApolloCare V11 · Evaluación integral": {en:"ApolloCare · Comprehensive check-in",fr:"ApolloCare · Bilan complet"},
+    "Elegir astronauta": {en:"Choose astronaut",fr:"Choisir un astronaute"},
+    "Todavía no hay perfiles. Crea uno para continuar.": {en:"No profiles yet. Create one to continue.",fr:"Aucun profil pour l’instant. Créez-en un pour continuer."},
+    "Perfil de demostración": {en:"Demo profile",fr:"Profil de démonstration"},
+    "Eliminar perfil": {en:"Delete profile",fr:"Supprimer le profil"},
+    "Selecciona o crea un perfil para continuar.": {en:"Select or create a profile to continue.",fr:"Sélectionnez ou créez un profil pour continuer."},
+    "No se pudo guardar la sesión local.": {en:"Could not save the local session.",fr:"Impossible d’enregistrer la session locale."},
+    "Escribe un nombre entre 2 y 45 caracteres.": {en:"Enter a name between 2 and 45 characters.",fr:"Saisissez un nom de 2 à 45 caractères."},
+    "Límite de 40 perfiles en esta demostración.": {en:"Limit of 40 profiles in this demo.",fr:"Limite de 40 profils dans cette démo."},
+    "No se pudo crear el perfil. Comprueba el almacenamiento del navegador.": {en:"Could not create the profile. Check the browser storage.",fr:"Impossible de créer le profil. Vérifiez le stockage du navigateur."},
+    "Perfil eliminado.": {en:"Profile deleted.",fr:"Profil supprimé."},
+    "No se pudo completar la eliminación.": {en:"Could not complete the deletion.",fr:"Impossible de terminer la suppression."},
+    "La grabación no está disponible en este navegador.": {en:"Recording is not available in this browser.",fr:"L’enregistrement n’est pas disponible dans ce navigateur."},
+    "Solo vista previa activa; no se graba video.": {en:"Preview only; no video is recorded.",fr:"Aperçu uniquement ; aucune vidéo n’est enregistrée."},
+    "Vista previa activa y grabación temporal autorizada. El análisis con Python todavía no está conectado.": {en:"Preview on and temporary recording authorized. The Python analysis is not connected yet.",fr:"Aperçu actif et enregistrement temporaire autorisé. L’analyse Python n’est pas encore connectée."},
+    "En rango orientativo": {en:"Within orientative range",fr:"Dans la plage indicative"},
+    "Requiere revisión": {en:"Needs review",fr:"À vérifier"},
+    "Sin clasificación": {en:"Not classified",fr:"Non classé"},
+    "¿Borrar todas las revisiones físicas guardadas en este navegador?": {en:"Delete all physical check-ins saved in this browser?",fr:"Supprimer tous les bilans physiques enregistrés dans ce navigateur ?"},
+    "Leyendo...": {en:"Reading...",fr:"Lecture..."},
+    "Voz no disponible": {en:"Voice not available",fr:"Voix non disponible"},
+    "Escala": {en:"Scale",fr:"Échelle"},
+    "Listo": {en:"Done",fr:"Terminé"},
+    "Exhala": {en:"Breathe out",fr:"Expirez"},
+    "Inhala": {en:"Breathe in",fr:"Inspirez"},
+    "¡Bien hecho! Terminaste tu pausa.": {en:"Well done! You finished your pause.",fr:"Bravo ! Vous avez terminé votre pause."},
+    "Exhala lentamente · 6 segundos": {en:"Breathe out slowly · 6 seconds",fr:"Expirez lentement · 6 secondes"},
+    "Inhala suavemente · 4 segundos": {en:"Breathe in gently · 4 seconds",fr:"Inspirez doucement · 4 secondes"},
+    "Actividad terminada. ¿Cómo te sientes ahora? Puedes escoger mejor, igual o peor.": {en:"Activity finished. How do you feel now? You can choose better, the same or worse.",fr:"Activité terminée. Comment vous sentez-vous maintenant ? Vous pouvez choisir mieux, pareil ou moins bien."},
+    "Qué bueno que esta pausa te ayudó. Puedes guardar tu registro o continuar con tu día.": {en:"Glad this pause helped. You can save your entry or carry on with your day.",fr:"Ravi que cette pause vous ait aidé. Vous pouvez enregistrer votre entrée ou poursuivre votre journée."},
+    "Está bien si no notas cambios. Puedes probar otra actividad o hablar con alguien de confianza.": {en:"It’s okay if you notice no change. You can try another activity or talk to someone you trust.",fr:"C’est normal de ne pas remarquer de changement. Vous pouvez essayer une autre activité ou parler à une personne de confiance."},
+    "Gracias por decirlo. Considera detener el ejercicio y pedir apoyo a un compañero o profesional responsable de tu bienestar.": {en:"Thank you for telling us. Consider stopping the exercise and asking a crewmate or the professional responsible for your wellbeing for support.",fr:"Merci de nous l’avoir dit. Envisagez d’arrêter l’exercice et de demander du soutien à un coéquipier ou au professionnel chargé de votre bien-être."},
+    "Registro emocional guardado localmente.": {en:"Emotional entry saved locally.",fr:"Entrée émotionnelle enregistrée localement."},
+    "Respiración guiada": {en:"Guided breathing",fr:"Respiration guidée"},
+    "Conexión social": {en:"Social connection",fr:"Lien social"},
+    "Pausa suave": {en:"Gentle pause",fr:"Pause douce"},
+    "Relajación para dormir": {en:"Relaxation for sleep",fr:"Relaxation pour dormir"},
+    "Sin respuesta": {en:"No answer",fr:"Sans réponse"},
+    "Solicitud de apoyo humano. Este prototipo no envía alertas. Usa el canal de comunicación autorizado por tu tripulación.": {en:"Request for human support. This prototype does not send alerts. Use the communication channel authorized by your crew.",fr:"Demande de soutien humain. Ce prototype n’envoie aucune alerte. Utilisez le canal de communication autorisé par votre équipage."},
+    "¿Eliminar todos tus registros emocionales guardados en este navegador?": {en:"Delete all your emotional entries saved in this browser?",fr:"Supprimer toutes vos entrées émotionnelles enregistrées dans ce navigateur ?"},
+    "Solicito apoyo y una conversación con un integrante de la tripulación o responsable médico cuando sea posible. Por favor, contáctenme por el canal autorizado.": {en:"I am requesting support and a conversation with a crew member or the medical officer when possible. Please contact me through the authorized channel.",fr:"Je demande du soutien et une conversation avec un membre de l’équipage ou le responsable médical dès que possible. Merci de me contacter par le canal autorisé."},
+    "Cuerpo humano": {en:"Human body",fr:"Corps humain"},
+    "lpm": {en:"bpm",fr:"bpm"},
+    "rpm": {en:"breaths/min",fr:"resp./min"}
+  });
+  const BASE_TITLE=document.title;
   const originals=new WeakMap();
   const reverse=new Map();
   for(const [base,langs] of Object.entries(catalog)) {
@@ -2069,9 +2153,12 @@ const Lang=(()=>{
       [/^Ciclo (\d+) de (\d+)$/, {'en':'Cycle $1 of $2','fr':'Cycle $1 sur $2'}],
       [/^Revisión guardada en este navegador\. Registros: (\d+)\.$/, {'en':'Check-in saved in this browser. Records: $1.','fr':'Bilan enregistré dans ce navigateur. Enregistrements : $1.'}],
       [/^Ajustado al máximo permitido \(([^)]+)\)$/, {'en':'Adjusted to the maximum allowed ($1)','fr':'Ajusté au maximum autorisé ($1)'}],
-      [/^Ajustado al mínimo permitido \(([^)]+)\)$/, {'en':'Adjusted to the minimum allowed ($1)','fr':'Ajusté au minimum autorisé ($1)'}]
+      [/^Ajustado al mínimo permitido \(([^)]+)\)$/, {'en':'Adjusted to the minimum allowed ($1)','fr':'Ajusté au minimum autorisé ($1)'}],
+      [/^Cambiar de perfil \(actual: (.*)\)$/, {'en':'Switch profile (current: $1)','fr':'Changer de profil (actuel : $1)'}],
+      [/^Eliminar (.+)$/, {'en':'Delete $1','fr':'Supprimer $1'}],
+      [/^¿Eliminar a (.+) y sus historiales físico y emocional de este navegador\? Esta acción no se puede deshacer\.$/, {'en':'Delete $1 and their physical and emotional history from this browser? This cannot be undone.','fr':'Supprimer $1 ainsi que ses historiques physique et émotionnel de ce navigateur ? Cette action est irréversible.'}]
     ];
-    for(const [regex,values] of patterns)if(regex.test(base))return base.replace(regex,values[L]);
+    for(const [regex,values] of patterns)if(regex.test(base))return base.replace(regex,values[L]).replace(/\b(lpm|rpm)\b/g,u=>catalog[u]?.[L]||u);
     return base;
   }
   function voiceLocale(){return {es:'es-MX',en:'en-US',fr:'fr-FR'}[language];}
@@ -2093,6 +2180,7 @@ const Lang=(()=>{
     const nodes=root.querySelectorAll?root.querySelectorAll('input,textarea,button,select,[title],[aria-label]'):[];
     for(const el of nodes){for(const a of attrs){if(!el.hasAttribute(a))continue;const key='data-l10n-'+a;let original=el.getAttribute(key);if(original===null){original=el.getAttribute(a);el.setAttribute(key,original);}const val=t(original);if(el.getAttribute(a)!==val)el.setAttribute(a,val);}}
     document.documentElement.lang=language;
+    if(root===document)document.title=t(BASE_TITLE);
   }
   function set(next){
     if(!['es','en','fr'].includes(next))return;
@@ -2131,7 +2219,7 @@ function showAnswerReviews(){
     physical.replaceChildren();
     const values=App.physical.values||{},answers=App.physical.answers||{};
     const add=(name,value)=>{const row=document.createElement('div');row.className='review-item';const a=document.createElement('strong');a.textContent=Lang.t(name);const b=document.createElement('span');b.textContent=value==null||value===''?Lang.t('Sin responder'):Lang.t(String(value));row.append(a,b);physical.appendChild(row);};
-    for(const field of PHYSICAL_FIELDS)add(field.label,(values[field.id]??'')+(values[field.id]!=null?' '+field.unit:''));
+    for(const field of PHYSICAL_FIELDS)add(field.label,(values[field.id]??'')+(values[field.id]!=null?' '+Lang.t(field.unit):''));
     for(const q of PHYSICAL_QUESTIONS)add(q.text,answers[q.id]);
     // Other manually-entered parameters are shown in their own results card.
   }

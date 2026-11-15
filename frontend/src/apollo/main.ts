@@ -12,7 +12,9 @@ import { describeStorage, setupCheckin } from "./checkin";
 import { refreshMonitor, setupMonitor } from "./monitor";
 import { setupProfiles } from "./profiles";
 import { setupPsychMission } from "./psychMission";
+import { setupReport } from "./report";
 import { STRINGS } from "./strings";
+import { CONTENT_STRINGS } from "./contentStrings";
 
 async function connect(): Promise<void> {
   try {
@@ -32,6 +34,7 @@ function init(): void {
     return;
   }
   ac.Lang.extend(STRINGS);
+  ac.Lang.extend(CONTENT_STRINGS); // the backend's English knowledge base, in Spanish and French
   // English by default for a fresh browser; a stored choice (incl. the user's own) is respected.
   try {
     if (!localStorage.getItem("apolloCareLanguage")) ac.Lang.set("en");
@@ -42,6 +45,7 @@ function init(): void {
   setupPsychMission();
   setupCameraPanel();
   setupCheckin();
+  setupReport();
   ac.Lang.apply();
 
   void connect().then(() => {

@@ -24,6 +24,9 @@ let stream: MediaStream | null = null;
 let starting = false;
 let lastUi = 0;
 let resultEl: HTMLElement | null = null;
+/** Last finished camera session of this check-in (feeds the results screen and the printed report). */
+let lastSummary: { summary: SessionSummary; crewId: string | null; at: number } | null = null;
+const SUMMARY_MAX_AGE_MS = 60 * 60 * 1000;
 
 let video: HTMLVideoElement;
 let overlay: HTMLCanvasElement;
@@ -227,6 +230,7 @@ async function start(): Promise<void> {
   starting = true;
   (el.start as HTMLButtonElement).disabled = true;
   el.summary.hidden = true;
+  lastSummary = null;
   claimCamera(OWNER);
   try {
     setStatus("Abriendo la cámara…");
@@ -276,12 +280,14 @@ function showSummary(s: SessionSummary): void {
       summaryRow("Cara visible:", `${s.faceVisiblePct}%`),
       summaryRow("Pulso promedio:", pulse),
       summaryRow("Señal de pulso confiable:", `${s.heartReliablePct}%`),
-      summaryRow("Fatiga promedio (cámara):", `${s.avgFatigue}/100 (máx ${s.maxFatigue})`),
-      summaryRow("Parpadeos:", String(s.totalBlinks)),
+      summaryRow("Fatiga promedio (cámara):", `${s.avgFatigue}/100 (${tr("máx", "max", "max")} ${s.maxFatigue})`),
+      summaryRow("Parpadeos:", s.blinksPerMin !== null ? `${s.totalBlinks} (${s.blinksPerMin}/min)` : String(s.totalBlinks)),
+      summaryRow(tr("Ojos cerrados (PERCLOS):", "Eyes closed (PERCLOS):", "Yeux fermés (PERCLOS) :"), `${s.avgPerclos}%`),
       summaryRow("Bostezos:", String(s.totalYawns)),
       summaryRow("Cabeza gacha:", `${s.headDownPct}%`),
       summaryRow("Mirando a otro lado:", `${s.lookingAwayPct}%`),
     ),
+    h("p", { class: "aux" }, tr("Estos datos aparecerán en tus resultados y en el reporte para imprimir.", "These data will appear in your results and in the printable report.", "Ces données apparaîtront dans vos résultats et dans le rapport imprimable.")),
     resultEl,
   );
   el.summary.hidden = false;
@@ -334,6 +340,8 @@ function stop(quiet = false): void {
   setStatus("");
   drawWave(null);
   if (!wasRunning) return;
+  // A session with no face (or a couple of seconds) says nothing: do not put it in the report.
+  if (s.durationMs >= 5000 && s.faceVisiblePct > 0) lastSummary = { summary: s, crewId: AC().Profiles.currentId(), at: Date.now() };
   if (quiet) el.summary.hidden = true;
   else showSummary(s);
   void sendSummary(s);
@@ -343,6 +351,30 @@ async function toggle(): Promise<void> {
   AC().sfx.click();
   if (stream) stop();
   else await start();
+}
+
+/** Camera data for the current check-in: the live session if the camera is still on, else the last one. */
+export function currentCameraSummary(): SessionSummary | null {
+  if (session.status === "running") {
+    const s = session.peekSummary();
+    return s.durationMs >= 5000 && s.faceVisiblePct > 0 ? s : null;
+  }
+  if (!lastSummary) return null;
+  if (lastSummary.crewId !== AC().Profiles.currentId() || Date.now() - lastSummary.at > SUMMARY_MAX_AGE_MS) return null;
+  return lastSummary.summary;
+}
+
+/** If the crew member left the heart rate empty, use the camera pulse (only when the signal was reliable). */
+export function applyCameraPulse(values: Record<string, number | null>): number | null {
+  const s = currentCameraSummary();
+  if (values.hr != null || !s || s.avgBpm === null || s.heartReliablePct < 50) return null;
+  values.hr = s.avgBpm;
+  const input = document.querySelector<HTMLInputElement>('#nbGrid .nb[data-id="hr"] input');
+  if (input) {
+    input.value = String(s.avgBpm);
+    input.dispatchEvent(new Event("input"));
+  }
+  return s.avgBpm;
 }
 
 export function setupCameraPanel(): void {
@@ -360,6 +392,12 @@ export function setupCameraPanel(): void {
   ac.hooks.leave[3] = () => {
     leave?.();
     stop(true);
+  };
+  const enter2 = ac.hooks.enter[2];
+  ac.hooks.enter[2] = () => {
+    enter2?.();
+    lastSummary = null;
+    el.summary.hidden = true;
   };
   onCameraClaim((owner) => {
     if (owner !== OWNER) stop();

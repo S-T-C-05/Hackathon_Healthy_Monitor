@@ -203,6 +203,11 @@ export class VisionSession {
     }
   }
 
+  /** Summary so far, without stopping (for a report taken while the camera is still on). */
+  peekSummary(): SessionSummary {
+    return this.aggregator.summary();
+  }
+
   /** Stops the loop and returns the summary of the session. */
   stop(): SessionSummary {
     this.cancelLoop();

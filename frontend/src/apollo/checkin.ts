@@ -11,8 +11,20 @@ import type { ACPhysicalResult } from "./globals";
 import { tr } from "./i18n";
 import { AC_STATUS, basisTag, levelClass, levelTag } from "./levels";
 import { openIndicatorDetail, refreshMonitor } from "./monitor";
+import { applyCameraPulse, currentCameraSummary } from "./cameraPanel";
+import { cameraBlock } from "./cameraReport";
 
 let last: CheckinResult | null = null;
+let pulseFromCamera: number | null = null;
+
+/** Backend evaluation of the last check-in (null in local mode); used by the printed report. */
+export function lastEvaluation(): CheckinResult | null {
+  return last;
+}
+/** Heart rate taken from the camera because the field was left empty (null otherwise). */
+export function cameraPulseUsed(): number | null {
+  return pulseFromCamera;
+}
 
 const RANK = { ok: 0, warn: 1, bad: 2 };
 // Same three sentences as localPhysical() in index.html (the advice must match the final colors)
@@ -69,7 +81,7 @@ function diagnosisBlock(res: ACPhysicalResult): HTMLElement {
           return h(
             "div",
             { class: "ax-dx-card " + levelClass(i.level) },
-            h("div", { class: "ax-dx-card-head" }, h("b", null, m?.label ?? i.label), h("span", { class: "ax-dx-val" }, `${i.value} ${m?.unit ?? ""}`), levelTag(i.level), basisTag(i.threshold_basis)),
+            h("div", { class: "ax-dx-card-head" }, h("b", null, m?.label ?? i.label), h("span", { class: "ax-dx-val" }, `${i.value} ${m?.unit ? AC().Lang.t(m.unit) : ""}`), levelTag(i.level), basisTag(i.threshold_basis)),
             i.action?.length ? h("ul", null, ...i.action.map((a) => h("li", null, a))) : null,
             i.action?.length && i.escalate_when ? h("p", { class: "aux" }, h("b", null, "Cuándo avisar: "), i.escalate_when) : null,
             h("button", { type: "button", class: "btn ghost ax-more", onclick: () => void openIndicatorDetail(i.indicator_id, crewId) }, "Por qué importa y evidencia"),
@@ -83,6 +95,9 @@ function diagnosisBlock(res: ACPhysicalResult): HTMLElement {
     h("div", { class: "ax-dx-kicker" }, "Tu lectura de hoy"),
     h("h2", { class: "ax-dx-title" }, word),
     h("p", { class: "ax-dx-msg" }, res.advice || ""),
+    pulseFromCamera !== null
+      ? h("p", { class: "aux" }, tr(`Frecuencia cardíaca tomada de la cámara: ${pulseFromCamera} lpm.`, `Heart rate taken from the camera: ${pulseFromCamera} bpm.`, `Fréquence cardiaque prise par la caméra : ${pulseFromCamera} bpm.`))
+      : null,
     cards,
     cards ? h("p", { class: "aux ax-dx-note" }, "El pulso, la temperatura y el sueño usan umbrales con fuente citada; los demás signos, rangos orientativos de demostración.") : null,
     h("div", { class: "actions ax-dx-actions" }, h("button", { type: "button", class: "btn ghost", "data-go": "7" }, "🛰️ Ver mi tendencia en la misión")),
@@ -103,9 +118,12 @@ function decorate(res: ACPhysicalResult): void {
       });
   }
   // Diagnosis block in the empty space below the body figure: a full-width row at the end of the results grid.
+  document.getElementById("ax-camera-report")?.remove();
+  const cam = currentCameraSummary();
+  const blocks = [diagnosisBlock(res), cam ? cameraBlock(cam) : null].filter((b): b is HTMLElement => !!b);
   const grid = document.querySelector("#s5 .res-grid");
-  if (grid) grid.append(diagnosisBlock(res));
-  else document.querySelector("#s5 .summary")?.after(diagnosisBlock(res));
+  if (grid) grid.append(...blocks);
+  else document.querySelector("#s5 .summary")?.after(...blocks);
   AC().Lang.apply(document.getElementById("s5") ?? undefined);
 }
 
@@ -145,6 +163,8 @@ export function setupCheckin(): void {
     return;
   }
   window.diagnosePhysical = async () => {
+    // Heart rate left empty + a reliable camera pulse -> the check-in uses the camera pulse.
+    pulseFromCamera = applyCameraPulse(AC().App.physical.values);
     const res = await diagnose();
     await evaluate(res);
     return res;
