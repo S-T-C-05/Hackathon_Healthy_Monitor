@@ -19,13 +19,13 @@ npm run dev          # http://localhost:5173  (add ?dev=1 to skip the intro)
 
 ## Updating ApolloCare
 
-The design team keeps delivering one HTML file. Do not edit `index.html` by hand; regenerate it:
+The design team delivers one self-contained HTML file. The version in use is kept untouched in `design/`. Do not edit `index.html` by hand; regenerate it from the design file:
 
 ```powershell
-python tools/integrate_apollocare.py path\to\ApolloCare_VXX.html
+python tools/integrate_apollocare.py design/ApolloCare_V14_Confirmacion_Guardado.html
 ```
 
-The script applies a handful of marked hooks (`[INTEGRATION]`) and stops, without writing anything, if a new version changed one of those lines.
+For a new version, put the new file in `design/` and run the script on it. It applies a handful of marked hooks (`[INTEGRATION]`) and stops, without writing anything, if the new version changed one of those lines.
 
 ## What the integration adds (`src/apollo/`)
 

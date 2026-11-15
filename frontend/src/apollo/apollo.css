@@ -48,6 +48,7 @@
 
 .ax-face { margin: 14px 0 4px; display: flex; flex-direction: column; gap: 10px; }
 .ax-face-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.ax-face .wellness-status:empty { display: none; }
 .ax-face-stage { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 12px; border-radius: 18px; background: var(--bg); border: 1px solid var(--line); }
 .ax-face-info { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 10px; }
 .ax-face-info .wellness-btn-row { justify-content: flex-start; margin-top: 0; }
@@ -69,6 +70,7 @@
 
 /* ---- mission monitor (state 7) ---- */
 .ax-monitor { max-width: 1120px; }
+@media (max-width: 760px) { #s7 { padding-top: 112px; } } /* same clearance ApolloCare gives its results screen for the floating controls */
 .ax-crew-switch { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
 .ax-crew-switch .chip { background: var(--card); border: 1px solid var(--line); }
 .ax-crew-switch .chip.sel { background: var(--primary); color: #fff; }

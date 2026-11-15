@@ -34,7 +34,8 @@ The backend creates a local database with a simulated 121-day mission for four c
 | `data/` | indicators, evidence cards, bibliography, crew, cleaned NASA reference tables, local history (SQLite). See `data/README.md` |
 | `backend/` | FastAPI: serves `data/` and the history. See `backend/README.md` |
 | `frontend/` | ApolloCare (plain HTML/CSS/JS) + integration and camera modules in TypeScript. See `frontend/README.md` |
-| `tools/` | `integrate_apollocare.py`: turns a new ApolloCare HTML into `frontend/index.html` |
+| `design/` | the ApolloCare prototype exactly as delivered by the design team |
+| `tools/` | `integrate_apollocare.py`: turns the design file into `frontend/index.html` |
 
 ## NASA data and evidence
 
