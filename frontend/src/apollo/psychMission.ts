@@ -129,7 +129,7 @@ function build(): HTMLElement {
       null,
       "Esto NO guarda un diagnóstico de salud mental: el cuestionario no es una escala clínica. Solo guarda lo que tú reportaste, para ver tu tendencia durante la misión.",
     ),
-    h("p", { class: "ax-emo-close" }, h("span", null, "Cercanía con tu tripulación (tu respuesta): "), el.closeVal, h("span", null, " / 10")),
+    h("p", { class: "ax-emo-close" }, h("span", null, tr("Cercanía con tu tripulación (tu respuesta): ", "Closeness to your crew (your answer): ", "Proximité avec votre équipage (votre réponse) : ")), el.closeVal, h("span", null, " / 10")),
     h("div", { class: "wellness-btn-row", style: "justify-content:flex-start" }, el.saveClose),
     el.closeStatus,
     el.camToggle,

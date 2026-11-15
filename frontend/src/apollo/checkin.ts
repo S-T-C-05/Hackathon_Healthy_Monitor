@@ -102,9 +102,10 @@ function decorate(res: ACPhysicalResult): void {
         st.append(" ", m.basis ? basisTag(m.basis as never) : h("span", { class: "ax-basis" }, "Rango orientativo (criterio demo)"));
       });
   }
-  // Diagnosis block at the top of the results, same format as the emotional result
-  const summary = document.querySelector("#s5 .summary");
-  if (summary) summary.after(diagnosisBlock(res));
+  // Diagnosis block in the empty space below the body figure: a full-width row at the end of the results grid.
+  const grid = document.querySelector("#s5 .res-grid");
+  if (grid) grid.append(diagnosisBlock(res));
+  else document.querySelector("#s5 .summary")?.after(diagnosisBlock(res));
   AC().Lang.apply(document.getElementById("s5") ?? undefined);
 }
 

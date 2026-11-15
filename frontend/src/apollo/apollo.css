@@ -112,6 +112,7 @@ body[data-mode="dark"] .ax-crew-switch .chip.sel { color: #0b1929; }
 .ax-sources a { color: var(--primary); }
 
 /* ---- physical diagnosis block (state 5), same spirit as the emotional result ---- */
+#ax-diagnosis { grid-column: 1 / -1; }
 .ax-dx { max-width: 960px; margin: 6px auto 20px; padding: 24px 26px; border-radius: 28px; text-align: center;
   background: color-mix(in srgb, var(--c) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 38%, var(--line)); box-shadow: 0 8px 30px rgba(44, 62, 80, .06); }
 .ax-dx-kicker { font-size: 14px; color: var(--text2); letter-spacing: .04em; }

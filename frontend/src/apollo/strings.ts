@@ -320,6 +320,10 @@ const _FIELD_COLON: Record<string, { en: string; fr: string }> = {
   "Presión sistólica": { en: "Systolic pressure", fr: "Pression systolique" },
   "Presión diastólica": { en: "Diastolic pressure", fr: "Pression diastolique" },
   "Horas de sueño": { en: "Hours of sleep", fr: "Heures de sommeil" },
+  // Qualitative brain questions shown in the body-map bubble (label is the question stripped of "¿?" and parentheses).
+  "Has sentido mareo": { en: "Felt dizzy", fr: "Vertiges ressentis" },
+  "Dolor de cabeza": { en: "Headache", fr: "Mal de tête" },
+  "Nivel de fatiga": { en: "Fatigue level", fr: "Niveau de fatigue" },
 };
 for (const [es, t] of Object.entries(_FIELD_COLON)) {
   STRINGS[`${es}:`] = { en: `${t.en}:`, fr: `${t.fr}:` };
