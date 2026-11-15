@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useVision } from "../vision/useVision";
+import { useIdentity } from "../vision/useIdentity";
 import type { SessionSummary } from "../vision/aggregate";
+import CrewPanel from "../components/CrewPanel";
 
 /** Gráfica mínima de la onda del pulso (SVG, sin librerías) */
 function Sparkline({ data, width = 320, height = 60 }: { data: number[]; width?: number; height?: number }) {
@@ -31,6 +33,8 @@ export default function Wellbeing() {
     status, snapshot, error, emotionEnabled, meshEnabled,
     start, stop, enableEmotion, enableMesh, recalibrateHead,
   } = useVision();
+  const identity = useIdentity();
+  const [sessionOwner, setSessionOwner] = useState<string | null>(null); // quién era al detener
 
   function stopCamera() {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -45,6 +49,8 @@ export default function Wellbeing() {
     setStarting(true);
     setCamError(null);
     setSummary(null);
+    setSessionOwner(null);
+    identity.resetIdentity();
 
     try {
       stopCamera(); // por si quedó una cámara abierta de antes
@@ -64,6 +70,9 @@ export default function Wellbeing() {
       }
 
       await start(video, overlayRef.current);
+
+      // Identificar UNA vez al arrancar (no en el loop: tarda ~1 s). No bloquea el monitoreo.
+      if (identity.crew.length > 0) void identity.identify(video);
     } catch (e) {
       stopCamera();
       setCamError(e instanceof Error ? e.message : "No se pudo abrir la cámara");
@@ -75,7 +84,13 @@ export default function Wellbeing() {
 
   function handleStop() {
     setSummary(stop());
+    setSessionOwner(identity.current?.name ?? null);
+    identity.cancelEnroll();
     stopCamera();
+  }
+
+  function handleIdentify() {
+    if (videoRef.current) void identity.identify(videoRef.current);
   }
 
   // Apagar la cámara al salir de la página
@@ -132,6 +147,28 @@ export default function Wellbeing() {
       </div>
 
       {(camError || error) && <p style={{ color: "crimson" }}>⚠️ {camError ?? error}</p>}
+
+      {/* Identidad: quién está frente a la cámara */}
+      {status === "running" && (
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", margin: "8px 0" }}>
+          {identity.status === "loading-models" && <span>🔄 Cargando reconocimiento facial…</span>}
+          {identity.status === "identifying" && <span>🔍 Identificando… mira a la cámara</span>}
+          {identity.status === "identified" && identity.current && (
+            <span style={{ fontSize: 20 }}>
+              👩‍🚀 Hola, <b>{identity.current.name}</b>
+            </span>
+          )}
+          {identity.status === "unknown" && <span>❔ No reconocido</span>}
+          {identity.crew.length > 0 && !identity.busy && (
+            <button onClick={handleIdentify}>
+              {identity.status === "identified" ? "Identificar de nuevo" : "Identificar"}
+            </button>
+          )}
+        </div>
+      )}
+      {identity.message && <p style={{ margin: "4px 0", color: "#555" }}>{identity.message}</p>}
+
+      <CrewPanel identity={identity} running={status === "running"} getVideo={() => videoRef.current} />
 
       {status === "running" && snapshot && (
         <div>
@@ -194,6 +231,7 @@ export default function Wellbeing() {
         <div>
           <h2>Resumen de la sesión</h2>
           <ul>
+            <li>Tripulante: {sessionOwner ?? "no identificado"}</li>
             <li>Duración: {Math.round(summary.durationMs / 1000)} s</li>
             <li>Fatiga promedio: {summary.avgFatigue}/100 (máx {summary.maxFatigue})</li>
             <li>Parpadeos: {summary.totalBlinks} · Bostezos: {summary.totalYawns}</li>
