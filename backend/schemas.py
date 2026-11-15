@@ -30,3 +30,11 @@ class CameraSessionIn(BaseModel):
     avgFatigue: Optional[float] = None
     maxFatigue: Optional[float] = None
     faceVisiblePct: Optional[float] = None
+
+
+class CheckinIn(BaseModel):
+    """Vital signs typed in the ApolloCare physical check-in, keyed by its field ids (hr, temp, sleep...)."""
+    model_config = ConfigDict(extra="forbid")
+
+    values: dict[str, Optional[float]]
+    store: bool = Field(False, description="False: only evaluate. True: also save to the history (needs consent).")

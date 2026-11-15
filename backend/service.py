@@ -5,6 +5,7 @@ from typing import Optional
 
 from data import cards_by_id, get_crew, indicators_by_id, sources_by_id
 from data import history
+from data.levels import level_for
 
 # What the camera session is allowed to write. Anything else in the session summary
 # (fatigue, blinks, head pose...) has no indicator in indicators.json yet.
@@ -85,6 +86,47 @@ def store_camera_session(crew_id: str, s) -> dict:
     if s.avgFatigue is not None:
         skipped.append({"indicator_id": "fatigue", "reason": "no_indicator_defined_yet"})
     return {"stored": stored, "skipped": skipped}
+
+
+# ApolloCare check-in field -> indicator in data/indicators.json.
+# Only fields with a matching indicator are evaluated here; the rest (SpO2, breaths, blood
+# pressure, glucose) have no cited threshold in the data layer, so the backend says so
+# instead of inventing a color.
+CHECKIN_FIELD_MAP = {
+    "hr": "resting_heart_rate",
+    "temp": "body_temperature",
+    "sleep": "sleep_duration",
+}
+
+
+def checkin(crew_id: str, values: dict, store: bool) -> dict:
+    """Evaluate (and optionally store) a manual check-in. Raises history.ConsentError / HistoryError."""
+    member = find_member(crew_id)
+    inds = indicators_by_id()
+    items, unmapped = [], []
+    for field, value in values.items():
+        if value is None:
+            continue
+        indicator_id = CHECKIN_FIELD_MAP.get(field)
+        if not indicator_id:
+            unmapped.append(field)
+            continue
+        ind = inds[indicator_id]
+        baseline = history.change_vs_baseline(crew_id, indicator_id)["baseline"]
+        level = level_for(ind, value, member.get("sex"), baseline=baseline)
+        actions = ind.get("actions") or {}
+        item = {
+            "field": field, "indicator_id": indicator_id, "label": ind["label"], "value": value, "unit": ind["unit"],
+            "level": level, "threshold_basis": threshold_basis(ind), "baseline": baseline,
+            "action": actions.get(level) if level in ("yellow", "red") else None,
+            "escalate_when": ind.get("escalate_when") if level in ("yellow", "red") else None,
+            "source_ids": (ind.get("thresholds") or {}).get("source_ids") or [],
+            "entry_id": None,
+        }
+        if store:
+            item["entry_id"] = history.add_entry(crew_id, indicator_id, value, source="manual", note="ApolloCare check-in")
+        items.append(item)
+    return {"crew_id": crew_id, "stored": store, "items": items, "unmapped": sorted(unmapped)}
 
 
 __all__ = ["cards_by_id", "sources_by_id"]

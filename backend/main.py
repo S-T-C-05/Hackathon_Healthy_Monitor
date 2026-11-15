@@ -5,14 +5,18 @@ Run from the repo root (with the .venv active):
     uvicorn backend.main:app --reload --port 8000
 
 Docs: http://127.0.0.1:8000/docs
+If frontend/dist exists (npm run build), the app itself is served at http://127.0.0.1:8000/
 """
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+from datetime import date, timedelta
+from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from data import (
     cards_by_id, get_bibliography, get_crew, get_hazards, get_indicators, get_nasa_cmp, get_nasa_radiation,
@@ -21,14 +25,21 @@ from data import (
 from data import history, simulate
 
 from . import service
-from .schemas import CameraSessionIn, EntryIn
+from .schemas import CameraSessionIn, CheckinIn, EntryIn
+
+FRONTEND_DIST = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 
 
 def ensure_demo_history() -> None:
-    """First run: create the local database and fill it with the simulated mission."""
+    """Create the local database and keep the simulated mission ending yesterday.
+
+    Real entries are never touched: load_simulated only replaces simulated rows.
+    """
     with history.connect() as con:
-        n = con.execute("SELECT COUNT(*) FROM entries WHERE source = 'simulated'").fetchone()[0]
-    if n == 0:
+        row = con.execute("SELECT COUNT(*), MAX(entry_date) FROM entries WHERE source = 'simulated'").fetchone()
+    n, last = row[0], row[1]
+    stale = last is None or date.fromisoformat(last) < date.today() - timedelta(days=1)
+    if n == 0 or stale:
         simulate.main(["--quiet"])
         history.load_simulated()
 
@@ -43,7 +54,7 @@ app = FastAPI(title="Healthy Monitor API", version="0.1.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],  # Vite dev server
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["*"],
 )
 
@@ -144,6 +155,13 @@ def add_entry(crew_id: str, body: EntryIn) -> dict:
     return {"entry_id": entry_id}
 
 
+@app.delete("/api/crew/{crew_id}/entries")
+def delete_entries(crew_id: str) -> dict:
+    """Withdraw stored data: deletes the person's real entries. The simulated demo rows stay."""
+    _member_or_404(crew_id)
+    return {"deleted": history.purge_crew(crew_id)}
+
+
 @app.post("/api/crew/{crew_id}/camera-session", status_code=201)
 def camera_session(crew_id: str, body: CameraSessionIn) -> dict:
     _member_or_404(crew_id)
@@ -153,3 +171,21 @@ def camera_session(crew_id: str, body: CameraSessionIn) -> dict:
         raise HTTPException(403, str(e)) from e
     except history.HistoryError as e:
         raise HTTPException(422, str(e)) from e
+
+
+@app.post("/api/crew/{crew_id}/checkin")
+def crew_checkin(crew_id: str, body: CheckinIn) -> dict:
+    """ApolloCare physical check-in: levels from the data layer, optionally saved to the history."""
+    _member_or_404(crew_id)
+    try:
+        return service.checkin(crew_id, body.values, body.store)
+    except history.ConsentError as e:
+        raise HTTPException(403, str(e)) from e
+    except history.HistoryError as e:
+        raise HTTPException(422, str(e)) from e
+
+
+# ------------------------------------------------------------------ frontend (optional)
+# Must be the last route: it catches everything that is not /api.
+if FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")

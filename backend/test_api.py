@@ -81,6 +81,53 @@ class ApiTests(unittest.TestCase):
         none = self.c.post("/api/crew/crew_zelinda/camera-session", json={"durationMs": 90_000, "avgBpm": None}).json()
         self.assertEqual(none["skipped"][0]["reason"], "no_reliable_heart_reading")
 
+    def test_checkin_evaluates_without_storing(self):
+        before = len(self.c.get("/api/crew/crew_angel/series/body_temperature").json()["points"])
+        r = self.c.post("/api/crew/crew_angel/checkin", json={"values": {"temp": 38.2, "hr": 72, "sleep": 5.5, "spo2": 97, "sys": None}})
+        self.assertEqual(r.status_code, 200)
+        body = r.json()
+        got = {i["field"]: i for i in body["items"]}
+        self.assertEqual(got["temp"]["level"], "yellow")
+        self.assertEqual(got["temp"]["threshold_basis"], "sourced")
+        self.assertTrue(got["temp"]["action"])
+        self.assertEqual(got["hr"]["level"], "green")
+        self.assertIsNone(got["hr"]["action"])
+        self.assertEqual(got["sleep"]["level"], "red")
+        self.assertEqual(body["unmapped"], ["spo2"])           # no cited threshold: no color from the backend
+        self.assertFalse(body["stored"])
+        after = len(self.c.get("/api/crew/crew_angel/series/body_temperature").json()["points"])
+        self.assertEqual(before, after)
+
+    def test_checkin_store_shows_up_in_overview(self):
+        r = self.c.post("/api/crew/crew_paulo/checkin", json={"values": {"temp": 39.6}, "store": True})
+        self.assertEqual(r.status_code, 200)
+        self.assertIsNotNone(r.json()["items"][0]["entry_id"])
+        ov = {x["id"]: x for x in self.c.get("/api/crew/crew_paulo/overview").json()["indicators"]}
+        self.assertEqual(ov["body_temperature"]["latest"], 39.6)
+        self.assertEqual(ov["body_temperature"]["level"], "red")
+        self.assertEqual(self.c.post("/api/crew/nobody/checkin", json={"values": {}}).status_code, 404)
+
+    def test_delete_entries_keeps_the_simulated_mission(self):
+        sim = len(self.c.get("/api/crew/crew_said/series/sleep_duration").json()["points"])
+        self.c.post("/api/crew/crew_said/checkin", json={"values": {"sleep": 4.0}, "store": True})
+        self.assertEqual(self.c.get("/api/crew/crew_said/series/sleep_duration").json()["points"][-1]["value"], 4.0)
+        r = self.c.delete("/api/crew/crew_said/entries")
+        self.assertEqual(r.status_code, 200)
+        self.assertGreaterEqual(r.json()["deleted"], 1)
+        pts = self.c.get("/api/crew/crew_said/series/sleep_duration").json()["points"]
+        self.assertEqual(len(pts), sim)
+        self.assertTrue(all(p["source"] == "simulated" for p in pts))
+        self.assertEqual(self.c.delete("/api/crew/nobody/entries").status_code, 404)
+
+    def test_checkin_needs_consent_to_store(self):
+        crew = get_crew()
+        crew[2]["consent"]["store_daily_history"] = False
+        try:
+            self.assertEqual(self.c.post("/api/crew/crew_angel/checkin", json={"values": {"hr": 70}, "store": True}).status_code, 403)
+            self.assertEqual(self.c.post("/api/crew/crew_angel/checkin", json={"values": {"hr": 70}}).status_code, 200)
+        finally:
+            crew[2]["consent"]["store_daily_history"] = True
+
     def test_consent_is_enforced_with_403(self):
         crew = get_crew()
         crew[0]["consent"]["store_daily_history"] = False      # cached list: restore afterwards
