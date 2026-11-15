@@ -1,3 +1,5 @@
 runtime/*
 !runtime/.gitkeep
 __pycache__/
+*.template
+face_templates/

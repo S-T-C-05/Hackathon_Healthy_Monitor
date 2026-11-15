@@ -1,21 +1,21 @@
 [
   {
-    "id": "crew_kenji",
-    "name": "Kenji Albrecht",
-    "role": "Flight engineer",
-    "sex": null,
-    "age": null,
+    "id": "crew_zelinda",
+    "name": "Zelinda",
+    "role": "analysis specialist",
+    "sex": "F",
+    "age": 24,
     "mission_day": 121,
     "mission_length_days": 180,
     "baseline": {
-      "sleep_duration": 7.0,
+      "sleep_duration": 7.6,
       "reaction_time": 250,
       "exercise_minutes": 150,
-      "resting_heart_rate": 62,
+      "resting_heart_rate": 68,
       "body_temperature": 36.6
     },
     "baseline_status": "placeholder_simulated",
-    "demo_story": "Sleeps less and less since day 75 and feels fine. Reaction time is about 20% above his baseline. The app links both and tells him to inform the medical officer.",
+    "demo_story": "Sleeps less and less since day 75 and feels fine. Reaction time is about 20% above baseline. The app links both and tells the crew member to inform the medical officer.",
     "scenario": {
       "effects": [
         {
@@ -32,21 +32,32 @@
         }
       ]
     },
-    "simulated": true
+    "data_source": "simulated",
+    "team_member": true,
+    "face": {
+      "status": "not_enrolled",
+      "enrolled_at": null,
+      "template_ref": null
+    },
+    "consent": {
+      "face_recognition": true,
+      "store_daily_history": true,
+      "consent_date": "2026-11-14"
+    }
   },
   {
-    "id": "crew_navarro",
-    "name": "Navarro",
-    "role": null,
-    "sex": null,
-    "age": null,
+    "id": "crew_paulo",
+    "name": "Paulo",
+    "role": "designer",
+    "sex": "M",
+    "age": 28,
     "mission_day": 121,
     "mission_length_days": 180,
     "baseline": {
-      "sleep_duration": 7.0,
+      "sleep_duration": 7.6,
       "reaction_time": 250,
       "exercise_minutes": 150,
-      "resting_heart_rate": 62,
+      "resting_heart_rate": 68,
       "body_temperature": 36.6
     },
     "baseline_status": "placeholder_simulated",
@@ -61,21 +72,32 @@
         }
       ]
     },
-    "simulated": true
+    "data_source": "simulated",
+    "team_member": true,
+    "face": {
+      "status": "not_enrolled",
+      "enrolled_at": null,
+      "template_ref": null
+    },
+    "consent": {
+      "face_recognition": true,
+      "store_daily_history": true,
+      "consent_date": "2026-11-14"
+    }
   },
   {
-    "id": "crew_diallo",
-    "name": "Diallo",
-    "role": null,
-    "sex": null,
-    "age": null,
+    "id": "crew_angel",
+    "name": "Angel",
+    "role": "data scientist",
+    "sex": "M",
+    "age": 48,
     "mission_day": 121,
     "mission_length_days": 180,
     "baseline": {
-      "sleep_duration": 7.0,
+      "sleep_duration": 7.6,
       "reaction_time": 250,
       "exercise_minutes": 150,
-      "resting_heart_rate": 62,
+      "resting_heart_rate": 68,
       "body_temperature": 36.6
     },
     "baseline_status": "placeholder_simulated",
@@ -96,21 +118,32 @@
         }
       ]
     },
-    "simulated": true
+    "data_source": "simulated",
+    "team_member": true,
+    "face": {
+      "status": "not_enrolled",
+      "enrolled_at": null,
+      "template_ref": null
+    },
+    "consent": {
+      "face_recognition": true,
+      "store_daily_history": true,
+      "consent_date": "2026-11-14"
+    }
   },
   {
-    "id": "crew_ferreira",
-    "name": "Ferreira",
-    "role": null,
-    "sex": null,
-    "age": null,
+    "id": "crew_said",
+    "name": "Said",
+    "role": "electrical engineer",
+    "sex": "M",
+    "age": 35,
     "mission_day": 121,
     "mission_length_days": 180,
     "baseline": {
-      "sleep_duration": 7.0,
+      "sleep_duration": 7.6,
       "reaction_time": 250,
       "exercise_minutes": 150,
-      "resting_heart_rate": 62,
+      "resting_heart_rate": 68,
       "body_temperature": 36.6
     },
     "baseline_status": "placeholder_simulated",
@@ -131,6 +164,17 @@
         }
       ]
     },
-    "simulated": true
+    "data_source": "simulated",
+    "team_member": true,
+    "face": {
+      "status": "not_enrolled",
+      "enrolled_at": null,
+      "template_ref": null
+    },
+    "consent": {
+      "face_recognition": true,
+      "store_daily_history": true,
+      "consent_date": "2026-11-14"
+    }
   }
 ]

@@ -45,7 +45,7 @@ class Source(_Strict):
     container: Optional[str]
     authors: Optional[list[str]]
     year: Optional[int]
-    type: Literal["book_chapter", "journal_article", "nasa_report", "presentation", "dataset"]
+    type: Literal["book_chapter", "journal_article", "nasa_report", "presentation", "web_page", "dataset"]
     pages_cited: Optional[str]
     url: Optional[str]
     doi: Optional[str]
@@ -54,9 +54,20 @@ class Source(_Strict):
     notes: Optional[str]
 
 
+class Rule(_Strict):
+    """One sourced cut-off. The app applies the highest level that matches."""
+
+    level: Literal["yellow", "red"]
+    op: Literal["<", "<=", ">", ">="]
+    value: float
+    unit: Optional[str] = None
+    source_id: str
+    note: Optional[str] = None
+
+
 class Thresholds(_Strict):
-    type: Literal["personal_baseline", "reference_range", "none"]
-    status: Literal["needs_source", "dataset_range", "sourced", "not_applicable"]
+    type: Literal["personal_baseline", "reference_range", "absolute_limits", "none"]
+    status: Literal["needs_source", "demo_criterion", "dataset_range", "sourced", "not_applicable"]
     # personal_baseline
     warn_deviation_pct: Optional[float] = None
     alert_deviation_pct: Optional[float] = None
@@ -64,6 +75,11 @@ class Thresholds(_Strict):
     unit: Optional[str] = None
     by_sex: Optional[dict[str, dict[str, float]]] = None
     range_note: Optional[str] = None
+    # absolute_limits: list of sourced rules (each cites its own source)
+    rules: list[Rule] = []
+    # Sources that justify the numbers (ids in bibliography.json).
+    # Required when status == "sourced".
+    source_ids: list[str] = []
 
 
 class Actions(_Strict):
@@ -103,6 +119,20 @@ class Scenario(_Strict):
     effects: list[Effect]
 
 
+class FaceEnrollment(_Strict):
+    status: Literal["not_enrolled", "enrolled"]
+    enrolled_at: Optional[str]
+    # Key or file name of the face template stored LOCALLY (browser storage or
+    # data/runtime/, which is gitignored). Never put the template itself here.
+    template_ref: Optional[str]
+
+
+class Consent(_Strict):
+    face_recognition: bool
+    store_daily_history: bool
+    consent_date: Optional[str]
+
+
 class CrewMember(_Strict):
     id: str
     name: str
@@ -115,7 +145,12 @@ class CrewMember(_Strict):
     baseline_status: Literal["placeholder_simulated", "reviewed"]
     demo_story: str
     scenario: Scenario
-    simulated: bool
+    # simulated: values come from simulate.py. live: real daily entries.
+    # mixed: simulated past plus real entries from today on.
+    data_source: Literal["simulated", "live", "mixed"]
+    team_member: bool
+    face: FaceEnrollment
+    consent: Consent
 
 
 class EvidenceCard(BaseModel):
@@ -140,3 +175,7 @@ class EvidenceCard(BaseModel):
     validation_status: str
     source_population_rule: str
     source_publication_year: int
+    # Links to the rest of data/ (required; validate.py checks them).
+    source_id: Optional[str] = None
+    system: Optional[System] = None
+    indicator_ids: list[str] = []

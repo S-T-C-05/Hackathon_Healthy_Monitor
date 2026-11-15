@@ -244,17 +244,23 @@
   {
     "id": "jones2022",
     "label": "Jones et al., 2022",
-    "title": null,
+    "title": "Sleep deficiency in spaceflight is associated with degraded neurobehavioral functions and elevated stress in astronauts on six-month missions aboard the International Space Station",
     "container": "Sleep",
-    "authors": null,
+    "authors": [
+      "Jones, C. W.",
+      "Basner, M.",
+      "Mollicone, D. J.",
+      "Mott, C. M.",
+      "Dinges, D. F."
+    ],
     "year": 2022,
     "type": "journal_article",
     "pages_cited": null,
     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8919197",
     "doi": null,
-    "astronaut_evidence": null,
-    "checked": false,
-    "notes": "From the team notes; title/authors not confirmed yet."
+    "astronaut_evidence": true,
+    "checked": true,
+    "notes": "24 astronauts (6-month ISS missions, 2009-2014). Average in-flight sleep 6.5 +/- 1.4 h. Defines PVT-B lapse as RT >= 355 ms and false start as RT < 130 ms. Opened and read on 2026-11-14 (by Claude, via web). A teammate should re-confirm before the final release."
   },
   {
     "id": "nasrini2020",
@@ -389,7 +395,7 @@
     "doi": null,
     "astronaut_evidence": true,
     "checked": false,
-    "notes": "CMP, 4 crew members, 7 timepoints pre/post flight. Mission and cohort metadata still to confirm. License to confirm."
+    "notes": "Comprehensive metabolic panel, 4 crew members, 7 timepoints pre/post flight. Consistent with the Inspiration4 mission (4 civilian astronauts, SpaceX, metabolic and immune panels in OSDR), but the LSDS-8 / LSDS-64 identifiers were not confirmed because OSDR pages cannot be read automatically. NASA says there are no restrictions on the use of OSDR data (AWS Open Data registry) and NASA data repositories label each dataset's license; the repository asks to acknowledge the source. Confirm on the dataset page."
   },
   {
     "id": "lsds-64",
@@ -404,7 +410,7 @@
     "doi": null,
     "astronaut_evidence": true,
     "checked": false,
-    "notes": "203 analytes in NPQ units, 4 crew members. License to confirm."
+    "notes": "Alamar urine immune panel (NPQ units), 4 crew members. Same caveat on mission and identifiers as lsds-8. NASA says there are no restrictions on the use of OSDR data (AWS Open Data registry) and NASA data repositories label each dataset's license; the repository asks to acknowledge the source. Confirm on the dataset page."
   },
   {
     "id": "glds-530",
@@ -419,21 +425,155 @@
     "doi": null,
     "astronaut_evidence": true,
     "checked": false,
-    "notes": "Group means only in our database (OSD dataset). License to confirm."
+    "notes": "The SOMA site lists OSD-530 as the JAXA Cell-Free Epigenome (CFE) study, so it is probably NOT the same people as C001-C004: do not join it with the CMP or urine data. NASA says there are no restrictions on the use of OSDR data (AWS Open Data registry) and NASA data repositories label each dataset's license; the repository asks to acknowledge the source. Confirm on the dataset page."
   },
   {
     "id": "pbio-3000669",
     "label": "PLoS Biology pbio.3000669, S1 Data (Fig. 2)",
-    "title": null,
-    "container": "PLoS Biology",
-    "authors": null,
-    "year": null,
+    "title": "NASA's first ground-based Galactic Cosmic Ray Simulator: Enabling a new era in space radiobiology research",
+    "container": "PLoS Biology 18(5): e3000669",
+    "authors": [
+      "Simonsen, L. C.",
+      "Slaba, T. C.",
+      "Guida, P.",
+      "Rusek, A."
+    ],
+    "year": 2020,
     "type": "dataset",
     "pages_cited": null,
-    "url": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7236977",
     "doi": "10.1371/journal.pbio.3000669",
     "astronaut_evidence": null,
     "checked": false,
-    "notes": "Charge (Z) contribution to fluence, dose and dose equivalent. Fig. 7 column has a suspect value; not used. License to confirm."
+    "notes": "Open-access article (PLOS). Our table comes from its S1 Data (Fig. 2): contribution by charge (Z) to fluence, dose and dose equivalent. The PDF links to a CC0 license: confirm on the article page. Fig. 7 column has a suspect value and is not used."
+  },
+  {
+    "title": "Recommended Amount of Sleep for a Healthy Adult: A Joint Consensus Statement of the American Academy of Sleep Medicine and Sleep Research Society",
+    "container": "Sleep 2015;38(6):843-844",
+    "authors": [
+      "Watson, N. F.",
+      "Badr, M. S.",
+      "Belenky, G.",
+      "et al."
+    ],
+    "year": 2015,
+    "pages_cited": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4434546/",
+    "doi": "10.5665/sleep.4716",
+    "astronaut_evidence": false,
+    "checked": true,
+    "notes": "Adults 18-60 years: 7 or more hours per night on a regular basis. Terrestrial consensus, not astronaut evidence. Opened and read on 2026-11-14 (by Claude, via web). A teammate should re-confirm before the final release.",
+    "id": "watson2015-aasm-srs",
+    "label": "Watson et al., 2015 (AASM and SRS)",
+    "type": "journal_article"
+  },
+  {
+    "title": "Seven or more hours of sleep per night: A health necessity for adults",
+    "container": "American Academy of Sleep Medicine",
+    "authors": null,
+    "year": 2015,
+    "pages_cited": null,
+    "url": "https://aasm.org/seven-or-more-hours-of-sleep-per-night-a-health-necessity-for-adults/",
+    "doi": null,
+    "astronaut_evidence": false,
+    "checked": true,
+    "notes": "States that sleeping six or fewer hours per night is inadequate to sustain health and safety in adults (quote of the panel moderator). Press release, not the paper. Opened and read on 2026-11-14 (by Claude, via web). A teammate should re-confirm before the final release.",
+    "id": "aasm-press-2015",
+    "label": "AASM press release on the 2015 consensus",
+    "type": "web_page"
+  },
+  {
+    "title": "Heart rate: What's normal?",
+    "container": "Mayo Clinic (Mayo Clinic Staff)",
+    "authors": null,
+    "year": 2025,
+    "pages_cited": null,
+    "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate",
+    "doi": null,
+    "astronaut_evidence": false,
+    "checked": true,
+    "notes": "Normal resting heart rate for adults 60-100 bpm. Talk to a professional if regularly above 100, or often below 60 when not a trained athlete. General clinical reference. Opened and read on 2026-11-14 (by Claude, via web). A teammate should re-confirm before the final release.",
+    "id": "mayo-heart-rate-2025",
+    "label": "Mayo Clinic: Heart rate, what's normal? (Oct 2025)",
+    "type": "web_page"
+  },
+  {
+    "title": "Fever",
+    "container": "Cleveland Clinic",
+    "authors": null,
+    "year": 2023,
+    "pages_cited": null,
+    "url": "https://my.clevelandclinic.org/health/articles/fever",
+    "doi": null,
+    "astronaut_evidence": false,
+    "checked": true,
+    "notes": "Adult fever: 100.4 F (38 C) oral. Above 103 F (39.4 C): call a healthcare provider. Forehead reads about 0.6 C lower than oral. General clinical reference. Opened and read on 2026-11-14 (by Claude, via web). A teammate should re-confirm before the final release.",
+    "id": "cleveland-fever-2023",
+    "label": "Cleveland Clinic: Fever (reviewed 2023-05-31)",
+    "type": "web_page"
+  },
+  {
+    "title": "Validity and Sensitivity of a Brief Psychomotor Vigilance Test (PVT-B) to Total and Partial Sleep Deprivation",
+    "container": "Acta Astronautica 2011;69(11-12):949-959",
+    "authors": [
+      "Basner, M.",
+      "Mollicone, D.",
+      "Dinges, D. F."
+    ],
+    "year": 2011,
+    "pages_cited": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3197786",
+    "doi": "10.1016/j.actaastro.2011.07.015",
+    "astronaut_evidence": null,
+    "checked": false,
+    "notes": "Defines the 3-minute PVT-B and the 355 ms lapse threshold (read only through the abstract and search excerpts).",
+    "id": "basner2011-pvtb",
+    "label": "Basner, Mollicone & Dinges, 2011",
+    "type": "journal_article"
+  },
+  {
+    "id": "nasa-data-license",
+    "label": "NASA science data licenses",
+    "title": "Data licenses on NASA science data repositories",
+    "container": "science.data.nasa.gov",
+    "authors": null,
+    "year": null,
+    "type": "web_page",
+    "pages_cited": null,
+    "url": "https://science.data.nasa.gov/about/license",
+    "doi": null,
+    "astronaut_evidence": null,
+    "checked": true,
+    "notes": "Three license categories: labeled per dataset, CC0 for NASA-led mission data unless restricted, and as-is for the rest. Users are asked to cite the original source. Opened and read on 2026-11-14 (by Claude, via web)."
+  },
+  {
+    "id": "osdr-faq-acknowledgement",
+    "label": "OSDR FAQ: how to cite",
+    "title": "OSDR Frequently Asked Questions",
+    "container": "NASA",
+    "authors": null,
+    "year": null,
+    "type": "web_page",
+    "pages_cited": null,
+    "url": "https://www.nasa.gov/?p=689875",
+    "doi": null,
+    "astronaut_evidence": null,
+    "checked": true,
+    "notes": "General acknowledgement text: 'Data are courtesy of the NASA Open Science Data Repository (https://osdr.nasa.gov/bio/repo)'. The preferred citation is the dataset citation button on each OSD page. Read on 2026-11-14 (by Claude, via web)."
+  },
+  {
+    "id": "i4-osdr-2024",
+    "label": "Inspiration4 data access through OSDR (2024)",
+    "title": "Inspiration4 data access through the NASA Open Science Data Repository",
+    "container": "npj Microgravity 2024;10:56",
+    "authors": null,
+    "year": 2024,
+    "type": "journal_article",
+    "pages_cited": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11094041",
+    "doi": "10.1038/s41526-024-00393-5",
+    "astronaut_evidence": null,
+    "checked": false,
+    "notes": "Describes the I4 data in OSDR (4 civilian astronauts, omics and clinical assays, metabolic and immune panels). Crew consented to data sharing. The page could not be opened in full; read through search excerpts only."
   }
 ]

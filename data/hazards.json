@@ -16,7 +16,10 @@
     "source_location": "Printed pages 213–218; especially the human-data review on printed pages 217–218.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch7",
+    "system": "cardiovascular",
+    "indicator_ids": ["blood_pressure"]
     },
     {
     "card_id": "ASTRA-BM-001", 
@@ -35,7 +38,10 @@
     "source_location": "Printed pages 359–362.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch15",
+    "system": "bone_muscle",
+    "indicator_ids": ["muscle_strength"]
     },
     {
     "card_id": "ASTRA-BM-002", 
@@ -54,7 +60,10 @@
     "source_location": "Printed pages 361–362.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch15",
+    "system": "bone_muscle",
+    "indicator_ids": ["exercise_minutes"]
     },
     {
     "card_id": "ASTRA-IMM-001", 
@@ -73,7 +82,10 @@
     "source_location": "Printed pages 215–218.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch7",
+    "system": "immune_metabolic",
+    "indicator_ids": ["glucose"]
     },
     {
     "card_id": "ASTRA-SLEEP-001", 
@@ -92,7 +104,10 @@
     "source_location": "Printed pages 85 onward; use the individual study citations in Chapter 3 when extracting numerical results.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch3",
+    "system": "mental_sleep",
+    "indicator_ids": ["sleep_duration"]
     },
     {
     "card_id": "ASTRA-SLEEP-002", 
@@ -110,7 +125,10 @@
     "source_location": "Printed pages 85 onward; Chapter 3 sleep evidence section.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch3",
+    "system": "mental_sleep",
+    "indicator_ids": ["sleep_quality"]
     },
     {
     "card_id": "ASTRA-SLEEP-003", 
@@ -129,7 +147,10 @@
     "source_location": "Printed pages 85 onward; circadian and lighting discussion.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch3",
+    "system": "mental_sleep",
+    "indicator_ids": ["sleep_timing"]
     },
     {
     "card_id": "ASTRA-SLEEP-004", 
@@ -148,7 +169,10 @@
     "source_location": "Chapter 3, environmental factors affecting sleep; printed page to be verified against the cited underlying study before final publication.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch3",
+    "system": "mental_sleep",
+    "indicator_ids": ["sleep_duration"]
     },
     {
     "card_id": "ASTRA-TEAM-001", 
@@ -167,7 +191,10 @@
     "source_location": "Printed pages 45–72.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch2",
+    "system": "mental_sleep",
+    "indicator_ids": ["crew_cohesion"]
     },
     {
     "card_id": "ASTRA-RAD-001", 
@@ -186,7 +213,10 @@
     "source_location": "Printed page 140, Figure 4-6.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch4",
+    "system": "radiation",
+    "indicator_ids": ["chromosomal_aberrations"]
     },
     {
     "card_id": "ASTRA-RAD-002", 
@@ -205,7 +235,10 @@
     "source_location": "Printed pages 171–187.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch5",
+    "system": "radiation",
+    "indicator_ids": ["radiation_dose"]
     },
     {
     "card_id": "ASTRA-RAD-003", 
@@ -224,7 +257,10 @@
     "source_location": "Printed page 196.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch6",
+    "system": "radiation",
+    "indicator_ids": ["light_flashes"]
     },
     {
     "card_id": "ASTRA-RAD-004", 
@@ -243,7 +279,10 @@
     "source_location": "Printed pages 194, 196, and 207.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch6",
+    "system": "radiation",
+    "indicator_ids": ["cns_function"]
     },
     {
     "card_id": "ASTRA-ENV-001", 
@@ -262,7 +301,10 @@
     "source_location": "Printed pages 325–327; crew accounts and conclusion.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch13",
+    "system": "environment",
+    "indicator_ids": ["lunar_dust_symptoms"]
     },
     {
     "card_id": "ASTRA-ENV-002", 
@@ -281,7 +323,10 @@
     "source_location": "Printed pages 275–276.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch10",
+    "system": "environment",
+    "indicator_ids": ["workspace_accessibility"]
     },
     {
     "card_id": "ASTRA-ENV-003", 
@@ -300,7 +345,10 @@
     "source_location": "Printed page 274.", 
     "validation_status": "REVIEW — INDIRECT HUMAN TESTING", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch10",
+    "system": "environment",
+    "indicator_ids": ["suit_discomfort"]
     },
     {
     "card_id": "ASTRA-ENV-004", 
@@ -319,7 +367,10 @@
     "source_location": "Printed page 326.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch13",
+    "system": "environment",
+    "indicator_ids": ["dust_contact_events"]
     },
     {
     "card_id": "ASTRA-ENV-005", 
@@ -338,6 +389,31 @@
     "source_location": "Printed pages 361–362.", 
     "validation_status": "REVIEW", 
     "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.", 
-    "source_publication_year": 2009
+    "source_publication_year": 2009,
+    "source_id": "nasa-sp-2009-3405-ch15",
+    "system": "environment",
+    "indicator_ids": ["exercise_minutes"]
+    },
+    {
+    "card_id": "ASTRA-COG-001",
+    "category": "Mental Health and Sleep",
+    "title": "Short sleep and slower vigilant-attention response speed in ISS astronauts",
+    "scientific_summary": "In 24 astronauts on 6-month ISS missions, a 3-minute Psychomotor Vigilance Test-Brief (PVT-B) was done with the Reaction Self-Test alongside self-reported sleep. Response speed (the reciprocal of reaction time) was associated with sleep duration across 1,774 assessments and was significantly slower when sleep was 6 hours or less (34.9% of nights) than when it was more than 6 hours. Lapses (reaction time of 355 ms or more) and false starts were also associated with sleep duration, but the pairwise comparisons were not significant after correction for multiple comparisons. The article does not report separate pre-flight and in-flight values for lapses and false starts.",
+    "key_findings": ["Astronauts slept about 6.5 ± 1.4 hours per night in flight and the scheduled 8.5-hour sleep opportunity on only 5.9% of nights.", "Response speed was significantly slower on nights with 6 hours of sleep or less than on nights with more than 6 hours.", "Lapses and false starts were associated with sleep duration, but pairwise differences did not survive multiple-comparison correction.", "Response speed improved modestly across mission quarters; the authors note higher caffeine use in the fourth quarter as a possible reason."],
+    "population": "24 astronauts (19 male, 5 female), mostly NASA, scheduled for 6-month ISS missions between 2009 and 2014.",
+    "study_environment": "International Space Station; data collection began 180 days before launch, continued every 4 days in flight and up to 90 days after landing.",
+    "evidence_type": "Direct human observational evidence in astronauts (in flight).",
+    "indicators": ["PVT-B response speed", "reaction time", "lapses of attention (reaction time of 355 ms or more)", "false starts (reaction time under 130 ms)", "self-reported sleep duration"],
+    "methods": ["Reaction Self-Test on the ISS: morning self-report of sleep timing and duration plus the 3-minute PVT-B; mixed models were used to handle missing data, which were not imputed."],
+    "limitations": ["Sleep was self-reported and the design is observational, so it cannot show causation.", "Circadian misalignment could not be evaluated because continuous sleep-wake data were lacking.", "Caffeine may have influenced the fourth-quarter improvement, and sleep is not the only factor affecting vigilant attention.", "Modest sample (19 males, 5 females) that did not allow sex-difference analyses.", "The article gives no cut-off for reaction time or lapse count that would define a concerning result."],
+    "operational_relevance": "Supports pairing a short reaction test with sleep-duration monitoring and comparing each person with their own baseline. It does not provide a threshold for reaction time.",
+    "source": "Jones, C. W., Basner, M., Mollicone, D. J., Mott, C. M., & Dinges, D. F. (2022). Sleep deficiency in spaceflight is associated with degraded neurobehavioral functions and elevated stress in astronauts on six-month missions aboard the International Space Station. Sleep, 45(3), zsac006.",
+    "source_location": "Results: PVT-B response speed, lapses and false starts, and sleep duration (open-access full text, PMC8919197).",
+    "validation_status": "REVIEW",
+    "source_population_rule": "Core evidence requires human participants who are astronauts; non-astronaut human, animal, and cell studies are excluded or explicitly labeled indirect.",
+    "source_publication_year": 2022,
+    "source_id": "jones2022",
+    "system": "mental_sleep",
+    "indicator_ids": ["reaction_time", "sleep_duration"]
     }
 ]

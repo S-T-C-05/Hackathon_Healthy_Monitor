@@ -7,6 +7,8 @@
     "rnaseq_group_means": 57773,
     "radiation_charge_contrib": 28
   },
+  "acknowledgement": "Data are courtesy of the NASA Open Science Data Repository (https://osdr.nasa.gov/bio/repo)",
+  "cohort_note": "LSDS-8 and LSDS-64 look like the Inspiration4 crew (4 civilians, SpaceX, ~3-day flight) but the identifiers are not confirmed. OSD-530 is listed by SOMA as a JAXA study, so it is probably not the same people as C001-C004.",
   "datasets": [
     {
       "id": "lsds-8",
@@ -14,26 +16,26 @@
         "cmp_by_subject.json",
         "cmp_reference_ranges.json"
       ],
-      "license": "TO_CONFIRM"
+      "license": "No restrictions stated for OSDR data; acknowledge OSDR. Confirm on the dataset page."
     },
     {
       "id": "pbio-3000669",
       "used_in": [
         "radiation_by_charge.json"
       ],
-      "license": "TO_CONFIRM"
+      "license": "Open-access PLOS article; the PDF links CC0. Confirm on the article page."
     },
     {
       "id": "lsds-64",
       "used_in": [],
-      "license": "TO_CONFIRM",
+      "license": "Same as lsds-8.",
       "note": "In the database, not exported yet (NPQ units, no clinical ranges)."
     },
     {
       "id": "glds-530",
       "used_in": [],
-      "license": "TO_CONFIRM",
-      "note": "In the database, not exported yet (group means only)."
+      "license": "Same as lsds-8.",
+      "note": "In the database, not exported yet (group means only; probably a different cohort)."
     }
   ],
   "cleaning_stats": {

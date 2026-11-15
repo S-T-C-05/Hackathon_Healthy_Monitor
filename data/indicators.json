@@ -8,10 +8,35 @@
     "input": "manual",
     "concern_direction": "low",
     "thresholds": {
-      "type": "personal_baseline",
-      "status": "needs_source",
+      "type": "absolute_limits",
+      "status": "sourced",
       "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "alert_deviation_pct": null,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Evaluate on the usual pattern, not on one night (the window length is a team design choice). Terrestrial consensus for healthy adults. ISS astronauts averaged 6.5 h in flight (Jones 2022), so yellow will be common: keep the personal trend visible.",
+      "rules": [
+        {
+          "level": "yellow",
+          "op": "<",
+          "value": 7,
+          "unit": "h",
+          "source_id": "watson2015-aasm-srs",
+          "note": "Adults 18-60: 7 or more hours per night on a regular basis."
+        },
+        {
+          "level": "red",
+          "op": "<=",
+          "value": 6,
+          "unit": "h",
+          "source_id": "aasm-press-2015",
+          "note": "Six or fewer hours per night is inadequate to sustain health and safety in adults."
+        }
+      ],
+      "source_ids": [
+        "watson2015-aasm-srs",
+        "aasm-press-2015"
+      ]
     },
     "why_in_space": "Astronaut studies from Shuttle and Mir missions report shorter sleep in flight. Short sleep goes together with fatigue and slower performance, so your own trend matters more than one night.",
     "how_to_measure": "Log the hours you slept each morning, or import them from a wrist device if the crew has one.",
@@ -29,17 +54,20 @@
     "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
     "card_ids": [
       "ASTRA-SLEEP-001",
-      "ASTRA-SLEEP-004"
+      "ASTRA-SLEEP-004",
+      "ASTRA-COG-001"
     ],
     "source_ids": [
       "nasa-sp-2009-3405-ch3",
       "barger2014",
-      "jones2022"
+      "jones2022",
+      "watson2015-aasm-srs",
+      "aasm-press-2015"
     ],
     "evidence_level": "astronaut_core",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": "The 2009 evidence is small-sample and historical. Thresholds must come from a cited source or stay as deviation from personal baseline."
+    "notes": "Thresholds sourced from a terrestrial consensus (healthy adults 18-60), not from astronaut data. The in-flight reality (6.5 h average, Jones 2022) means the personal trend is still the main message."
   },
   {
     "id": "sleep_quality",
@@ -166,12 +194,17 @@
     "concern_direction": "high",
     "thresholds": {
       "type": "personal_baseline",
-      "status": "needs_source",
-      "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "status": "demo_criterion",
+      "warn_deviation_pct": 10,
+      "alert_deviation_pct": 20,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Team demo criterion: NOT from a source. Round numbers chosen by the team for the demo, applied to the change of the recent median against the person's own baseline.",
+      "rules": [],
+      "source_ids": []
     },
     "why_in_space": "Short repeated reaction tests compared with your own baseline are how NASA tracks alertness and performance. Slower reactions can show up before you feel tired.",
-    "how_to_measure": "Do the 1-3 minute reaction self-test at the same time of day.",
+    "how_to_measure": "Do the 3-minute reaction self-test (PVT-B style) at the same time of day. Save the mean reaction time, the number of lapses (RT >= 355 ms) and false starts (RT < 130 ms).",
     "actions": {
       "yellow": [
         "Check your sleep trend: the two often move together."
@@ -183,16 +216,20 @@
       ]
     },
     "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
-    "card_ids": [],
+    "card_ids": [
+      "ASTRA-COG-001"
+    ],
     "source_ids": [
       "roma2018-bhp-measures",
       "nasrini2020",
-      "tu2022"
+      "tu2022",
+      "jones2022",
+      "basner2011-pvtb"
     ],
     "evidence_level": "astronaut_core",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": "No evidence card yet in hazards.json. Add one from Roma 2018 / Nasrini 2020 once opened."
+    "notes": "Lapse and false-start definitions come from NASA's Reaction Self-Test (Jones 2022). No published cut-off for the change from baseline was found, so 10% / 20% is a team demo criterion."
   },
   {
     "id": "exercise_minutes",
@@ -204,9 +241,14 @@
     "concern_direction": "low",
     "thresholds": {
       "type": "personal_baseline",
-      "status": "needs_source",
-      "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "status": "demo_criterion",
+      "warn_deviation_pct": 20,
+      "alert_deviation_pct": 40,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Team demo criterion: NOT from a source. Round numbers chosen by the team for the demo, applied to the change of the recent median against the person's own baseline.",
+      "rules": [],
+      "source_ids": []
     },
     "why_in_space": "Exercise is the countermeasure used consistently against muscle atrophy and strength loss in microgravity. The 2009 report describes about 2.5 hours per day on six days a week on the ISS (setup and hygiene included).",
     "how_to_measure": "Log minutes of resistance and aerobic exercise each day.",
@@ -230,7 +272,7 @@
     "evidence_level": "astronaut_core",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": null
+    "notes": "No health limit exists for this. 20% / 40% below the person's own baseline is a team demo criterion. The 2009 ISS schedule (about 2.5 h on 6 of 7 days) is historical context, not a threshold."
   },
   {
     "id": "muscle_strength",
@@ -242,12 +284,17 @@
     "concern_direction": "low",
     "thresholds": {
       "type": "personal_baseline",
-      "status": "needs_source",
-      "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "status": "demo_criterion",
+      "warn_deviation_pct": 5,
+      "alert_deviation_pct": 10,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Team demo criterion: NOT from a source. Round numbers chosen by the team for the demo, applied to the change of the recent median against the person's own baseline.",
+      "rules": [],
+      "source_ids": []
     },
     "why_in_space": "Microgravity is associated with muscle atrophy and lower strength and endurance. The chapter gives no quantitative muscle-loss estimate, so only the change from your own baseline is meaningful.",
-    "how_to_measure": "Protocol to be defined by the team: repeat the same simple strength check on a fixed schedule.",
+    "how_to_measure": "Demo: simulated value. A real protocol would repeat the same simple strength check on a fixed weekly schedule.",
     "actions": {
       "yellow": [
         "Note it and check again tomorrow.",
@@ -268,7 +315,7 @@
     "evidence_level": "astronaut_core",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": "Needs a defined, safe measurement protocol before it can be a real input."
+    "notes": "No quantitative muscle-loss estimate exists in the cited chapter. 5% / 10% below the person's own baseline is a team demo criterion."
   },
   {
     "id": "calcium",
@@ -324,10 +371,34 @@
     "input": "camera",
     "concern_direction": "both",
     "thresholds": {
-      "type": "personal_baseline",
-      "status": "needs_source",
+      "type": "absolute_limits",
+      "status": "sourced",
       "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "alert_deviation_pct": null,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Resting, calm, awake. There is no sourced red level for heart rate alone: escalate with other signs (for example fever) according to the crew medical rules. Athletes can sit below 60.",
+      "rules": [
+        {
+          "level": "yellow",
+          "op": ">",
+          "value": 100,
+          "unit": "bpm",
+          "source_id": "mayo-heart-rate-2025",
+          "note": "Talk to a professional if resting rate is regularly above 100."
+        },
+        {
+          "level": "yellow",
+          "op": "<",
+          "value": 60,
+          "unit": "bpm",
+          "source_id": "mayo-heart-rate-2025",
+          "note": "Applies if not a trained athlete: talk to a professional if often below 60."
+        }
+      ],
+      "source_ids": [
+        "mayo-heart-rate-2025"
+      ]
     },
     "why_in_space": "Pulse is a quick whole-body signal. A resting rate that moves away from your own baseline, especially together with fever, deserves attention.",
     "how_to_measure": "Camera pulse (rPPG) or manual count while resting. Compare with a pulse oximeter or a manual count before trusting the camera.",
@@ -342,11 +413,13 @@
     },
     "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
     "card_ids": [],
-    "source_ids": [],
-    "evidence_level": "none_yet",
+    "source_ids": [
+      "mayo-heart-rate-2025"
+    ],
+    "evidence_level": "indirect",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": "No source yet for a threshold. Camera accuracy still to be tested with a real person."
+    "notes": "General clinical reference, not astronaut-specific. No sourced red level. Camera accuracy still to be tested with a real person."
   },
   {
     "id": "blood_pressure",
@@ -394,13 +467,37 @@
     "input": "manual",
     "concern_direction": "high",
     "thresholds": {
-      "type": "personal_baseline",
-      "status": "needs_source",
+      "type": "absolute_limits",
+      "status": "sourced",
       "warn_deviation_pct": null,
-      "alert_deviation_pct": null
+      "alert_deviation_pct": null,
+      "unit": null,
+      "by_sex": null,
+      "range_note": "Values refer to ORAL readings. Forehead readings run about 0.6 C lower, rectal and ear about 0.6 C higher. Record the measurement site.",
+      "rules": [
+        {
+          "level": "yellow",
+          "op": ">=",
+          "value": 38.0,
+          "unit": "degC",
+          "source_id": "cleveland-fever-2023",
+          "note": "Adult fever: 100.4 F (38 C), oral measurement."
+        },
+        {
+          "level": "red",
+          "op": ">",
+          "value": 39.4,
+          "unit": "degC",
+          "source_id": "cleveland-fever-2023",
+          "note": "Above 103 F (39.4 C): call a healthcare provider."
+        }
+      ],
+      "source_ids": [
+        "cleveland-fever-2023"
+      ]
     },
     "why_in_space": "Fever is a simple sign of infection or inflammation. Medical help is far away, so a fever is worth reporting early.",
-    "how_to_measure": "Oral or forehead thermometer at the same time of day.",
+    "how_to_measure": "Oral thermometer at the same time of day (the thresholds are for oral readings). Note the site if you use another.",
     "actions": {
       "yellow": [
         "Measure again in an hour.",
@@ -413,11 +510,13 @@
     },
     "escalate_when": "Any red result, or any yellow that keeps getting worse for several days.",
     "card_ids": [],
-    "source_ids": [],
-    "evidence_level": "none_yet",
+    "source_ids": [
+      "cleveland-fever-2023"
+    ],
+    "evidence_level": "indirect",
     "nasa_analyte": null,
     "review_status": "draft",
-    "notes": "No source yet for a threshold."
+    "notes": "General clinical reference, not astronaut-specific. Mild fevers are usually well tolerated, but medical help is far away, so the app asks to report early."
   },
   {
     "id": "glucose",

@@ -56,6 +56,29 @@ def main() -> int:
         if c.category not in CATEGORY_TO_SYSTEM:
             errors.append(f"hazards.json {c.card_id}: unknown category '{c.category}'")
 
+    # cards -> sources / system / indicators (and back)
+    import re
+    ind_ids_for_card: dict[str, set[str]] = {}
+    for i in inds:
+        for cid in i.card_ids:
+            ind_ids_for_card.setdefault(cid, set()).add(i.id)
+    for c in cards:
+        if c.source_id is None or c.system is None:
+            errors.append(f"hazards.json {c.card_id}: missing source_id or system")
+            continue
+        if c.source_id not in src_by_id:
+            errors.append(f"hazards.json {c.card_id}: source_id {c.source_id} not in bibliography.json")
+        m = re.search(r"Chapter (\d+)", c.source)
+        if m and c.source_id != f"nasa-sp-2009-3405-ch{m.group(1)}":
+            warnings.append(f"hazards.json {c.card_id}: source_id {c.source_id} does not match 'Chapter {m.group(1)}' in its source text")
+        if CATEGORY_TO_SYSTEM.get(c.category) != c.system:
+            errors.append(f"hazards.json {c.card_id}: system {c.system} does not match category '{c.category}'")
+        for iid in c.indicator_ids:
+            if iid not in ind_ids:
+                errors.append(f"hazards.json {c.card_id}: indicator_id {iid} not in indicators.json")
+        if set(c.indicator_ids) != ind_ids_for_card.get(c.card_id, set()):
+            errors.append(f"hazards.json {c.card_id}: indicator_ids {sorted(c.indicator_ids)} disagree with indicators.json card_ids {sorted(ind_ids_for_card.get(c.card_id, set()))}")
+
     # indicators -> cards / sources
     covered: set[str] = set()
     used_sources: set[str] = set()
@@ -75,8 +98,35 @@ def main() -> int:
                 used_sources.add(sid)
         if i.thresholds.status == "needs_source" and i.kind != "evidence_only":
             warnings.append(f"indicators.json {i.id}: thresholds still need a source")
-        if i.review_status == "draft":
-            pass
+        if i.thresholds.status == "demo_criterion":
+            t = i.thresholds
+            if t.type != "personal_baseline" or t.warn_deviation_pct is None or t.alert_deviation_pct is None:
+                errors.append(f"indicators.json {i.id}: demo_criterion needs personal_baseline with warn and alert percentages")
+            elif t.warn_deviation_pct >= t.alert_deviation_pct:
+                errors.append(f"indicators.json {i.id}: warn_deviation_pct must be lower than alert_deviation_pct")
+            warnings.append(f"indicators.json {i.id}: thresholds are a team demo criterion (not from a source)")
+        if i.thresholds.status == "sourced":
+            if not i.thresholds.source_ids:
+                errors.append(f"indicators.json {i.id}: status 'sourced' but thresholds.source_ids is empty")
+            for sid in i.thresholds.source_ids:
+                if sid not in src_by_id:
+                    errors.append(f"indicators.json {i.id}: thresholds source {sid} not in bibliography.json")
+                elif not src_by_id[sid].checked:
+                    errors.append(f"indicators.json {i.id}: thresholds source {sid} has checked=false (open it first)")
+            if i.thresholds.type == "absolute_limits":
+                if not i.thresholds.rules:
+                    errors.append(f"indicators.json {i.id}: 'sourced' absolute_limits needs at least one rule")
+                for r in i.thresholds.rules:
+                    if r.source_id not in src_by_id:
+                        errors.append(f"indicators.json {i.id}: rule source {r.source_id} not in bibliography.json")
+                    elif not src_by_id[r.source_id].checked:
+                        errors.append(f"indicators.json {i.id}: rule source {r.source_id} has checked=false (open it first)")
+                    if r.source_id not in i.thresholds.source_ids:
+                        errors.append(f"indicators.json {i.id}: rule source {r.source_id} missing from thresholds.source_ids")
+            if i.thresholds.type == "personal_baseline" and (
+                i.thresholds.warn_deviation_pct is None or i.thresholds.alert_deviation_pct is None
+            ):
+                errors.append(f"indicators.json {i.id}: 'sourced' personal_baseline needs warn and alert percentages")
     for cid in sorted(card_ids - covered):
         errors.append(f"hazards.json {cid}: no indicator points at this card")
 
@@ -97,6 +147,14 @@ def main() -> int:
                 errors.append(f"crew.json {c.id}: effect indicator {e.indicator_id} not in indicators.json")
         if c.sex is None or c.age is None:
             warnings.append(f"crew.json {c.id}: sex/age not set")
+        if c.face.status == "enrolled" and not c.consent.face_recognition:
+            errors.append(f"crew.json {c.id}: face enrolled without consent.face_recognition")
+        if c.data_source != "simulated" and not c.consent.store_daily_history:
+            errors.append(f"crew.json {c.id}: real data without consent.store_daily_history")
+        if c.consent.face_recognition and not c.consent.consent_date:
+            errors.append(f"crew.json {c.id}: consent given but consent_date is empty")
+        if c.face.template_ref and len(c.face.template_ref) > 120:
+            errors.append(f"crew.json {c.id}: face.template_ref looks like raw template data. Store only a key or file name")
 
     # NASA link: analytes exist and embedded ranges match the processed file
     try:
