@@ -5,12 +5,6 @@ import type { RppgResult } from "./rppg";
 
 const clamp = (v: number, min = 0, max = 100) => Math.min(max, Math.max(min, v));
 
-/**
- * Puntaje de fatiga 0..100 (heurística, ajústala con pruebas):
- *  - PERCLOS: 0.30 o más ya es somnolencia fuerte  -> hasta 60 pts
- *  - Bostezos en los últimos 5 min                  -> 10 pts c/u (máx 30)
- *  - Parpadeo anormal (<8/min = mirada fija, >25/min = ojos cansados) -> 10 pts
- */
 export function computeFatigueScore(stats: FatigueStats): number {
   const perclosPts = clamp((stats.perclos / 0.3) * 60, 0, 60);
   const yawnPts = Math.min(stats.yawnsLast5Min, 3) * 10;

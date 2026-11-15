@@ -6,7 +6,6 @@ export interface HeadPose {
 
 const RAD2DEG = 180 / Math.PI;
 
-// Si al bajar la cabeza el pitch relativo sale NEGATIVO, cambia esto a -1.
 const PITCH_SIGN = -1;
 const YAW_SIGN = -1;
 
@@ -22,7 +21,7 @@ export function headPoseFromMatrix(data: number[] | Float32Array): HeadPose {
   return { pitch: PITCH_SIGN * pitch * RAD2DEG, yaw: YAW_SIGN * yaw * RAD2DEG, roll: roll * RAD2DEG };
 }
 
-// Umbrales (calibra con tu cámara). Son RELATIVOS a la postura base.
+// Umbrales. Son RELATIVOS a la postura base.
 export const HEAD_DOWN_PITCH = 20;   // grados: cabeza gacha (desconexión de la tarea)
 export const LOOK_AWAY_YAW = 30;     // grados: mirando a un lado
 const HYSTERESIS = 5;                // grados: para salir del estado hay que regresar 5° más (evita on/off rápido)

@@ -4,7 +4,8 @@ import { FatigueTracker, type FatigueStats } from "./fatigue";
 import { detectExpression, loadExpression, type ExpressionResult } from "./expression";
 import { SessionAggregator, computeFatigueScore, fatigueLevel, type SessionSummary } from "./aggregate";
 import { HeadPoseTracker, headPoseFromMatrix, type HeadPoseState } from "./headpose";
-import { RppgTracker, createRoiContext, foreheadROI, roiGreenMean, type RppgResult } from "./rppg";
+import { RppgTracker, createRoiContext, foreheadROI, roiGreenMean, type RppgResult, type Roi } from "./rppg";
+import { FaceOverlay } from "./overlay";
 
 export interface HeartState {
   result: RppgResult | null; // última estimación (puede no ser confiable)
@@ -53,6 +54,8 @@ export function useVision() {
   const lastFaceRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const frameHandleRef = useRef<{ cancel: () => void } | null>(null); // para cancelar el siguiente frame
+  const overlayRef = useRef<FaceOverlay | null>(null);
+  const showMeshRef = useRef(false); // la malla empieza apagada
   const frameRef = useRef(0);
   const emotionOnRef = useRef(false);
   const emotionBusyRef = useRef(false); // evita lanzar otra detección si la anterior no termina
@@ -64,6 +67,7 @@ export function useVision() {
   const [snapshot, setSnapshot] = useState<VisionSnapshot | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [emotionEnabled, setEmotionEnabled] = useState(false);
+  const [meshEnabled, setMeshEnabled] = useState(false);
   
 
   /** Procesa UN frame. `now` = hora de captura del frame (misma base que performance.now()) */
@@ -75,6 +79,7 @@ export function useVision() {
       // 2. Si hay cara, actualizar fatiga y postura de la cabeza
       let stats: FatigueStats | null = null;
       let head: HeadPoseState | null = null;
+      let roi: Roi | null = null;
       if (result) {
         const aspect = video.videoWidth / video.videoHeight;
         stats = trackerRef.current.update(result.faceLandmarks[0], now, aspect);
@@ -93,7 +98,7 @@ export function useVision() {
         lastFaceRef.current = now;
 
         roiCtxRef.current ??= createRoiContext();
-        const roi = foreheadROI(result.faceLandmarks[0], video.videoWidth, video.videoHeight);
+        roi = foreheadROI(result.faceLandmarks[0], video.videoWidth, video.videoHeight);
         if (roi) rppgRef.current.push(roiGreenMean(roiCtxRef.current, video, roi), now);
 
         if (now - lastRppgRef.current >= RPPG_EVERY_MS) {
@@ -105,6 +110,21 @@ export function useVision() {
             if (bpmHistoryRef.current.length > BPM_HISTORY) bpmHistoryRef.current.shift();
           }
         }
+      }
+
+      // 2c. Overlay: malla y zonas de medición en CADA frame (en el snapshot de 4 Hz se vería a tirones)
+      const overlay = overlayRef.current;
+      if (overlay) {
+        const heartOk = !!heartResultRef.current?.reliable && bpmHistoryRef.current.length > 0;
+        overlay.draw(video, result ? result.faceLandmarks[0] : null, {
+          eyesClosed: stats?.closed ?? false,
+          yawning: stats?.yawning ?? false,
+          attentionAlert: !!(head?.headDown || head?.lookingAway),
+          roi,
+          roiLabel: heartOk ? `pulso ${Math.round(median(bpmHistoryRef.current))} bpm` : "pulso",
+          roiReliable: heartOk,
+          showMesh: showMeshRef.current,
+        });
       }
 
       // 3. Cada N frames y si está activa: expresión (async, sin await para no bloquear)
@@ -174,9 +194,11 @@ export function useVision() {
     frameHandleRef.current = null;
   }, []);
 
-  const start = useCallback(async (video: HTMLVideoElement) => {
+  /** @param overlayCanvas canvas transparente encima del video para dibujar la malla (opcional) */
+  const start = useCallback(async (video: HTMLVideoElement, overlayCanvas?: HTMLCanvasElement | null) => {
     // Evitar dos loops al mismo tiempo (doble click, StrictMode, etc.)
     cancelLoop();
+    overlayRef.current = overlayCanvas ? new FaceOverlay(overlayCanvas) : null;
 
     try {
       setStatus("loading");
@@ -201,6 +223,8 @@ export function useVision() {
   /** Detiene el loop y regresa el resumen de la sesión */
   const stop = useCallback((): SessionSummary => {
     cancelLoop();
+    overlayRef.current?.clear();
+    overlayRef.current = null;
     videoRef.current = null;
     setStatus("idle");
     return aggregatorRef.current.summary();
@@ -229,7 +253,16 @@ export function useVision() {
   // Si el componente se desmonta, detener el loop
   useEffect(() => () => { stop(); }, [stop]);
 
-  return { status, snapshot, error, emotionEnabled, start, stop, enableEmotion, recalibrateHead };
+  /** Muestra/oculta malla + óvalo + labios (ojos y caja de la frente siempre; alertas en naranja siempre) */
+  const enableMesh = useCallback((on: boolean) => {
+    showMeshRef.current = on;
+    setMeshEnabled(on);
+  }, []);
+
+  return {
+    status, snapshot, error, emotionEnabled, meshEnabled,
+    start, stop, enableEmotion, enableMesh, recalibrateHead,
+  };
 
   
 }

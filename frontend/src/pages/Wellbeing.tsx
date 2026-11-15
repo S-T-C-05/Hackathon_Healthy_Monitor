@@ -26,7 +26,11 @@ export default function Wellbeing() {
   const [summary, setSummary] = useState<SessionSummary | null>(null);
   const [starting, setStarting] = useState(false);
   const startingRef = useRef(false); // candado inmediato (el estado de React tarda un render)
-  const { status, snapshot, error, emotionEnabled, start, stop, enableEmotion, recalibrateHead } = useVision();
+  const overlayRef = useRef<HTMLCanvasElement>(null);
+  const {
+    status, snapshot, error, emotionEnabled, meshEnabled,
+    start, stop, enableEmotion, enableMesh, recalibrateHead,
+  } = useVision();
 
   function stopCamera() {
     streamRef.current?.getTracks().forEach((t) => t.stop());
@@ -59,7 +63,7 @@ export default function Wellbeing() {
         if (!(e instanceof DOMException && e.name === "AbortError")) throw e;
       }
 
-      await start(video);
+      await start(video, overlayRef.current);
     } catch (e) {
       stopCamera();
       setCamError(e instanceof Error ? e.message : "No se pudo abrir la cámara");
@@ -86,12 +90,27 @@ export default function Wellbeing() {
     <div style={{ maxWidth: 720, margin: "0 auto", padding: 16, fontFamily: "system-ui, sans-serif" }}>
       <h1>Monitor de bienestar</h1>
 
-      <video
-        ref={videoRef}
-        muted
-        playsInline
-        style={{ width: "100%", maxWidth: 640, borderRadius: 12, background: "#111", transform: "scaleX(-1)" }}
-      />
+      {/* Contenedor: el canvas va EXACTAMENTE encima del video, con el mismo espejo */}
+      <div style={{ position: "relative", width: "100%", maxWidth: 640 }}>
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          // display:block evita el hueco de ~4px abajo que desalinearía el canvas
+          style={{ display: "block", width: "100%", borderRadius: 12, background: "#111", transform: "scaleX(-1)" }}
+        />
+        <canvas
+          ref={overlayRef}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            transform: "scaleX(-1)",
+            pointerEvents: "none",
+          }}
+        />
+      </div>
 
       <div style={{ display: "flex", gap: 8, margin: "12px 0", flexWrap: "wrap" }}>
         {!running ? (
@@ -104,6 +123,9 @@ export default function Wellbeing() {
         <label>
           <input type="checkbox" checked={emotionEnabled} onChange={(e) => enableEmotion(e.target.checked)} />{" "}
           Detectar expresión
+        </label>
+        <label>
+          <input type="checkbox" checked={meshEnabled} onChange={(e) => enableMesh(e.target.checked)} /> Mostrar malla
         </label>
         {status === "running" && <button onClick={recalibrateHead}>Recalibrar postura</button>}
         <span>Estado: {status === "loading" ? "cargando modelo…" : status}</span>
@@ -119,6 +141,7 @@ export default function Wellbeing() {
           )}
           {h?.headDown && <p style={{ color: "darkorange" }}>⬇️ Cabeza gacha</p>}
           {h?.lookingAway && <p style={{ color: "darkorange" }}>↔️ Mirando a otro lado</p>}
+          {s?.yawning && <p style={{ color: "darkorange" }}>🥱 Bostezo detectado</p>}
 
           {hr && (
             <div style={{ margin: "8px 0", padding: 12, border: "1px solid #ddd", borderRadius: 8 }}>
@@ -146,7 +169,10 @@ export default function Wellbeing() {
               <li>EAR: {s.ear.toFixed(3)} {s.closed ? "(ojos cerrados)" : ""}</li>
               <li>PERCLOS (1 min): {(s.perclos * 100).toFixed(1)}%</li>
               <li>Parpadeos: {s.blinks} ({s.blinksPerMin}/min)</li>
-              <li>Bostezos: {s.yawns}</li>
+              <li>
+                Bostezos: {s.yawns} · MAR (apertura de boca): {s.mar.toFixed(2)}
+                {s.mouthOpen ? " (boca abierta)" : ""}
+              </li>
               {h?.calibrated && (
                 <li>
                   Cabeza (relativo): pitch {h.relative.pitch.toFixed(1)}° · yaw {h.relative.yaw.toFixed(1)}° · roll{" "}
