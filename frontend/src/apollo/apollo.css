@@ -1,0 +1,110 @@
+/* Styles for what the integration adds to ApolloCare. Only ApolloCare's own CSS variables
+   are used, so light/dark mode and the phys/psy themes keep working. */
+
+.ax-vision [hidden], .ax-face [hidden], .ax-monitor [hidden], .ax-detail [hidden] { display: none !important; }
+.sev-none { --c: var(--text2); }
+
+/* ---- level and provenance tags ---- */
+.ax-level { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  background: color-mix(in srgb, var(--c) 24%, var(--card)); color: var(--text); border: 1px solid color-mix(in srgb, var(--c) 60%, transparent); white-space: nowrap; }
+.ax-level i { font-style: normal; color: var(--c); font-size: 12px; }
+.ax-basis { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; color: var(--text2); border: 1px dashed var(--line); background: var(--bg); }
+.ax-basis-sourced, .ax-basis-dataset_range { border-style: solid; }
+
+/* ---- entry button on the "where to start" screen ---- */
+.ax-monitor-entry { position: absolute; left: 50%; bottom: 7vh; transform: translateX(-50%); z-index: 4; padding: 13px 26px; border-radius: 999px;
+  background: var(--card); color: var(--primary); font-weight: 600; border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(44, 62, 80, .14);
+  transition: transform .4s ease-in-out, box-shadow .4s; white-space: nowrap; }
+.ax-monitor-entry:hover, .ax-monitor-entry:focus-visible { transform: translateX(-50%) translateY(-3px); box-shadow: 0 12px 34px var(--glow); outline: 2px solid var(--primary); }
+@media (max-width: 600px) { .ax-monitor-entry { bottom: 128px; font-size: 14px; padding: 11px 18px; } }
+
+/* ---- camera card (state 3) and profile camera ---- */
+.ax-vision-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 760px) { .ax-vision-grid { grid-template-columns: 1fr; } }
+.ax-video-wrap { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 20px; overflow: hidden; background: var(--bg); box-shadow: inset 0 0 0 1px var(--line); }
+.ax-video-wrap video, .ax-video-wrap canvas.ax-overlay { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); display: block; }
+.ax-video-wrap canvas.ax-overlay { pointer-events: none; }
+.ax-video-msg { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 12px; font-size: 14px; color: var(--text2); background: color-mix(in srgb, var(--bg) 82%, transparent); }
+.ax-video-wrap.ax-small { width: 200px; flex: none; border-radius: 16px; }
+.ax-vision-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.ax-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.ax-controls .btn { padding: 11px 20px; }
+.ax-controls .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.ax-check { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: var(--text2); cursor: pointer; }
+.ax-check input { accent-color: var(--primary); }
+.ax-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+.ax-stat { background: var(--bg); border-radius: 16px; padding: 11px 13px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ax-stat-wide { grid-column: 1 / -1; }
+.ax-stat-lab { font-size: 13px; color: var(--text2); }
+.ax-stat-val { font-size: 24px; font-weight: 500; line-height: 1.15; }
+.ax-stat-sub { font-size: 12px; color: var(--text2); min-height: 16px; }
+.ax-wave { width: 100%; height: 48px; display: block; margin-top: 4px; }
+.ax-vision .camstatus { margin: 0; min-height: 20px; }
+.ax-summary { margin-top: 18px; padding: 16px 18px; border-radius: 18px; background: var(--bg); border: 1px solid var(--line); }
+.ax-summary h4 { font-size: 16px; margin-bottom: 8px; color: var(--primary); }
+.ax-summary ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 4px 18px; font-size: 14px; color: var(--text2); }
+.ax-summary li b { color: var(--text); font-weight: 500; }
+.ax-vision-note { margin-top: 14px; font-size: 13px; line-height: 1.6; }
+
+.ax-face { margin: 14px 0 4px; display: flex; flex-direction: column; gap: 10px; }
+.ax-face-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.ax-face-stage { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 12px; border-radius: 18px; background: var(--bg); border: 1px solid var(--line); }
+.ax-face-info { flex: 1; min-width: 180px; display: flex; flex-direction: column; gap: 10px; }
+.ax-face-info .wellness-btn-row { justify-content: flex-start; margin-top: 0; }
+.ax-face-prompt { font-size: 16px; font-weight: 500; color: var(--text); margin: 0 !important; }
+.ax-face-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+.ax-face-actions .ax-link { color: var(--primary); }
+.ax-ok { color: var(--secondary) !important; font-weight: 600; }
+
+/* ---- evidence-based guidance on the results screen (state 5) ---- */
+.ax-guidance { max-width: 1000px; margin: 22px auto 0; background: var(--card); border: 1px solid var(--line); }
+.ax-guide-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0; }
+.ax-guide { background: var(--bg); border-radius: 18px; padding: 14px 16px; border-left: 5px solid var(--c); display: flex; flex-direction: column; gap: 8px; }
+.ax-guide-head { display: flex; flex-wrap: wrap; gap: 7px 10px; align-items: center; }
+.ax-guide ul, .ax-actions ul { padding-left: 20px; line-height: 1.6; font-size: 15px; }
+.ax-more { align-self: flex-start; padding: 8px 16px !important; font-size: 14px; }
+.btn.ghost.ax-more, .ax-controls .btn.ghost { background: var(--bg); border: 1px solid var(--line); color: var(--primary); }
+.btn.ghost.ax-more:hover, .ax-controls .btn.ghost:not(:disabled):hover { background: var(--card); box-shadow: 0 0 0 3px var(--glow); }
+#vbars .st .ax-basis { margin-top: 5px; }
+
+/* ---- mission monitor (state 7) ---- */
+.ax-monitor { max-width: 1120px; }
+.ax-crew-switch { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
+.ax-crew-switch .chip { background: var(--card); border: 1px solid var(--line); }
+.ax-crew-switch .chip.sel { background: var(--primary); color: #fff; }
+body[data-mode="dark"] .ax-crew-switch .chip.sel { color: #0b1929; }
+#ax-mon-body { display: flex; flex-direction: column; gap: 20px; }
+.ax-mon-head { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
+.ax-mon-head h3 { color: var(--primary); margin-bottom: 2px; }
+.ax-counts { display: flex; gap: 10px; flex-wrap: wrap; }
+.ax-count { display: flex; flex-direction: column; align-items: center; min-width: 92px; padding: 9px 14px; border-radius: 16px; font-size: 13px; color: var(--text2);
+  background: color-mix(in srgb, var(--c) 18%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); }
+.ax-count b { font-size: 26px; font-weight: 500; color: var(--text); line-height: 1.1; }
+.ax-ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.ax-ind { border-top: 6px solid var(--c); display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; }
+.ax-ind header { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ax-sys { font-size: 13px; color: var(--text2); }
+.ax-ind h3 { margin: 0; font-size: 19px; }
+.ax-ind-main { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.ax-num { font-size: 34px; font-weight: 500; line-height: 1.1; }
+.ax-num small { font-size: 14px; color: var(--text2); font-weight: 400; }
+.ax-spark { width: 150px; height: 44px; flex: none; }
+.ax-chart { width: 100%; height: auto; display: block; overflow: visible; }
+.ax-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ax-meta dt { font-size: 12px; color: var(--text2); }
+.ax-meta dd { font-size: 16px; font-weight: 500; }
+.ax-actions { background: color-mix(in srgb, var(--c) 12%, var(--bg)); border-radius: 14px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.ax-note, .ax-loading { text-align: center; line-height: 1.6; }
+.ax-msg { text-align: center; line-height: 1.7; }
+
+/* ---- indicator detail overlay ---- */
+.overlay-panel.ax-detail { max-width: 640px; }
+.ax-detail-block { margin-bottom: 18px; }
+.ax-detail-block h4 { font-size: 16px; color: var(--primary); margin-bottom: 6px; }
+.ax-detail-block p { line-height: 1.65; margin-bottom: 8px; }
+.ax-detail-block > ul { padding-left: 4px; list-style: none; display: flex; flex-direction: column; gap: 9px; line-height: 1.6; font-size: 14px; }
+.ax-evidence { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-top: 8px; font-size: 14px; }
+.ax-evidence summary { cursor: pointer; font-weight: 600; color: var(--text); }
+.ax-evidence[open] summary { margin-bottom: 8px; }
+.ax-evidence ul { padding-left: 20px; margin: 4px 0 8px; line-height: 1.6; }
+.ax-sources a { color: var(--primary); }

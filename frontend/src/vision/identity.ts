@@ -80,9 +80,11 @@ export class CrewRegistry {
     return [...this.crew];
   }
 
-  enroll(name: string, shots: Float32Array[]): EnrolledCrew {
+  /** @param id fixed id (e.g. the crew id from the backend); a previous enrollment with that id is replaced */
+  enroll(name: string, shots: Float32Array[], id?: string): EnrolledCrew {
+    if (id) this.crew = this.crew.filter((c) => c.id !== id);
     const member: EnrolledCrew = {
-      id: crypto.randomUUID(),
+      id: id ?? crypto.randomUUID(),
       name: name.trim(),
       descriptors: shots.map((d) => Array.from(d)),
       enrolledAt: Date.now(),
