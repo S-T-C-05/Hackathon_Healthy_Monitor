@@ -8,6 +8,8 @@ ApolloCare is a web tool for a crew member, far from Earth, to check their own h
 - **Emotional wellbeing**: a short guided conversation with optional breathing and grounding exercises.
 - **Mission monitor**: each indicator over the mission, compared with the person's own baseline, with the action to take, when to tell the crew medical officer or the flight surgeon, and the astronaut evidence behind it.
 
+It runs in **Spanish, English and French**, reads the interface aloud (TalkBack), accepts voice answers, and keeps working **offline** — because far from Earth there is no live support and the crew is international.
+
 It is a hackathon prototype. It is not a medical device and its colors are not a diagnosis.
 
 ## Run it
@@ -51,4 +53,4 @@ The backend creates a local database with a simulated 121-day mission for four c
 
 ## Use of AI
 
-Parts of the code, data curation and documentation were written with AI assistance (Claude) and reviewed by the team.
+Parts of the code, data curation, translations and documentation were written with AI assistance (Claude) and reviewed by the team. Full disclosure in [`AI_USAGE.md`](AI_USAGE.md).
