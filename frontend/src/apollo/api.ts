@@ -184,6 +184,8 @@ export const api = {
   indicator: (id: string) => request<IndicatorFull>(`/api/indicators/${enc(id)}`),
   evidenceFor: (indicatorId: string) => request<EvidenceCard[]>(`/api/evidence?indicator_id=${enc(indicatorId)}`),
   sources: () => request<Source[]>("/api/sources"),
+  entry: (crewId: string, indicatorId: string, value: number, note?: string, source: "manual" | "camera" | "auto" = "manual") =>
+    request<{ entry_id: number }>(`/api/crew/${enc(crewId)}/entries`, { indicator_id: indicatorId, value, source, note }),
   checkin: (crewId: string, values: Record<string, number | null>, store: boolean) =>
     request<CheckinResult>(`/api/crew/${enc(crewId)}/checkin`, { values, store }),
   purgeEntries: (crewId: string) => request<{ deleted: number }>(`/api/crew/${enc(crewId)}/entries`, undefined, "DELETE"),

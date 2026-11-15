@@ -1,6 +1,7 @@
 /** How a level from the backend is shown: ApolloCare severity class + word + shape (never color alone). */
 import type { Basis, Level } from "./api";
 import { h } from "./dom";
+import { tr } from "./i18n";
 
 export const SEV_CLASS: Record<string, string> = { green: "sev-ok", yellow: "sev-warn", red: "sev-bad" };
 export const AC_STATUS: Record<string, "ok" | "warn" | "bad"> = { green: "ok", yellow: "warn", red: "bad" };
@@ -32,9 +33,12 @@ export function basisTag(basis: Basis): HTMLElement {
   return h("span", { class: "ax-basis ax-basis-" + basis }, BASIS_TEXT[basis]);
 }
 
-const UNIT: Record<string, string> = { degC: "°C", "min/day": "min/día" };
 export function unitText(unit: string | null | undefined): string {
-  return unit ? UNIT[unit] ?? unit : "";
+  if (!unit) return "";
+  if (unit === "degC") return "°C";
+  if (unit === "min/day") return tr("min/día", "min/day", "min/jour");
+  if (unit === "score 1-5") return tr("escala 1-5", "score 1-5", "échelle 1-5");
+  return unit;
 }
 
 const SYSTEM: Record<string, string> = {

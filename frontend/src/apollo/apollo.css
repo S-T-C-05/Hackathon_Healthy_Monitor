@@ -110,3 +110,28 @@ body[data-mode="dark"] .ax-crew-switch .chip.sel { color: #0b1929; }
 .ax-evidence[open] summary { margin-bottom: 8px; }
 .ax-evidence ul { padding-left: 20px; margin: 4px 0 8px; line-height: 1.6; }
 .ax-sources a { color: var(--primary); }
+
+/* ---- physical diagnosis block (state 5), same spirit as the emotional result ---- */
+.ax-dx { max-width: 960px; margin: 6px auto 20px; padding: 24px 26px; border-radius: 28px; text-align: center;
+  background: color-mix(in srgb, var(--c) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--c) 38%, var(--line)); box-shadow: 0 8px 30px rgba(44, 62, 80, .06); }
+.ax-dx-kicker { font-size: 14px; color: var(--text2); letter-spacing: .04em; }
+.ax-dx-title { font-size: clamp(25px, 3.6vw, 36px); font-weight: 500; line-height: 1.2; margin: 4px 0 0; color: color-mix(in srgb, var(--c) 62%, var(--text)); }
+.ax-dx-msg { font-size: 17px; line-height: 1.7; max-width: 660px; margin: 10px auto 0; color: var(--text2); }
+.ax-dx-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 12px; margin: 18px 0 0; text-align: left; }
+.ax-dx-card { background: var(--bg); border-radius: 18px; padding: 15px 17px; border-left: 5px solid var(--c); display: flex; flex-direction: column; gap: 8px; }
+.ax-dx-card-head { display: flex; flex-wrap: wrap; gap: 7px 10px; align-items: center; }
+.ax-dx-card-head b { font-size: 16px; }
+.ax-dx-val { font-size: 15px; color: var(--text2); }
+.ax-dx-card ul { padding-left: 20px; line-height: 1.6; font-size: 15px; }
+.ax-dx-note { margin-top: 14px; font-size: 13px; }
+.ax-dx-actions { margin-top: 16px; }
+
+/* ---- emotional check-in -> mission (state 6) ---- */
+.ax-emo-mission { max-width: 680px; }
+.ax-emo-mission h3 { color: var(--primary); margin-bottom: 8px; }
+.ax-emo-close { margin: 12px 0 4px; font-size: 16px; }
+.ax-emo-close b { font-size: 22px; font-weight: 600; color: var(--primary); }
+.ax-emo-mission > .btn.ghost { margin-top: 14px; }
+.ax-psych-cam { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 14px; padding: 12px; border-radius: 18px; background: var(--bg); border: 1px solid var(--line); }
+.ax-psych-cam-side { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; min-width: 160px; }
+.ax-psych-cam .ax-stat-val { font-size: 24px; font-weight: 500; }

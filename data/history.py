@@ -253,9 +253,11 @@ def change_vs_baseline(
     member, ind = _member(crew_id), _indicator(indicator_id)
     series = daily_series(crew_id, indicator_id, path=path)
     res = {"crew_id": crew_id, "indicator_id": indicator_id, "n_days": len(series),
-           "n_baseline": 0, "n_recent": 0, "baseline": None, "recent": None, "pct": None, "level_recent": None}
+           "n_baseline": 0, "n_recent": 0, "baseline": None, "recent": None, "latest": None, "pct": None, "level_recent": None}
     if not series:
         return res
+    # The latest value is always available, even before there is enough history for a baseline comparison.
+    res["latest"] = series[-1]["value"]
     dates = [date.fromisoformat(d["date"]) for d in series]
     first, last = dates[0], dates[-1]
     if (last - first).days + 1 < baseline_days + recent_days:

@@ -253,4 +253,74 @@ export const STRINGS: Record<string, { en: string; fr: string }> = {
   // connection
   "🛰️ Conectado a la base de datos de la misión": { en: "🛰️ Connected to the mission database", fr: "🛰️ Connecté à la base de données de la mission" },
   "Sin conexión con el servidor de la misión: modo local": { en: "No connection to the mission server: local mode", fr: "Pas de connexion au serveur de la mission : mode local" },
+
+  // units
+  "min/día": { en: "min/day", fr: "min/jour" },
+
+  // physical diagnosis block (same format as the emotional result)
+  "Tu lectura de hoy": { en: "Your reading today", fr: "Votre lecture d’aujourd’hui" },
+  "Todo se ve en rango": { en: "Everything looks in range", fr: "Tout semble dans la plage" },
+  "Hay algo que vigilar": { en: "Something to watch", fr: "Un point à surveiller" },
+  "Requiere atención": { en: "Needs attention", fr: "Nécessite une attention" },
+  "El pulso, la temperatura y el sueño usan umbrales con fuente citada; los demás signos, rangos orientativos de demostración.": {
+    en: "Pulse, temperature and sleep use thresholds with a cited source; the other signs use orientative demo ranges.",
+    fr: "Le pouls, la température et le sommeil utilisent des seuils cités ; les autres signes, des plages indicatives de démonstration.",
+  },
+
+  // emotional check-in -> mission
+  "Datos para tu misión": { en: "Data for your mission", fr: "Données pour votre mission" },
+  "Esto NO guarda un diagnóstico de salud mental: el cuestionario no es una escala clínica. Solo guarda lo que tú reportaste, para ver tu tendencia durante la misión.": {
+    en: "This does NOT save a mental-health diagnosis: the questionnaire is not a clinical scale. It only saves what you reported yourself, to see your trend during the mission.",
+    fr: "Ceci N’enregistre PAS un diagnostic de santé mentale : le questionnaire n’est pas une échelle clinique. Il enregistre seulement ce que vous avez déclaré, pour suivre votre tendance pendant la mission.",
+  },
+  "Cercanía con tu tripulación (tu respuesta): ": { en: "Closeness to your crew (your answer): ", fr: "Proximité avec votre équipage (votre réponse) : " },
+  "Guardar en mi historial de misión": { en: "Save to my mission history", fr: "Enregistrer dans mon historique de mission" },
+  "📷 Medir mi pulso con la cámara (opcional)": { en: "📷 Measure my pulse with the camera (optional)", fr: "📷 Mesurer mon pouls avec la caméra (facultatif)" },
+  "Detener cámara": { en: "Stop camera", fr: "Arrêter la caméra" },
+  "Guardar pulso en la misión": { en: "Save pulse to the mission", fr: "Enregistrer le pouls dans la mission" },
+
+  // ApolloCare dynamic strings that were not in its own catalog
+  "Así se ve tu estado hoy.": { en: "This is how you look today.", fr: "Voici votre état aujourd’hui." },
+  "Mostrando datos de demostración (no capturaste valores).": { en: "Showing demo data (you did not enter values).", fr: "Affichage de données de démonstration (aucune valeur saisie)." },
+  "No se capturaron datos complementarios.": { en: "No additional data captured.", fr: "Aucune donnée complémentaire saisie." },
+  "Sin información adicional.": { en: "No additional information.", fr: "Aucune information complémentaire." },
+  "Dentro de rango orientativo": { en: "Within orientative range", fr: "Dans la plage indicative" },
+  "Solicita revisión": { en: "Needs review", fr: "Demande un examen" },
+  "Corazón": { en: "Heart", fr: "Cœur" },
+  "Pulmones": { en: "Lungs", fr: "Poumons" },
+  "Cerebro": { en: "Brain", fr: "Cerveau" },
+  "Cuerpo": { en: "Body", fr: "Corps" },
 };
+
+// Body-map bubble headers are rendered as one text node ("Organ · Severity"), so add the combinations.
+const _ORGANS: Record<string, { en: string; fr: string }> = {
+  "Corazón": { en: "Heart", fr: "Cœur" },
+  "Pulmones": { en: "Lungs", fr: "Poumons" },
+  "Cerebro": { en: "Brain", fr: "Cerveau" },
+  "Cuerpo": { en: "Body", fr: "Corps" },
+};
+const _SEV: Record<string, { en: string; fr: string }> = {
+  "Dentro de rango orientativo": { en: "Within orientative range", fr: "Dans la plage indicative" },
+  "Precaución": { en: "Caution", fr: "Prudence" },
+  "Solicita revisión": { en: "Needs review", fr: "Demande un examen" },
+};
+for (const [org, ot] of Object.entries(_ORGANS)) {
+  for (const [sev, st] of Object.entries(_SEV)) {
+    STRINGS[`${org} · ${sev}`] = { en: `${ot.en} · ${st.en}`, fr: `${ot.fr} · ${st.fr}` };
+  }
+}
+
+// Body-map bubble body lines render the field label with a trailing colon ("Horas de sueño: 5.5 h"),
+// so the colon-suffixed label is its own text node and needs its own key.
+const _FIELD_COLON: Record<string, { en: string; fr: string }> = {
+  "Frecuencia cardíaca": { en: "Heart rate", fr: "Fréquence cardiaque" },
+  "Temperatura corporal": { en: "Body temperature", fr: "Température corporelle" },
+  "Saturación de oxígeno": { en: "Oxygen saturation", fr: "Saturation en oxygène" },
+  "Respiraciones": { en: "Breaths", fr: "Respirations" },
+  "Presión sistólica": { en: "Systolic pressure", fr: "Pression systolique" },
+  "Presión diastólica": { en: "Diastolic pressure", fr: "Pression diastolique" },
+  "Horas de sueño": { en: "Hours of sleep", fr: "Heures de sommeil" },
+};
+for (const [es, t] of Object.entries(_FIELD_COLON)) {
+  STRINGS[`${es}:`] = { en: `${t.en}:`, fr: `${t.fr}:` };
+}

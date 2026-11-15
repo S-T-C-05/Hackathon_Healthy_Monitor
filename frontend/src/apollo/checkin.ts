@@ -48,48 +48,64 @@ async function evaluate(res: ACPhysicalResult): Promise<void> {
   }
 }
 
-function guidance(res: ACPhysicalResult): HTMLElement | null {
-  const items = last?.items.filter((i) => i.level) ?? [];
-  if (!items.length) return null;
+const WORST_WORD: Record<string, [string, string]> = {
+  ok: ["Todo se ve en rango", "sev-ok"],
+  warn: ["Hay algo que vigilar", "sev-warn"],
+  bad: ["Requiere atención", "sev-bad"],
+};
+
+/** Prominent "diagnosis" block, same shape as the emotional result (state 6). */
+function diagnosisBlock(res: ACPhysicalResult): HTMLElement {
+  const worst = (["bad", "warn", "ok"] as const).find((w) => res.metrics.some((m) => m.status === w)) ?? "ok";
+  const [word, cls] = WORST_WORD[worst];
   const crewId = AC().Profiles.currentId();
+  const items = last?.items.filter((i) => i.level) ?? [];
+  const cards = items.length
+    ? h(
+        "div",
+        { class: "ax-dx-cards" },
+        ...items.map((i) => {
+          const m = res.metrics.find((x) => x.id === i.field);
+          return h(
+            "div",
+            { class: "ax-dx-card " + levelClass(i.level) },
+            h("div", { class: "ax-dx-card-head" }, h("b", null, m?.label ?? i.label), h("span", { class: "ax-dx-val" }, `${i.value} ${m?.unit ?? ""}`), levelTag(i.level), basisTag(i.threshold_basis)),
+            i.action?.length ? h("ul", null, ...i.action.map((a) => h("li", null, a))) : null,
+            i.action?.length && i.escalate_when ? h("p", { class: "aux" }, h("b", null, "Cuándo avisar: "), i.escalate_when) : null,
+            h("button", { type: "button", class: "btn ghost ax-more", onclick: () => void openIndicatorDetail(i.indicator_id, crewId) }, "Por qué importa y evidencia"),
+          );
+        }),
+      )
+    : null;
   return h(
     "div",
-    { class: "panel ax-guidance", id: "ax-guidance" },
-    h("h3", null, "Guía basada en evidencia"),
-    h("p", { class: "aux" }, "Estos niveles usan umbrales con fuente citada de la capa de datos del equipo. Los demás signos usan rangos orientativos de demostración."),
-    h(
-      "div",
-      { class: "ax-guide-list" },
-      ...items.map((i) => {
-        const m = res.metrics.find((x) => x.id === i.field);
-        return h(
-          "div",
-          { class: "ax-guide " + levelClass(i.level) },
-          h("div", { class: "ax-guide-head" }, h("b", null, m?.label ?? i.label), h("span", null, `${i.value} ${m?.unit ?? ""}`), levelTag(i.level), basisTag(i.threshold_basis)),
-          i.action?.length ? h("ul", null, ...i.action.map((a) => h("li", null, a))) : null,
-          i.action?.length && i.escalate_when ? h("p", { class: "aux" }, h("b", null, "Cuándo avisar: "), i.escalate_when) : null,
-          h("button", { type: "button", class: "btn ghost ax-more", onclick: () => void openIndicatorDetail(i.indicator_id, crewId) }, "Por qué importa y evidencia"),
-        );
-      }),
-    ),
-    h("div", { class: "actions" }, h("button", { type: "button", class: "btn ghost", "data-go": "7" }, "🛰️ Ver mi tendencia en la misión")),
+    { class: "ax-dx " + cls, id: "ax-diagnosis" },
+    h("div", { class: "ax-dx-kicker" }, "Tu lectura de hoy"),
+    h("h2", { class: "ax-dx-title" }, word),
+    h("p", { class: "ax-dx-msg" }, res.advice || ""),
+    cards,
+    cards ? h("p", { class: "aux ax-dx-note" }, "El pulso, la temperatura y el sueño usan umbrales con fuente citada; los demás signos, rangos orientativos de demostración.") : null,
+    h("div", { class: "actions ax-dx-actions" }, h("button", { type: "button", class: "btn ghost", "data-go": "7" }, "🛰️ Ver mi tendencia en la misión")),
   );
 }
 
 function decorate(res: ACPhysicalResult): void {
-  document.getElementById("ax-guidance")?.remove();
-  if (!last) return;
-  // Say where each color comes from, next to ApolloCare's own tag
-  const bars = document.querySelectorAll<HTMLElement>("#vbars .vbar .st");
-  res.metrics
-    .filter((m) => !m.qualitative)
-    .forEach((m, i) => {
-      const st = bars[i];
-      if (!st || st.querySelector(".ax-basis")) return;
-      st.append(" ", m.basis ? basisTag(m.basis as never) : h("span", { class: "ax-basis" }, "Rango orientativo (criterio demo)"));
-    });
-  const block = guidance(res);
-  if (block) document.querySelector("#s5 .res-grid")?.after(block);
+  document.getElementById("ax-diagnosis")?.remove();
+  // Say where each color comes from, next to ApolloCare's own tag (only when the backend evaluated it)
+  if (last) {
+    const bars = document.querySelectorAll<HTMLElement>("#vbars .vbar .st");
+    res.metrics
+      .filter((m) => !m.qualitative)
+      .forEach((m, i) => {
+        const st = bars[i];
+        if (!st || st.querySelector(".ax-basis")) return;
+        st.append(" ", m.basis ? basisTag(m.basis as never) : h("span", { class: "ax-basis" }, "Rango orientativo (criterio demo)"));
+      });
+  }
+  // Diagnosis block at the top of the results, same format as the emotional result
+  const summary = document.querySelector("#s5 .summary");
+  if (summary) summary.after(diagnosisBlock(res));
+  AC().Lang.apply(document.getElementById("s5") ?? undefined);
 }
 
 async function saveToMission(): Promise<void> {

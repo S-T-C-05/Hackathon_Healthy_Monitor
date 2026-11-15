@@ -52,6 +52,7 @@ export interface ApolloCareApi {
     current(): "es" | "en" | "fr";
     t(text: string): string;
     apply(root?: ParentNode): void;
+    set(lang: "es" | "en" | "fr"): void;
     extend(more: Record<string, { en: string; fr: string }>): void;
   };
   TalkBack: { say(text: string, delay?: number): void; isEnabled(): boolean };
