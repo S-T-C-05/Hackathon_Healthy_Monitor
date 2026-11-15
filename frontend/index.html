@@ -1095,7 +1095,7 @@ const Profiles = (() => {
   function show() {
     render();$('#profileMessage').textContent='';$('#profileOverlay').hidden=false;
     $('#profileTitle').focus?.();
-    if (typeof TalkBack!=='undefined' && TalkBack.isEnabled()) TalkBack.say('Selecciona el perfil del astronauta. Puedes crear uno nuevo.');
+    if (typeof TalkBack!=='undefined' && TalkBack.isEnabled()) TalkBack.say(sayL('Selecciona el perfil del astronauta. Puedes crear uno nuevo.','Select the astronaut profile. You can create a new one.','Sélectionnez le profil de l’astronaute. Vous pouvez en créer un nouveau.'));
   }
   function close() {
     if(!active()) {$('#profileMessage').textContent='Selecciona o crea un perfil para continuar.';return;}
@@ -1109,7 +1109,7 @@ const Profiles = (() => {
     updateShortcut();$('#profileOverlay').hidden=true;
     if (changed && current!==1) { location.reload(); return; } // borra estado de la evaluación anterior
     if (current===1) { introReady=true;go(2); }
-    else if(typeof TalkBack!=='undefined' && TalkBack.isEnabled())TalkBack.say('Perfil seleccionado: '+active().name);
+    else if(typeof TalkBack!=='undefined' && TalkBack.isEnabled())TalkBack.say(sayL('Perfil seleccionado: ','Selected profile: ','Profil sélectionné : ')+active().name);
   }
   function create(name) {
     name=name.trim().replace(/\s+/g,' ');
@@ -1672,7 +1672,7 @@ function showQuestion(first){
       $('#camMini').style.display='block';if(await Cam.start($('#camMini'),null,$('#v9RecordPsych').checked)){btn.classList.add('on');document.body.classList.add('ac-cam-on');Psy.cam=true;}else {$('#camMini').style.display='none';document.body.classList.remove('ac-cam-on');}};
     $('#tgVoice').onclick=e=>{sfx.click();Psy.voice=!Psy.voice;e.currentTarget.classList.toggle('on',Psy.voice);
       if(Psy.voice&&!(window.speechSynthesis&&(window.SpeechRecognition||window.webkitSpeechRecognition)))toast('Tu navegador soporta voz de forma limitada; el texto sigue disponible.');
-      if(Psy.voice)speak(Lang.t(q.text));else {stopListen();if(!TalkBack.isEnabled())window.speechSynthesis&&speechSynthesis.cancel();}
+      if(Psy.voice&&!TalkBack.isEnabled())speak(Lang.t(q.text));else {stopListen();if(!TalkBack.isEnabled())window.speechSynthesis&&speechSynthesis.cancel();}
       };
   }
   if(q.type==='choice'){
@@ -1734,7 +1734,7 @@ async function choose(q,op,btn,wrap){
 async function finishPsy(){
   const st=$('#qstage');st.innerHTML='<div class="orbthink"></div><div class="qtext float">Gracias por compartir. Estamos escuchando lo que sientes…</div>';
   st.classList.remove('out');$('#dots').innerHTML='';
-  if(TalkBack.isEnabled())TalkBack.say('Terminaste el cuestionario emocional. Preparando resultados.'); else if(Psy.voice)speak('Gracias por compartir. Estamos escuchando lo que sientes.');
+  if(TalkBack.isEnabled())TalkBack.say(sayL('Terminaste el cuestionario emocional. Preparando resultados.','You finished the emotional check-in. Preparing your results.','Vous avez terminé le bilan émotionnel. Préparation de vos résultats.')); else if(Psy.voice)speak(sayL('Gracias por compartir. Estamos escuchando lo que sientes.','Thank you for sharing. We are listening to how you feel.','Merci pour votre partage. Nous sommes à l’écoute de vos ressentis.'));
   if(Psy.cam){Cam.stop($('#camMini'));$('#camMini').style.display='none';document.body.classList.remove('ac-cam-on');}
   const res=await diagnosePsych();App.psych.result=res;App.psych.answers=Psy.answers_;
   await sleep(3200);go(6);
@@ -1742,9 +1742,19 @@ async function finishPsy(){
 /* --- voz: síntesis (voz femenina en español) y reconocimiento --- */
 function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>v.lang.toLowerCase().startsWith(Lang.current()));
   return vs.find(v=>/(paulina|monica|m[óo]nica|helena|sabina|female|mujer|google espa)/i.test(v.name))||vs[0]||null;}
+// Spoken line in the active language (for TTS strings that are not part of the visible-text catalog).
+function sayL(es,en,fr){const l=Lang.current();return l==='en'?en:l==='fr'?fr:es;}
 function speak(t,cb){ if(!Psy.voice||!window.speechSynthesis){cb&&cb();return;}
-  speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=Lang.voiceLocale();u.rate=.9;u.pitch=1.08;u.volume=.9;const v=pickVoice();if(v)u.voice=v;
-  u.onend=()=>cb&&cb();u.onerror=()=>cb&&cb();speechSynthesis.speak(u);}
+  let done=false;const fire=()=>{if(done)return;done=true;cb&&cb();};
+  // Safety first: the callback (which starts the mic) must run even if synthesis throws or never ends.
+  setTimeout(fire,Math.min(9000,1200+String(t).length*80));
+  try{
+    if(typeof TalkBack!=='undefined')TalkBack.cancel();         // never let TalkBack and this voice overlap
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(t);u.lang=Lang.voiceLocale();u.rate=.9;u.pitch=1.08;u.volume=.9;
+    const v=pickVoice();if(v){try{u.voice=v;}catch(e){}}
+    u.onend=fire;u.onerror=fire;speechSynthesis.speak(u);
+  }catch(e){fire();}}
 function spokenNumber(text){
   const m=text.match(/\d+/); if(m)return parseInt(m[0],10);
   const t=text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -1754,7 +1764,9 @@ function spokenNumber(text){
   for(const w of t.split(/\s+/))if(w in W)return W[w];
   return null;
 }
-function listen(q){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Tu navegador no soporta reconocimiento de voz.');return;}
+function listen(q){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast(sayL('Tu navegador no soporta reconocimiento de voz.','Your browser does not support speech recognition.','Votre navigateur ne prend pas en charge la reconnaissance vocale.'));return;}
+  if(typeof TalkBack!=='undefined')TalkBack.cancel();
+  if(window.speechSynthesis)speechSynthesis.cancel();           // stop any spoken prompt before listening
   stopListen();const r=new SR();r.lang=Lang.voiceLocale();r.interimResults=false;Psy.rec=r;const m=$('#micBtn');m&&m.classList.add('live');
   r.onresult=e=>{const txt=e.results[0][0].transcript;
     if(q.type==='text'){const ta=$('#qText');if(ta)ta.value=(ta.value+' '+txt).trim();}
@@ -1810,7 +1822,7 @@ const BreathGuide = (() => {
     $('#breathCounter').textContent=done?'Puedes repetirla cuando lo necesites.':'6 ciclos · 1 minuto';
     updateControls();
     if(done && typeof Wellness !== 'undefined') Wellness.completed('respiracion');
-    if(done && TalkBack.isEnabled()) TalkBack.say('Terminaste la pausa de respiración. ¿Cómo te sientes ahora?');
+    if(done && TalkBack.isEnabled()) TalkBack.say(sayL('Terminaste la pausa de respiración. ¿Cómo te sientes ahora?','You finished the breathing pause. How do you feel now?','Vous avez terminé la pause de respiration. Comment vous sentez-vous maintenant ?'));
   }
   function step() {
     if(!active)return;
@@ -1820,14 +1832,14 @@ const BreathGuide = (() => {
       stage='exhale';circle.classList.add('exhale');
       setText('Exhala lentamente · 6 segundos','Exhala');
       $('#breathCounter').textContent=`Ciclo ${cycle} de ${TOTAL}`;
-      if(TalkBack.isEnabled())TalkBack.say('Exhala despacio');
+      if(TalkBack.isEnabled())TalkBack.say(sayL('Exhala despacio','Breathe out slowly','Expirez lentement'));
       timer=setTimeout(step,6000);
     } else {
       if(cycle >= TOTAL){stop(true);return;}
       cycle++;stage='inhale';circle.classList.add('inhale');
       setText('Inhala suavemente · 4 segundos','Inhala');
       $('#breathCounter').textContent=`Ciclo ${cycle} de ${TOTAL}`;
-      if(TalkBack.isEnabled())TalkBack.say('Inhala suave');
+      if(TalkBack.isEnabled())TalkBack.say(sayL('Inhala suave','Breathe in gently','Inspirez doucement'));
       timer=setTimeout(step,4000);
     }
   }
