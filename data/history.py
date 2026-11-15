@@ -224,9 +224,15 @@ def daily_series(crew_id: str, indicator_id: str, days: Optional[int] = None, pa
     last: dict[str, dict] = {}
     for e in get_entries(crew_id, indicator_id, path=path):
         last[e["entry_date"]] = e
+    # Personal-baseline criteria need the person's own baseline (median of their first days).
+    base = None
+    if last:
+        first = date.fromisoformat(min(last))
+        early = [e["value"] for d, e in last.items() if date.fromisoformat(d) < first + timedelta(days=BASELINE_DAYS)]
+        base = median(early) if early else None
     out = [
         {"date": d, "mission_day": e["mission_day"], "value": e["value"], "unit": e["unit"],
-         "source": e["source"], "level": level_for(ind, e["value"], member.get("sex"))}
+         "source": e["source"], "level": level_for(ind, e["value"], member.get("sex"), baseline=base)}
         for d, e in sorted(last.items())
     ]
     return out[-days:] if days else out
